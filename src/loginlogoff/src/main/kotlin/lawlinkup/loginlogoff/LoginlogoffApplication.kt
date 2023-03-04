@@ -1,4 +1,4 @@
-package lanklinkup.loginlogoff
+package lawlinkup.loginlogoff
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
