@@ -33,9 +33,16 @@ class SystemController {
     }
 
     @PostMapping("/logar")
-    fun logar(@RequestBody informacoes:MutableList<String>):String {
-        return "${informacoes[0]}"
+    fun logar(@RequestBody informacoes: Login):String {
+        val usuario = cadastro.buscarUser(informacoes.email, cadastro.cadastro)
+
+        if(usuario != null && usuario.senha == informacoes.senha){
+            return "Login bem sucedido, email: ${informacoes.email} senha: ${informacoes.senha}"
+        }else{
+                return "Login mal sucedido"
+            }
     }
+
 
 
     @PostMapping("/cadastro")

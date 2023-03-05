@@ -8,4 +8,7 @@ class LoginLogoff {
         cadastro.add(novoCadastro)
         return "Usuario cadastrado com sucesso!"
     }
+    fun buscarUser(email:String, user: List<Conta>):Conta?{
+        return user.find { it.email == email}
+    }
 }
