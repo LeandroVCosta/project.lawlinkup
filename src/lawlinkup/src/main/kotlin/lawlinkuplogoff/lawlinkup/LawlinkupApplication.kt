@@ -1,11 +1,11 @@
-package lawlinkup.loginlogoff
+package lawlinkuplogoff.lawlinkup
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class LoginlogoffApplication
+class LawlinkupApplication
 
 fun main(args: Array<String>) {
-	runApplication<LoginlogoffApplication>(*args)
+	runApplication<LawlinkupApplication>(*args)
 }

@@ -1,10 +1,10 @@
-package lanklinkup.loginlogoff
+package lawlinkuplogoff.lawlinkup
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class LoginlogoffApplicationTests {
+class LawlinkupApplicationTests {
 
 	@Test
 	fun contextLoads() {
