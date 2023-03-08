@@ -28,7 +28,7 @@ class SystemController {
 
     @PutMapping("/deslogar")
     fun deslogar():String {
-        var status = false
+        status = false
         return "Deslogado com Sucesso!"
     }
 
@@ -37,6 +37,7 @@ class SystemController {
         val usuario = cadastro.buscarUser(informacoes.email, cadastro.cadastro)
 
         if(usuario != null && usuario.senha == informacoes.senha){
+            status = true
             return "Login bem sucedido, email: ${informacoes.email} senha: ${informacoes.senha}"
         }else{
                 return "Login mal sucedido"
