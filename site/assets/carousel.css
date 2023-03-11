@@ -18,18 +18,33 @@ body {
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
+  display: flex;
   bottom: 3rem;
   z-index: 10;
 }
 
-/* Declare heights because of positioning of img element */
-.carousel-item {
-  height: 32rem;
+.carousel-caption h1 {
+  margin-bottom: 32px;
 }
 
-.carousel .bd-placeholder-img {
-  min-height: 100%;
+.carousel-text-background {
+  width: fit-content;
+  background-color: #5a5a5aaa;
+  border-radius: 8px;
+  padding: 32px 80px;
 }
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+}
+
+/* .carousel .bd-placeholder-img {
+  min-height: 100%;
+} */
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
