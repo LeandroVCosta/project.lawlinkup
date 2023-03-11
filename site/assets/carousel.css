@@ -4,7 +4,6 @@
 
 body {
   padding-top: 3rem;
-  padding-bottom: 3rem;
   color: #5a5a5a;
 }
 
@@ -73,6 +72,22 @@ body {
 /* rtl:begin:remove */
 .featurette-heading {
   letter-spacing: -.05rem;
+}
+
+.featurette-image {
+  width: 480px;
+  height: 480px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 36px;
+  box-shadow: #5a5a5a 0 8px 24px;
+}
+.featurette-image-right {
+  border-radius: 36px 360px 36px 36px;
+}
+.featurette-image-left {
+  border-radius: 360px 36px 36px 36px;
 }
 
 /* rtl:end:remove */
