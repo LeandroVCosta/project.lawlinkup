@@ -1,6 +1,6 @@
 :root {
     --primary: #002855;
-    --secondary: #AF9469;
+    --secondary: #002855;
 }
 
 .title_mvv {
@@ -20,19 +20,31 @@
     background-color: var(--secondary);
 }
 
-.navbar-brand {
-    font-size: 40px;
+.navbar-brand{
+    margin: 0;
+    padding: 0;
 }
+
+.nav_title{
+        font-size: 32px;
+        color: #aa905f;
+        font-weight: bolder;
+        text-decoration: none;
+        margin-right: 24px;
+    }
+
 
 .nav-item {
     margin: 0 8px;
-    font-size: 24px;
+    font-weight: bolder;
+    font-size: 16px;
     align-items: center;
     display: flex;
 }
 
 .nav-item button {
-    font-size: 24px;
+    font-size: 16px;
+    font-weight: bolder;
 }
 
 .pillars-image {
@@ -44,3 +56,4 @@
     border-radius: 50%;
     box-shadow: #5a5a5a 0 4px 8px;
 }
+
