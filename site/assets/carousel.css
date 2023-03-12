@@ -3,8 +3,12 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
   color: #5a5a5a;
+  font-family: 'roboto','sans-serif',;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Brawler', 'serif';
 }
 
 
