@@ -1,6 +1,8 @@
+/* Levar os estilos padrões das páginas ao index.css, deixando aqui somente coisas específicas da landing page */
+
 :root {
     --primary: #002855;
-    --secondary: #002855;
+    --secondary: #AF9469;
 }
 
 .title_mvv {
@@ -17,7 +19,7 @@
 }
 
 .footer-color-secondary {
-    background-color: var(--secondary);
+    background-color: var(--primary);
 }
 
 .navbar-brand{

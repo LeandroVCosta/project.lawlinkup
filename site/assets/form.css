@@ -1,0 +1,13 @@
+.form-box {
+    display: flex;
+    justify-content: center;
+    background-color: #CCCCCC;
+    width: 70%;
+    padding: 24px;
+    margin: auto;
+}
+
+.input-area {
+    width: 80%;
+    padding: 8px 0;
+}

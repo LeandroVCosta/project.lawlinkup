@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+}
+
+.container {
+    margin: auto;
+    width: 90%;
+}
+
+.container-full-page {
+    height: 100vh;
+}
