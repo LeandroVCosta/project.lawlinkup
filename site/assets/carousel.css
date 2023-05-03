@@ -27,19 +27,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-caption h1 {
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .carousel-text-background {
-  width: fit-content;
-  background-color: #5a5a5aaa;
+  width: 100vh;
+  height: 32.5vh;
+  background-color: rgb(175, 148, 105, 0.9);
   border-radius: 8px;
-  padding: 32px 80px;
+  padding: 2rem 5rem;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-  height: 90vh;
+  height: 75vh;
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
@@ -61,6 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
+  text-align: center;
 }
 /* rtl:end:ignore */
 
@@ -69,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 ------------------------- */
 
 .featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  margin: 5rem 0;/* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -87,12 +89,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 36px;
   box-shadow: #5a5a5a 0 8px 24px;
 }
-.featurette-image-right {
-  border-radius: 36px 360px 36px 36px;
-}
-.featurette-image-left {
-  border-radius: 360px 36px 36px 36px;
-}
 
 /* rtl:end:remove */
 
@@ -108,7 +104,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .featurette-heading {
-    font-size: 50px;
+    font-size: 40px;
+    margin-right: 2rem;
+    margin-left: 2rem;
   }
 }
 
