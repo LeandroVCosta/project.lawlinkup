@@ -94,6 +94,33 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 360px 36px 36px 36px;
 }
 
+/*LEFTSIDEBAR*/
+.left-side-bar{
+  margin: 0;
+  margin-top: 16vh;
+  background-color: #B8D9FF;
+  width: 13vw;
+  height: 84vh;
+}
+
+.card_adv{
+  width: 86vw;
+  height: 20vh;
+  color: red;
+  display: flex;
+  margin-left: 14vw;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+}
+
+.cardgroup{
+  width: 100%;
+  height: 100%;
+  gap: 10vh;
+}
+
+
 /* rtl:end:remove */
 
 /* RESPONSIVE CSS
@@ -117,4 +144,3 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 7rem;
   }
 }
-
