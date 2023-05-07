@@ -8,28 +8,220 @@
     
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-    <link rel="stylesheet" href="../assets/index.css">
     <link rel="stylesheet" href="../assets/form.css">
   
 </head>
 
 <body>
 
-    <div class="container-full-page" style="background-color: darkblue;">
-        <form class="form-box">
-            <div class="input-area">
-                <label for="nameInput" class="">Nome</label>
-                <input type="text" class="input-field" placeholder="placeholder nome" id="nameInput">
+    <div class="container-full-page">
+        <div class="form-box">
+            <div class="progress-bar">
+                <div class="step">
+                   <div class="bullet active">
+                   </div>
+                </div>
+                <div class="step">
+                   <div class="bullet">
+                   </div>
+                </div>
+                <div class="step">
+                   <div class="bullet">
+                   </div>
+                </div>
+                <div class="step">
+                   <div class="bullet">
+                   </div>
+                </div>
+             </div>
+            <h1>Cadastre-se</h1>
+            <div class="form-outer">
+                <form>
+                    <div id="slide-page" class="page">
+                        <div class="input-area">
+                            <label for="nameInput" class="">Nome</label>
+                            <input type="text" class="input-field" placeholder="placeholder nome" id="nameInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="emailInput" class="">Email</label>
+                            <input type="email" class="input-field" id="emailInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="typeInput" class="">Tipo</label>
+                            <select name="typeInput" class="input-field" id="typeInput">
+                                <option value="" selected disabled hidden>Que tipo de usuário eu sou?</option>
+                                <option value="1">Cliente</option>
+                                <option value="2">Advogado</option>
+                            </select>
+                        </div>
+                    
+                        <a href="#">Já possui cadastro? Clique aqui</a>
+                    
+                        <div class="field">
+                            <button id="firstNext" class="btn">Próximo</button>
+                         </div>
+                    </div>
+                    <div class="page">
+                        <div class="input-area">
+                            <label for="nameInput" class="">Nome</label>
+                            <input type="text" class="input-field" placeholder="placeholder nome" id="nameInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="emailInput" class="">Email</label>
+                            <input type="email" class="input-field" id="emailInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="typeInput" class="">Tipo</label>
+                            <select name="typeInput" class="input-field" id="typeInput">
+                                <option value="" selected disabled hidden>Que tipo de usuário eu sou?</option>
+                                <option value="1">Cliente</option>
+                                <option value="2">Advogado</option>
+                            </select>
+                        </div>
+                    
+                        <!-- <a href="#">Já possui cadastro? Clique aqui</a> -->
+                    
+                        <div class="field btns">
+                            <button id="prev-1" class="btn">Previous</button>
+                            <button id="next-1" class="btn">Próximo</button>
+                         </div>
+                        <!-- <button type="button" class="btn" onclick="changeCircle()">Próximo</button> -->
+                    </div>
+                    <div class="page">
+                        <div class="input-area">
+                            <label for="nameInput" class="">Nome</label>
+                            <input type="text" class="input-field" placeholder="placeholder nome" id="nameInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="emailInput" class="">Email</label>
+                            <input type="email" class="input-field" id="emailInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="typeInput" class="">Tipo</label>
+                            <select name="typeInput" class="input-field" id="typeInput">
+                                <option value="" selected disabled hidden>Que tipo de usuário eu sou?</option>
+                                <option value="1">Cliente</option>
+                                <option value="2">Advogado</option>
+                            </select>
+                        </div>
+                    
+                        <!-- <a href="#">Já possui cadastro? Clique aqui</a> -->
+                    
+                        <div class="field btns">
+                            <button id="prev-2" class="btn">Previous</button>
+                            <button id="next-2" class="btn">Próximo</button>
+                         </div>
+    
+                        <!-- <button type="button" class="btn" onclick="changeCircle()">Próximo</button> -->
+                    </div>
+                    <div class="page">
+                        <div class="input-area">
+                            <label for="nameInput" class="">Nome</label>
+                            <input type="text" class="input-field" placeholder="placeholder nome" id="nameInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="emailInput" class="">Email</label>
+                            <input type="email" class="input-field" id="emailInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="typeInput" class="">Tipo</label>
+                            <select name="typeInput" class="input-field" id="typeInput">
+                                <option value="" selected disabled hidden>Que tipo de usuário eu sou?</option>
+                                <option value="1">Cliente</option>
+                                <option value="2">Advogado</option>
+                            </select>
+                        </div>
+                    
+                        <!-- <a href="#">Já possui cadastro? Clique aqui</a> -->
+                    
+                        <div class="field btns">
+                            <button id="prev-3" class="btn">Previous</button>
+                            <button id="submit" class="btn">Submit</button>
+                         </div>
+                    
+                        <!-- <button type="button" class="btn" onclick="changeCircle()">Próximo</button> -->
+                    </div>
+                </form>
             </div>
-            <div class="input-area">
-                <label for="emailInput" class="">Email</label>
-                <input type="email" class="input-field" id="emailInput">
-            </div>
-            
-            <button type="submit" class="btn">Próximo</button>
-        </form>
+        </div>
     </div>
 
 </body>
 
 </html>
+
+<script>
+
+const slidePage = document.getElementById("slide-page");
+
+const nextBtnFirst = document.getElementById("firstNext");
+const prevBtnSec = document.getElementById("prev-1");
+const nextBtnSec = document.getElementById("next-1");
+const prevBtnThird = document.getElementById("prev-2");
+const nextBtnThird = document.getElementById("next-2");
+const prevBtnFourth = document.getElementById("prev-3");
+const submitBtn = document.getElementById("submit");
+
+// const progressText = document.querySelectorAll(".step p");
+// const progressCheck = document.querySelectorAll(".step .check");
+const bullet = document.querySelectorAll(".bullet");
+
+let current = 0;
+
+function nextButton() {
+    bullet[current].classList.remove("active");
+    bullet[current].classList.add("past");
+    bullet[current+1].classList.add("active");
+    // progressCheck[current].classList.add("active");
+    // progressText[current].classList.add("active");
+    current += 1;
+}
+
+function prevButton() {
+    bullet[current-1].classList.remove("past");
+    bullet[current-1].classList.add("active");
+    bullet[current].classList.remove("active");
+    // progressCheck[current - 1].classList.remove("active");
+    // progressText[current - 1].classList.remove("active");
+    current -= 1;
+}
+
+nextBtnFirst.addEventListener("click", function(event){
+  event.preventDefault();
+  slidePage.style.marginLeft = "-25%";
+  nextButton();
+});
+nextBtnSec.addEventListener("click", function(event){
+  event.preventDefault();
+  slidePage.style.marginLeft = "-50%";
+  nextButton();
+});
+nextBtnThird.addEventListener("click", function(event){
+  event.preventDefault();
+  slidePage.style.marginLeft = "-75%";
+  nextButton();
+});
+submitBtn.addEventListener("click", function(){
+  setTimeout(function(){
+    alert("Your Form Successfully Signed up");
+    location.reload();
+  },800);
+});
+
+prevBtnSec.addEventListener("click", function(event){
+  event.preventDefault();
+  slidePage.style.marginLeft = "0%";
+  prevButton();
+});
+prevBtnThird.addEventListener("click", function(event){
+  event.preventDefault();
+  slidePage.style.marginLeft = "-25%";
+  prevButton();
+});
+prevBtnFourth.addEventListener("click", function(event){
+  event.preventDefault();
+  slidePage.style.marginLeft = "-50%";
+  prevButton();
+});
+
+</script>

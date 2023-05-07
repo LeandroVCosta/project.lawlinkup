@@ -1,19 +1,56 @@
+@import "index.css";
+
+body {
+    overflow: hidden;
+}
+
 .container-full-page {
     background-image: url(img/form-bg.png);
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: #CCCCCC;
-    width: 70%;
+    background-color: #e7f1ffb3;
+    width: 50%;
     padding: 24px;
-    margin: auto;
+    align-items: center;
+    border-radius: 10px;
+    min-width: 562px;
+}
+
+.form-outer {
+    width: 100%;
+    overflow: hidden;
+}
+
+.form-box form {
+    display: flex;
+    width: 400%;
+}
+
+.page {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+@media (max-width: 642px) {
+    .form-box {
+      min-width: calc(100% - 32px);
+      box-sizing: border-box;
+    }
 }
 
 .input-area {
-    width: 80%;
+    min-width: 320px;
+    width: 50%;
     padding: 8px 0;
 }
 
@@ -26,10 +63,75 @@
 
 .input-field {
     width: 100%;
+    box-sizing: border-box;
     padding: 16px 8px;
     font-size: 20px;
     line-height: 150%;
     font-weight: 300;
     border: 1px solid #CED4DA;
-    border-radius: 4.8px;
+    border-radius: 5px;
+}
+
+.progress-bar{
+    display: flex;
+    margin: 8px 0;
+    user-select: none;
+    width: fit-content;
+}
+.progress-bar .step{
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+.progress-bar .step .bullet{
+    height: 30px;
+    width: 30px;
+    background-color: var(--secondary);
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    transition: 0.2s;
+    margin-right: 42px;
+}
+
+.progress-bar .step:last-child .bullet {
+    margin-right: 0;
+}
+
+.progress-bar .step .bullet.active{
+    background-color: var(--primary);
+}
+
+.progress-bar .step .bullet.past{
+    background-color: var(--blue-400);
+}
+
+.progress-bar .step .bullet:before,
+.progress-bar .step .bullet:after{
+    position: absolute;
+    content: '';
+    bottom: 12px;
+    right: -44px;
+    height: 3px;
+    width: 44px;
+    background-color: var(--secondary)
+}
+.progress-bar .step .bullet.past:after{
+    background-color: var(--blue-400);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 0.3s linear forwards;
+}
+
+@keyframes animate {
+    100%{
+        transform: scaleX(1);
+    }
+
+}
+
+.progress-bar .step:last-child .bullet:before,
+.progress-bar .step:last-child .bullet:after{
+    display: none;
 }
