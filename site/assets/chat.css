@@ -1,67 +1,160 @@
+@import "index.css";
+
 .div_chat {
     display: flex;
     flex-direction: row;
     margin-top: 116px;
+    background-color: #93c4fc;
+    height: 100%;
+    overflow: hidden;
 }
 
-
 .div_contatos {
-    height: 705px;
+    height: 592px;
     width: 25%;
     margin-left: 50px;
-    background-color: red;
+    background-color: #FFFFFF;
+}
+
+.div_perfil {
+    height: 12%;
+    width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+}
+
+.div_pesquisa {
+    width: 95%;
+    height: 64px;
+    background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    padding:  0 2% 0 2%
+}
+
+.i_pesquisa {
+    height: 42px;
+    width: 100%;
+    padding-left: 8px;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 20;
+    color: #000000;
+    
 }
 
 .div_conversas {
-    height: 10%;
-    width: 100%;
-    background-color: greenyellow;
-    border: 3px solid black;
+    height: 12%;
+    width: 95%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+}
+
+.div_conversas2 {
+    height: 12%;
+    width: 95%;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: row;
+}
+
+.div_info {
+    display: flex;
+    flex-direction: column;
 }
 
 .div_foto {
-    width: 50px;
-    height: 50px;
-    background-color: blue;
+    width: 56px;
+    height: 56px;
+    background-color: #4FD8EB;
     border-color: 3px solid brown;
     border-radius: 30px;
     margin-top: 8px;
     margin-left: 8px;
 }
 
+.div_nome {
+    margin-top: 8px;
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    
+}
+
+.div_caso {
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
 .div_correspondente {
     width: 100%;
-    height: 15%;
-    background-color: coral;
-    border-bottom: 3px solid black;
+    height: 80px;
+    background-color: #D9D9D9;
+    border-bottom: 3px solid #8A8A8A;
+    display: flex;
+    flex-direction: row;
 }
 
 .div_mensagens {
     width: 70%;
-    background-color: blue;
-    height: 705px;
+    background-color: #D9D9D9;
+    height: 592px;
     margin-right: 50px;
-    border: 3px solid black;
 
 }
 
 .div_mensagem1 {
     width: 40%;
-    background-color: green;
-    height: 20%;
+    background-color: #FFFFFF;
+    height: 10%;
     margin-left: 10%;
     margin-top: 30px;
     border-radius: 10px;
-    padding: 20px 20px 20px 20px;
+    padding: 10px 10px 10px 10px;
+    font-size: 16px;
+    font-weight: 400;
+
 }
 
 .div_mensagem2 {
     width: 40%;
-    background-color: yellow;
+    background-color: #FFFFFF;
     height: 10%;
     margin-left: 50%;
     margin-top: 30px;
     border-radius: 10px;
     padding: 10px 10px 10px 10px;
+    font-size: 16px;
+    font-weight: 400;
 
 }
+
+.div_enviar {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    padding:  0 5% 0 5%
+}
+
+.i_enviar-mensagem {
+    width: 90%;
+    height: 45px;
+    display: flex;
+    border-radius: 10px;
+    padding-left: 8px;
+    font-size: 24px;
+}
+
+.btn_enviar {
+    background-color: #AF9469;
+    color: #FFFFFF;
+    margin-left: 8px;
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    
+}
+
