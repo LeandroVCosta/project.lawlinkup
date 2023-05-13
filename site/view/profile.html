@@ -45,26 +45,64 @@
                 </div>
             </div>
         </nav>
-       
-</header>
-
-
-<div class = "div_containerbg" id="">
-   
-    <!-- Div do ícone de voltar -->
-<div class="div_voltar">
-
-</div><!-- </div>    -->
-<div class="div_foto"> 
+        
+    </header>
+    
+    
+    <div class = "div_containerbg" id="">
+        <!-- Div do ícone de voltar -->
+        <div class="div_voltar">
+            <img src="../assets/img/seta-esquerda.png" class="seta" alt="">
+        </div><!-- </div>    -->
+        <div class="div_foto"> 
+        </div>
+        <div class="div_descricoes">
+            <div class="div_cardbotao">
+                <h2 class ="texto" >José da Silva Romeiro</h2>
+            </div>
+            <h4 class="descricao">Doutor em direito imobiliário</h4>
+            <span class="estado">São Paulo, SP</span>
+            
+            <div class="card"></div>
+        </div>
+        <div class="modal" id="div_modal">
+            <div class="div_editar">
+                <h2 class="texto">Monte seu Perfil</h2>
+                <div class="div_modaldescricao">
+                    <div class="div_perfil" ></div>
+                <form>
+                    <div class="input-area">
+                        <label for="nomeInput" class="label">Nome Completo</label>
+                        <input type="text" class="input-field" id="nomeInput">
+                    </div>
+                    <div class="input-area">
+                        <label for="especializacaoInput" class="label">Especialização</label>
+                        <input type="text" class="input-field" id="especializacaoInput">
+                    </div>
+                    <button class="btn-lg">Adicionar foto</button>
+                </form>
+            </div>
+            <div class="div_sobre">
+                <div class="input-area">
+                    <label for="sobreInput" class="label">Sobre</label>
+                    <textarea type="text" class="area-field" id="sobreInput">
+                    </textarea>
+        </div>
+    </div>
+    <button class="btn-lg" id = "btn_concluir" onclick="desaparecer()"> Concluir</button>
 </div>
-<div class="div_descricoes">
-<h2 class ="texto" >José da Silva Romeiro</h2>
-<h4 class="descricao">Doutor em direito imobiliário</h4>
-<span class="estado">São Paulo, SP</span>
-<div class="card"></div>
-</div>
-
 
 </div>
+<button class="btn-lg" id = "btn_editar" onclick="aparecer()">Editar Perfil</button>
+</div>
+
 </body>
 </html>
+<script>
+    function desaparecer(){
+        div_modal.style.display = "none"
+}
+function aparecer(){
+    div_modal.style.display = "flex"
+}
+</script>
