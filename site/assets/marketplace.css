@@ -95,29 +95,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*LEFTSIDEBAR*/
-.left-side-bar{
-  margin: 0;
-  margin-top: 16vh;
-  background-color: #B8D9FF;
-  width: 13vw;
-  height: 84vh;
+.card-container{
+  margin-top: 17vh;
 }
 
 .card_adv{
-  width: 86vw;
-  height: 20vh;
+  width: 83vw;
+  height: 23vh;
   color: red;
   display: flex;
-  margin-left: 14vw;
+  margin-left: 15vw;
   flex-direction: column;
   justify-content: flex-end;
+  margin-bottom: 6px;
   
 }
 
 .cardgroup{
   width: 100%;
   height: 100%;
-  gap: 10vh;
+}
+
+.search-bar{
+  align-self: center;
+}
+
+.side-bar-items{
+
+  margin: 0;
+  background-color: #B8D9FF;
+  width: 13vw;
+  height: 83vh;
+
+  text-align: center;
+  position: fixed;
+  color: black;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.side-btn{
+  align-self: center;
+  width: 80%;
+  border: gray solid 8px;
+  background-color: gray;
+  color: white;
+  border-radius: 10px;
 }
 
 
