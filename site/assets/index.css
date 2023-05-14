@@ -29,6 +29,7 @@ body {
     background-color: var(--primary);
     border: 1px solid #0D6EFD;
     font-weight: 500;
+    margin: 8px 0;
 }
 
 .btn:hover {

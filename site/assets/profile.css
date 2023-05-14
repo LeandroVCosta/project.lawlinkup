@@ -112,7 +112,7 @@
     border-radius: 40px;
     
     background: #002855;
-    /* position: absolute; */
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

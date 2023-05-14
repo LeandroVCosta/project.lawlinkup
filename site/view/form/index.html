@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
+    <link rel="stylesheet" href="../../assets/form.css">
+  
+</head>
+
+<body>
+
+    <div class="container-full-page">
+        <div class="form-box">
+            <div style="width: 100%;">
+                <div class="div_voltar prev">
+                    <img src="../../assets/img/seta-esquerda.png" class="seta" alt="">
+                </div>
+            </div>
+            
+            <div class="bar-progress">
+                <div class="step-progress">
+                   <div class="bullet-progress active">
+                   </div>
+                </div>
+                <div class="step-progress">
+                   <div class="bullet-progress">
+                   </div>
+                </div>
+                <div class="step-progress step-progress-advogado" style="display: none;">
+                   <div class="bullet-progress bullet-progress-advogado">
+                   </div>
+                </div>
+                <div class="step-progress">
+                   <div class="bullet-progress">
+                   </div>
+                </div>
+            </div>
+            <h1>Cadastre-se</h1>
+            <div class="form-outer">
+                <form>
+                    <div id="slide-page" class="page">
+                        <div class="input-area">
+                            <label for="nameInput" class="">Nome</label>
+                            <input type="text" class="input-field" placeholder="Nome" id="nameInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="emailInput" class="">Email</label>
+                            <input type="email" class="input-field" placeholder="Email" id="emailInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="typeInput" class="">Tipo</label>
+                            <select name="typeInput" class="input-field" id="typeInput">
+                                <option value="" selected disabled hidden>Que tipo de usuário eu sou?</option>
+                                <option value="cliente">Cliente</option>
+                                <option value="advogado">Advogado</option>
+                            </select>
+                        </div>
+                    
+                        <a href="#" class="login-link">Já possui cadastro? Clique aqui</a>
+
+                        <button class="btn btn-lg text-light next">Próximo</button>
+
+                    </div>
+                    <div class="page">
+                        <div class="input-area">
+                            <label for="cepInput" class="">CEP</label>
+                            <input type="text" class="input-field" placeholder="CEP" id="cepInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="cidadeInput" class="">Cidade</label>
+                            <input type="text" class="input-field" placeholder="Cidade" id="cidadeInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="bairroInput" class="">Bairro</label>
+                            <input type="text" class="input-field" placeholder="Bairro" id="bairroInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="numeroInput" class="">Número</label>
+                            <input type="text" class="input-field" placeholder="Número" id="numeroInput">
+                        </div>
+                    
+                        <button class="btn btn-lg text-light next">Próximo</button>
+                        
+                    </div>
+
+                    <div class="page page-advogado" style="display: none;">
+                        <div class="input-area">
+                            <label for="numOabInput" class="">Número OAB</label>
+                            <input type="text" class="input-field" placeholder="Número da OAB" id="numOabInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="fotoOabInput" class="">Foto OAB</label>
+                            <input type="file" class="form-control form-control-lg" id="fotoOabInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="cpfInput" class="">CPF</label>
+                            <input type="text" class="input-field" placeholder="CPF" id="cpfInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="numeroOabInput" class="">Número OAB</label>
+                            <input type="text" class="input-field" placeholder="Numero do Cartão" id="numeroOabInput">
+                        </div>
+
+                        <button class="btn btn-lg text-light next">Próximo</button>
+
+                    </div>
+
+                    <div class="page">
+                        <div class="input-area">
+                            <label for="emailInput" class="">Email</label>
+                            <input type="text" class="input-field" placeholder="Email" id="emailInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="senhaInput" class="">Senha</label>
+                            <input type="text" class="input-field" placeholder="Senha" id="senhaInput">
+                        </div>
+                        <div class="input-area">
+                            <label for="confirmarsenhaInput" class="">Confirmar Senha</label>
+                            <input type="text" class="input-field" placeholder="Confirmar Senha" id="confirmarsenhaInput">
+                        </div>
+                        <p class="terms">Ao criar uma conta, você concorda com nossa <a href="#">Política <br>de Privacidade</a> e nossas <a href="#">Condições de Uso</a>.</p>
+                        
+                        <button id="submit" class="btn btn-lg text-light">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+<script>
+
+// SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
+
+let userType = ""
+
+document.getElementById("typeInput").addEventListener("click", (event) => {
+    document.getElementById("typeInput").style = null
+})
+document.getElementById("typeInput").addEventListener("change", (event) => {
+    userType = event.target.value
+    switch (userType) {
+    case "cliente":
+    case "advogado":
+        nextBtn[0].disabled = false;
+        alterarForm()
+        break
+    default: nextBtn[0].disabled = true;
+  }
+  
+})
+
+function alterarForm() {
+    if (userType == "advogado" && bullet.length == 3) {
+        bullet.splice(2, 0, document.querySelector(".bullet-progress-advogado"))
+        document.querySelector(".step-progress.step-progress-advogado").style.display = "block"
+        document.querySelector(".page-advogado").style.display = "flex"
+    }
+    if (userType == "cliente" && bullet.length == 4) {
+        bullet.splice(2, 1)
+        document.querySelector(".step-progress.step-progress-advogado").style.display = "none"
+        document.querySelector(".page-advogado").style.display = "none"
+    }
+}
+
+const slidePage = document.getElementById("slide-page");
+
+const nextBtn = document.querySelectorAll(".next");
+const prevBtn = document.querySelector(".prev");
+
+const submitBtn = document.getElementById("submit");
+
+const bullet = Array.from(document.querySelectorAll(".bullet-progress:not(.bullet-progress-advogado)"));
+
+let current = 0;
+let posicaoForm = 0
+
+function nextButton() {
+    bullet[current].classList.remove("active");
+    bullet[current].classList.add("past");
+    bullet[current+1].classList.add("active");
+    current += 1;
+    posicaoForm -= 25
+    slidePage.style.marginLeft = `${posicaoForm}%`
+}
+
+function prevButton() {
+    bullet[current-1].classList.remove("past");
+    bullet[current-1].classList.add("active");
+    bullet[current].classList.remove("active");
+    current -= 1;
+    posicaoForm += 25
+    slidePage.style.marginLeft = `${posicaoForm}%`
+}
+
+nextBtn.forEach(btn => btn.addEventListener("click", function(event){
+    event.preventDefault();
+    if (userType != "advogado" && userType != "cliente") {
+        document.getElementById("typeInput").style.borderColor = "red"
+        document.getElementById("typeInput").style.color = "red"
+        return
+    }
+    nextButton();
+}));
+
+prevBtn.addEventListener("click", function(event){
+    prevButton();
+});
+
+submitBtn.addEventListener("click", function(){
+    event.preventDefault();
+    setTimeout(function(){
+        alert("Your Form Successfully Signed up");
+        location.reload();
+    },800);
+});
+
+
+
+
+</script>
