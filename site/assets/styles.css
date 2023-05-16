@@ -1,7 +1,7 @@
 /* Levar os estilos padrões das páginas ao index.css, deixando aqui somente coisas específicas da landing page */
 
 :root {
-    --primary: #002855;
+    --primary: #002850;
     --secondary: #AF9469;
 }
 
@@ -47,6 +47,8 @@
     font-size: 16px;
     align-items: center;
     display: flex;
+    justify-content: space-between;
+    
 }
 
 .nav-item button {
@@ -74,4 +76,23 @@
 
 .text-footer:hover {
     color: white;
+}
+
+.col-md-7 {
+    flex: 0 0 auto;
+    width: 58.33333333%;
+    padding-left: 10%;
+    align-items: start;
+}
+
+.col-lg-7{
+    align-items: start;
+}
+
+.lead{
+    align-items: start;
+}
+
+.mb-5{
+    align-items: start;
 }
