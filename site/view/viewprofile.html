@@ -10,6 +10,7 @@
     
   <link rel="stylesheet" href="../assets/styles.css">
   <link rel="stylesheet" href="../assets/profile.css">
+  <link rel="stylesheet" href="../assets/viewprofile.css">
   <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
 
 </head>
@@ -62,49 +63,20 @@
             </div>
             <h4 class="descricao">Doutor em direito imobiliário</h4>
             <span class="estado">São Paulo, SP</span>
-            
-            <div class="card">
+            <div class="div_cardbtn">
 
+                <div class="card">
+                    
+                </div>
+               <button class="btn-lg" id="btn_enviar">Enviar caso</button>
             </div>
         </div>
-        <button class="btn-lg" id = "btn_editar" onclick="aparecer()">Editar Perfil</button>
-        <div class="modal" id="div_modal">
-            <div class="div_editar">
-                <h2 class="texto">Monte seu Perfil</h2>
-                <div class="div_modaldescricao">
-                    <div class="div_perfil" ></div>
-                <form>
-                    <div class="input-area">
-                        <label for="nomeInput" class="label">Nome Completo</label>
-                        <input type="text" class="input-field" id="nomeInput">
-                    </div>
-                    <div class="input-area">
-                        <label for="especializacaoInput" class="label">Especialização</label>
-                        <input type="text" class="input-field" id="especializacaoInput">
-                    </div>
-                    <button class="btn-lg">Adicionar foto</button>
-                </form>
-            </div>
-            <div class="div_sobre">
-                <div class="input-area">
-                    <label for="sobreInput" class="label">Sobre</label>
-                    <textarea type="text" class="area-field" id="sobreInput">
-                    </textarea>
-        </div>
+        
     </div>
-    <button class="btn-lg" id = "btn_concluir" onclick="desaparecer()"> Concluir</button>
-</div>
-
-</div>
-</div>
+    
 
 </body>
 </html>
 <script>
-    function desaparecer(){
-        div_modal.style.display = "none"
-}
-function aparecer(){
-    div_modal.style.display = "flex"
-}
+
 </script>
