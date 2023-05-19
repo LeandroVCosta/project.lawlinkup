@@ -52,16 +52,10 @@ body {
 }
 
 .form-box form {
-    display: flex;
-    width: 400%;
-}
-
-.page {
-    width: 25%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: margin-left 0.3s ease-in-out;
 }
 
 @media (max-width: 642px) {
@@ -109,88 +103,16 @@ body {
     }
 }
 
-.bar-progress{
-    align-self: center;
-    justify-self: center;
-    display: flex;
-    margin: 8px 0;
-    user-select: none;
-    width: fit-content;
-}
-.bar-progress .step-progress{
-    text-align: center;
-    width: 100%;
-    position: relative;
-}
-
-.bar-progress .step-progress .bullet-progress{
-    height: 30px;
-    width: 30px;
-    background-color: var(--secondary);
-    display: inline-block;
-    border-radius: 50%;
-    position: relative;
-    transition: 0.2s;
-    margin-right: 42px;
-}
-
-.bar-progress .step-progress:last-child .bullet-progress {
-    margin-right: 0;
-}
-
-.bar-progress .step-progress .bullet-progress.active{
-    background-color: var(--primary);
-}
-
-.bar-progress .step-progress .bullet-progress.past{
-    background-color: var(--blue-400);
-}
-
-.bar-progress .step-progress .bullet-progress:before,
-.bar-progress .step-progress .bullet-progress:after{
-    position: absolute;
-    content: '';
-    bottom: 12px;
-    right: -44px;
-    height: 3px;
-    width: 44px;
-    background-color: var(--secondary)
-}
-.bar-progress .step-progress .bullet-progress.past:after{
-    background-color: var(--blue-400);
-    transform: scaleX(0);
-    transform-origin: left;
-    animation: animate 0.3s linear forwards;
-}
-
-@keyframes animate {
-    100%{
-        transform: scaleX(1);
-    }
-
-}
-
-.bar-progress .step-progress:last-child .bullet-progress:before,
-.bar-progress .step-progress:last-child .bullet-progress:after{
-    display: none;
-}
-
-.login-link {
+.cadastro-link {
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 150%;
-    color: #0051AD;
     margin: 16px 0;
 }
 
-.terms {
-    margin: 24px 0;
-    width: auto;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
+.cadastro-link .link {
+    color: #0051AD;
 }
 
 /* colocar no index.css, para ser utilizado globalmente */
@@ -199,7 +121,7 @@ body {
     width: 40px;
     height: 40px;
     margin-left: 16px;
-    margin-top: 48px;
+    margin-top: 8px;
     border-radius: 40px;
 
     background: #002855;
