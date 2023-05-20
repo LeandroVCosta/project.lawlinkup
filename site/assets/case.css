@@ -1,0 +1,40 @@
+@import url('login.css');
+
+@media (max-height: 650px) {
+    .form-box {
+        min-height: 60%;
+        border-radius: 0;
+    }
+}
+
+
+.container-full-page{
+    background-image: none;
+}
+
+.form-box{
+    background-color: #B8D9FF;
+    margin-bottom: auto;
+    margin-top: 10px;
+    max-height: 60%;
+    
+}
+
+h1{
+    font-weight: 400;
+    margin-top: 10px;
+ margin-bottom: 20px;
+}
+.area-field{
+    margin-left: auto;
+    width: 100%;
+    resize: none;
+}
+.btn-lg{
+    height: 48px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-top: 40px;
+    padding: 8px 16px;
+    border-radius: 5px;
+}   

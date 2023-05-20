@@ -39,3 +39,32 @@ body {
     background-color: #003855;
     cursor: pointer;
 }
+/* Div do fundo azul clarinho das páginas de perfil de advogado e afins. */
+.div_containerbg {
+    margin: auto;
+    width: 100%;
+    height: 130px; 
+    left: 0px;
+    top: 115px;
+    /* position: absolute; */
+    background: #B8D9FF;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-content: flex-start; */
+    
+    
+}
+.area-field {
+    width:590px;
+    height:132px;
+    box-sizing: border-box;
+    padding: 16px 8px;
+    font-size: 20px;
+    line-height: 150%;
+    font-weight: 300;
+    border: 1px solid #CED4DA;
+    border-radius: 5px;
+    margin-left: 30px;
+}
