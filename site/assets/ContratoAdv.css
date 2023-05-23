@@ -1,0 +1,97 @@
+@import url('login.css');
+
+@media (max-height: 650px) {
+    .form-box {
+        min-height: 60%;
+        border-radius: 0;
+    }
+}
+
+
+.container-full-page{
+    background-image: none;
+}
+
+.form-box{
+    background-color: #B8D9FF;
+    margin-bottom: auto;
+    margin-top: 30px;
+    height: 880px;
+    width: 960px;
+}
+
+h1{
+    font-weight: 400;
+    margin-top: 10px;
+ margin-bottom: 20px;
+}
+.area-field{
+    margin-left: auto;
+    width: 100%;
+    resize: none;
+}
+.btn-lg{
+    height: 48px;
+    font-size: 20px;
+    background-color: #002855;
+    color: #FFFFFF;
+    margin-top: 40px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border-width: 0px;
+}   
+
+.btn-lg:hover{
+    height: 48px;
+    font-size: 20px;
+    background-color:#a88e5e;
+    color: #FFFFFF;
+    margin-top: 40px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border-width: 0px;
+}   
+
+#Input{
+
+height: 20px;
+
+}
+
+.div_voltar {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    margin-top: 8px;
+    border-radius: 40px;
+
+    background: #002855;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    user-select: none;
+}
+
+.div_voltar:hover {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    margin-top: 8px;
+    border-radius: 40px;
+    background: #a88e5e;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    user-select: none;
+}
+
+.seta{
+    height: 30px;
+    width: 25px;
+}
