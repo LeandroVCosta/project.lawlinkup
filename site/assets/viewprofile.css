@@ -1,11 +1,24 @@
+ body{
+    overflow: auto;
+ }
  .div_descricoes{
     display: flex;
     
     }
-
-
+.div_cardbtn{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.card{
+    margin-left: 55px;
+}
 
 #btn_enviar{
-margin-left: 840px;
-
+    margin-right: 0;
 }
+.btn-lg{
+    background-color: #002855;
+}
+

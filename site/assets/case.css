@@ -2,7 +2,7 @@
 
 @media (max-height: 650px) {
     .form-box {
-        min-height: 60%;
+        min-height: 75%;
         border-radius: 0;
     }
 }
@@ -29,12 +29,13 @@ h1{
     margin-left: auto;
     width: 100%;
     resize: none;
+    height: 80%;
 }
 .btn-lg{
     height: 48px;
     font-size: 20px;
+    background-color: #002855;
     color: #FFFFFF;
-    margin-top: 40px;
     padding: 8px 16px;
     border-radius: 5px;
 }   
