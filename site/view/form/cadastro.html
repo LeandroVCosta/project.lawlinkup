@@ -209,6 +209,7 @@ function prevButton() {
 
 nextBtn.forEach(btn => btn.addEventListener("click", function(event){
     event.preventDefault();
+    document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
     if (userType != "advogado" && userType != "cliente") {
         document.getElementById("typeInput").style.borderColor = "red"
         document.getElementById("typeInput").style.color = "red"
@@ -229,11 +230,47 @@ submitBtn.addEventListener("click", function(){
     event.preventDefault();
     setTimeout(function(){
         alert("Your Form Successfully Signed up");
+        
+        if (document.getElementById("typeInput").value == "cliente") {
+
+        }
+        if (document.getElementById("typeInput").value == "cliente") {
+            cadastrarCliente(
+                document.getElementById("nameInput").value,
+                document.getElementById("cepInput").value,
+                document.getElementById("cidadeInput").value,
+                document.getElementById("bairroInput").value,
+                document.getElementById("numeroInput").value,
+                document.getElementById("emailInputCadastro").value,
+                document.getElementById("senhaInput").value,
+                document.getElementById("confirmarsenhaInput").value
+            )
+        } else if (document.getElementById("typeInput").value == "advogado") {
+            cadastrarAdvogado(
+                document.getElementById("nameInput").value,
+                document.getElementById("cepInput").value,
+                document.getElementById("cidadeInput").value,
+                document.getElementById("bairroInput").value,
+                document.getElementById("numeroInput").value,
+                document.getElementById("numOabInput").value,
+                document.getElementById("fotoOabInput").value,
+                document.getElementById("cpfInput").value,
+                document.getElementById("numeroOabInput").value,
+                document.getElementById("emailInputCadastro").value,
+                document.getElementById("senhaInput").value,
+                document.getElementById("confirmarsenhaInput").value
+            )
+        }
         location.reload();
-    },800);
+    },2000);
 });
 
+async function cadastrarCliente (nome, cep, cidade, bairro, numero, email, senha, confirmarSenha){
+    const response = await fetch("localhost:8080/cliente", {
+        method: "POST",
 
+    })
+}
 
 
 </script>
