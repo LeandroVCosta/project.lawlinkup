@@ -14,6 +14,12 @@
     max-width: 60%;
  }
 } */
+@media (max-height: 650px) {
+    .div_editar {
+        min-height: 55%;
+        border-radius: 0;
+    }
+}
 
 
 .div_containerbg {
@@ -64,6 +70,7 @@
     margin-top: 40px;
     padding: 8px 16px;
     border-radius: 5px;
+    background-color: #002855;
 }
 /* Background do modal */
 .div_editar{
