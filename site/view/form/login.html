@@ -64,44 +64,56 @@
 
 // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
 
-let userType = ""
+    let userType = ""
 
-document.getElementById("typeInput").addEventListener("click", (event) => {
-    document.getElementById("typeInput").style = null
-})
-document.getElementById("typeInput").addEventListener("change", (event) => {
-    userType = event.target.value
-    switch (userType) {
-    case "cliente":
-    case "advogado":
-        submitBtn.disabled = false;
-        break
-    default: submitBtn.disabled = true;
-  }
-  
-})
+    document.getElementById("typeInput").addEventListener("click", (event) => {
+        document.getElementById("typeInput").style = null
+    })
+    document.getElementById("typeInput").addEventListener("change", (event) => {
+        userType = event.target.value
+        switch (userType) {
+        case "cliente":
+        case "advogado":
+            submitBtn.disabled = false;
+            break
+        default: submitBtn.disabled = true;
+    }
+    
+    })
 
-const prevBtn = document.querySelector(".prev");
+    const prevBtn = document.querySelector(".prev");
 
-const submitBtn = document.getElementById("submit");
+    const submitBtn = document.getElementById("submit");
 
-function prevButton() {
-    history.back()
-}
+    function prevButton() {
+        history.back()
+    }
 
-prevBtn.addEventListener("click", function(event){
-    prevButton();
-});
+    prevBtn.addEventListener("click", function(event){
+        prevButton();
+    });
 
-submitBtn.addEventListener("click", function(){
-    event.preventDefault();
-    setTimeout(function(){
-        alert("Your Form Successfully Signed up");
-        location.reload();
-    },800);
-});
+    submitBtn.addEventListener("click", function(){
+        event.preventDefault();
+            let usuario = {
+                email: document.getElementById("emailInput").value,
+                senha: document.getElementById("senhaInput").value,
+                tipo: userType.toUpperCase(),
+            }
+            LogarUsuario(usuario)
+    });
 
-
+    async function LogarUsuario(usuario) {
+        await fetch(`http://localhost:8080/login`, {
+                method: "POST",
+                body: JSON.stringify(usuario),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then((response) => response.json())
+                .then((json) => {console.log(JSON.stringify(json)); window.alert(JSON.stringify(json))});
+    }
 
 
 </script>

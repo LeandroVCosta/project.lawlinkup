@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastre-se</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
     <link rel="stylesheet" href="../../assets/form.css">
-  
+
 </head>
 
 <body>
@@ -22,23 +22,23 @@
                     <img src="../../assets/img/seta-esquerda.png" class="seta" alt="">
                 </div>
             </div>
-            
+
             <div class="bar-progress">
                 <div class="step-progress">
-                   <div class="bullet-progress active">
-                   </div>
+                    <div class="bullet-progress active">
+                    </div>
                 </div>
                 <div class="step-progress">
-                   <div class="bullet-progress">
-                   </div>
+                    <div class="bullet-progress">
+                    </div>
                 </div>
                 <div class="step-progress step-progress-advogado" style="display: none;">
-                   <div class="bullet-progress bullet-progress-advogado">
-                   </div>
+                    <div class="bullet-progress bullet-progress-advogado">
+                    </div>
                 </div>
                 <div class="step-progress">
-                   <div class="bullet-progress">
-                   </div>
+                    <div class="bullet-progress">
+                    </div>
                 </div>
             </div>
             <h1>Cadastre-se</h1>
@@ -61,7 +61,7 @@
                                 <option value="advogado">Advogado</option>
                             </select>
                         </div>
-                    
+
                         <a href="#" class="login-link">Já possui cadastro? Clique aqui</a>
 
                         <button class="btn btn-lg text-light next">Próximo</button>
@@ -84,15 +84,15 @@
                             <label for="numeroInput" class="">Número</label>
                             <input type="text" class="input-field" placeholder="Número" id="numeroInput">
                         </div>
-                    
+
                         <button class="btn btn-lg text-light next">Próximo</button>
-                        
+
                     </div>
 
                     <div class="page page-advogado" style="display: none;">
                         <div class="input-area">
-                            <label for="numOabInput" class="">Número OAB</label>
-                            <input type="text" class="input-field" placeholder="Número da OAB" id="numOabInput">
+                            <label for="numeroOabInput" class="">Número OAB</label>
+                            <input type="text" class="input-field" placeholder="Número da OAB" id="numeroOabInput">
                         </div>
                         <div class="input-area">
                             <label for="fotoOabInput" class="">Foto OAB</label>
@@ -103,8 +103,8 @@
                             <input type="text" class="input-field" placeholder="CPF" id="cpfInput">
                         </div>
                         <div class="input-area">
-                            <label for="numeroOabInput" class="">Número OAB</label>
-                            <input type="text" class="input-field" placeholder="Numero do Cartão" id="numeroOabInput">
+                            <label for="carteiraOabInput" class="">Número da Carteira da OAB</label>
+                            <input type="text" class="input-field" placeholder="Numero do Cartão" id="carteiraOabInput">
                         </div>
 
                         <button class="btn btn-lg text-light next">Próximo</button>
@@ -122,10 +122,12 @@
                         </div>
                         <div class="input-area">
                             <label for="confirmarsenhaInput" class="">Confirmar Senha</label>
-                            <input type="text" class="input-field" placeholder="Confirmar Senha" id="confirmarsenhaInput">
+                            <input type="text" class="input-field" placeholder="Confirmar Senha"
+                                id="confirmarsenhaInput">
                         </div>
-                        <p class="terms">Ao criar uma conta, você concorda com nossa <a href="#">Política <br>de Privacidade</a> e nossas <a href="#">Condições de Uso</a>.</p>
-                        
+                        <p class="terms">Ao criar uma conta, você concorda com nossa <a href="#">Política <br>de
+                                Privacidade</a> e nossas <a href="#">Condições de Uso</a>.</p>
+
                         <button id="submit" class="btn btn-lg text-light">Submit</button>
 
                     </div>
@@ -135,8 +137,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
 
 </body>
 
@@ -144,133 +146,129 @@
 
 <script>
 
-// SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
+    // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
 
-let userType = ""
+    let userType = ""
 
-document.getElementById("typeInput").addEventListener("click", (event) => {
-    document.getElementById("typeInput").style = null
-})
-document.getElementById("typeInput").addEventListener("change", (event) => {
-    userType = event.target.value
-    switch (userType) {
-    case "cliente":
-    case "advogado":
-        nextBtn[0].disabled = false;
-        alterarForm()
-        break
-    default: nextBtn[0].disabled = true;
-  }
-  
-})
-
-function alterarForm() {
-    if (userType == "advogado" && bullet.length == 3) {
-        bullet.splice(2, 0, document.querySelector(".bullet-progress-advogado"))
-        document.querySelector(".step-progress.step-progress-advogado").style.display = "block"
-        document.querySelector(".page-advogado").style.display = "flex"
-    }
-    if (userType == "cliente" && bullet.length == 4) {
-        bullet.splice(2, 1)
-        document.querySelector(".step-progress.step-progress-advogado").style.display = "none"
-        document.querySelector(".page-advogado").style.display = "none"
-    }
-}
-
-const slidePage = document.getElementById("slide-page");
-
-const nextBtn = document.querySelectorAll(".next");
-const prevBtn = document.querySelector(".prev");
-
-const submitBtn = document.getElementById("submit");
-
-const bullet = Array.from(document.querySelectorAll(".bullet-progress:not(.bullet-progress-advogado)"));
-
-let current = 0;
-let posicaoForm = 0
-
-function nextButton() {
-    bullet[current].classList.remove("active");
-    bullet[current].classList.add("past");
-    bullet[current+1].classList.add("active");
-    current += 1;
-    posicaoForm -= 25
-    slidePage.style.marginLeft = `${posicaoForm}%`
-}
-
-function prevButton() {
-    bullet[current-1].classList.remove("past");
-    bullet[current-1].classList.add("active");
-    bullet[current].classList.remove("active");
-    current -= 1;
-    posicaoForm += 25
-    slidePage.style.marginLeft = `${posicaoForm}%`
-}
-
-nextBtn.forEach(btn => btn.addEventListener("click", function(event){
-    event.preventDefault();
-    document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
-    if (userType != "advogado" && userType != "cliente") {
-        document.getElementById("typeInput").style.borderColor = "red"
-        document.getElementById("typeInput").style.color = "red"
-        return
-    }
-    nextButton();
-}));
-
-prevBtn.addEventListener("click", function(event){
-    if (current == 0) {
-        history.back()
-        return
-    }
-    prevButton();
-});
-
-submitBtn.addEventListener("click", function(){
-    event.preventDefault();
-    setTimeout(function(){
-        alert("Your Form Successfully Signed up");
-        
-        if (document.getElementById("typeInput").value == "cliente") {
-
+    document.getElementById("typeInput").addEventListener("click", (event) => {
+        document.getElementById("typeInput").style = null
+    })
+    document.getElementById("typeInput").addEventListener("change", (event) => {
+        userType = event.target.value
+        switch (userType) {
+            case "cliente":
+            case "advogado":
+                nextBtn[0].disabled = false;
+                alterarForm()
+                break
+            default: nextBtn[0].disabled = true;
         }
-        if (document.getElementById("typeInput").value == "cliente") {
-            cadastrarCliente(
-                document.getElementById("nameInput").value,
-                document.getElementById("cepInput").value,
-                document.getElementById("cidadeInput").value,
-                document.getElementById("bairroInput").value,
-                document.getElementById("numeroInput").value,
-                document.getElementById("emailInputCadastro").value,
-                document.getElementById("senhaInput").value,
-                document.getElementById("confirmarsenhaInput").value
-            )
-        } else if (document.getElementById("typeInput").value == "advogado") {
-            cadastrarAdvogado(
-                document.getElementById("nameInput").value,
-                document.getElementById("cepInput").value,
-                document.getElementById("cidadeInput").value,
-                document.getElementById("bairroInput").value,
-                document.getElementById("numeroInput").value,
-                document.getElementById("numOabInput").value,
-                document.getElementById("fotoOabInput").value,
-                document.getElementById("cpfInput").value,
-                document.getElementById("numeroOabInput").value,
-                document.getElementById("emailInputCadastro").value,
-                document.getElementById("senhaInput").value,
-                document.getElementById("confirmarsenhaInput").value
-            )
-        }
-        location.reload();
-    },2000);
-});
-
-async function cadastrarCliente (nome, cep, cidade, bairro, numero, email, senha, confirmarSenha){
-    const response = await fetch("localhost:8080/cliente", {
-        method: "POST",
 
     })
-}
+
+    function alterarForm() {
+        if (userType == "advogado" && bullet.length == 3) {
+            bullet.splice(2, 0, document.querySelector(".bullet-progress-advogado"))
+            document.querySelector(".step-progress.step-progress-advogado").style.display = "block"
+            document.querySelector(".page-advogado").style.display = "flex"
+        }
+        if (userType == "cliente" && bullet.length == 4) {
+            bullet.splice(2, 1)
+            document.querySelector(".step-progress.step-progress-advogado").style.display = "none"
+            document.querySelector(".page-advogado").style.display = "none"
+        }
+    }
+
+    const slidePage = document.getElementById("slide-page");
+
+    const nextBtn = document.querySelectorAll(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    const submitBtn = document.getElementById("submit");
+
+    const bullet = Array.from(document.querySelectorAll(".bullet-progress:not(.bullet-progress-advogado)"));
+
+    let current = 0;
+    let posicaoForm = 0
+
+    function nextButton() {
+        bullet[current].classList.remove("active");
+        bullet[current].classList.add("past");
+        bullet[current + 1].classList.add("active");
+        current += 1;
+        posicaoForm -= 25
+        slidePage.style.marginLeft = `${posicaoForm}%`
+    }
+
+    function prevButton() {
+        bullet[current - 1].classList.remove("past");
+        bullet[current - 1].classList.add("active");
+        bullet[current].classList.remove("active");
+        current -= 1;
+        posicaoForm += 25
+        slidePage.style.marginLeft = `${posicaoForm}%`
+    }
+
+    nextBtn.forEach(btn => btn.addEventListener("click", function (event) {
+        event.preventDefault();
+        document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
+        if (userType != "advogado" && userType != "cliente") {
+            document.getElementById("typeInput").style.borderColor = "red"
+            document.getElementById("typeInput").style.color = "red"
+            return
+        }
+        nextButton();
+    }));
+
+    prevBtn.addEventListener("click", function (event) {
+        if (current == 0) {
+            history.back()
+            return
+        }
+        prevButton();
+    });
+
+    submitBtn.addEventListener("click", function () {
+        event.preventDefault();
+
+        let usuario = {
+            nome: document.getElementById("nameInput").value,
+            email: document.getElementById("emailInputCadastro").value,
+            senha: document.getElementById("senhaInput").value,
+            contato: "11952849601"
+        }
+
+        if (userType == "cliente") {
+            usuario.cep = document.getElementById("cepInput").value
+            usuario.cidade = document.getElementById("cidadeInput").value
+            usuario.bairro = document.getElementById("bairroInput").value
+            usuario.numero = document.getElementById("numeroInput").value
+        } else if (userType == "advogado") {
+            usuario.cpf = document.getElementById("cpfInput").value
+            usuario.especializacao = "Imobiliário"
+            usuario.numeroOab = document.getElementById("numeroOabInput").value
+            // usuario.fotoOab = document.getElementById("fotoOabInput").value
+            // usuario.carteiraOab = document.getElementById("carteiraOabInput").value
+        } else {
+            return
+        }
+        cadastrarUsuario(usuario)
+
+    });
+
+    async function cadastrarUsuario(usuario) {
+        await fetch(`http://localhost:8080/${userType}`, {
+                method: "POST",
+                body: JSON.stringify(usuario),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then((response) => response.json())
+                .then((json) => console.log(json));
+        
+        setTimeout(() => window.location.href = "./login.html", 2000)
+    }
 
 
 </script>
