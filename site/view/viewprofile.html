@@ -18,7 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="./index.html">
                     <img src="../assets/img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
                         alt="">
                 </a>
@@ -30,16 +30,16 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contato</a>
+                            <a class="nav-link" aria-current="page" href="#">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#mvv">Buscar advogado</a>
+                            <a class="nav-link" href="./marketplace.html">Buscar Advogado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#solucao">Chat</a>
+                            <a class="nav-link" href="./chat.html">Chat</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#equipe">Nome_Cliente</a>
+                            <a class="nav-link" id="userName" href="#equipe">Nome_Cliente</a>
                         </li>
                       
                     </ul>
@@ -68,7 +68,7 @@
                 <div class="card">
                     vmeroivmjifjeifjeij
                 </div>
-               <button class="btn-lg" id="btn_enviar">Enviar caso</button>
+                <a href="./case.html"><button class="btn-lg" id="btn_enviar">Enviar caso</button></a>
             </div>
         </div>
         
@@ -78,5 +78,7 @@
 </body>
 </html>
 <script>
-
+    window.onload = function() {
+        document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+    }
 </script>

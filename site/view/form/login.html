@@ -43,9 +43,9 @@
                         </select>
                     </div>
                     
-                    <p class="cadastro-link">Ainda não possui conta? <a href="#" class="link">CADASTRE-SE</a></p>
+                    <p class="cadastro-link">Ainda não possui conta? <a href="./cadastro.html" class="link">CADASTRE-SE</a></p>
 
-                    <button id="submit" class="btn btn-lg text-light">Submit</button>
+                    <button id="submit" class="btn btn-lg text-light">Enviar</button>
 
                 </form>
             </div>
@@ -112,7 +112,8 @@
                 }
             })
                 .then((response) => response.json())
-                .then((json) => {console.log(JSON.stringify(json)); window.alert(JSON.stringify(json))});
+                .then((json) => {window.alert(JSON.stringify(json)); sessionStorage.setItem("userName", json.nome)})
+        window.location.href = "../marketplace.html"
     }
 
 
