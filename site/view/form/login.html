@@ -114,7 +114,7 @@
             })
                 .then((response) => response.json())
                 .then((json) => {window.alert(JSON.stringify(json)); sessionStorage.setItem("userName", json.nome)})
-        window.location.href = "../marketplace.html"
+        window.location.href = userType == "cliente" ? "../marketplace.html" : "../profile.html"
     }
 
 
