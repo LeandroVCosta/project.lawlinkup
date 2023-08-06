@@ -11,14 +11,8 @@
     flex-wrap: wrap;
     justify-content: flex-end;
 }
-.card{
-    margin-left: 55px;
-}
 
-#btn_enviar{
-    margin-right: 0;
-}
-.btn-lg{
-    background-color: #002855;
-}
 
+.btn-enviar {
+    text-align: end;
+}

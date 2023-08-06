@@ -77,31 +77,6 @@ body {
     padding: 8px;
 }
 
-.input-label {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-}
-
-
-.input-field {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 16px 8px;
-    font-size: 20px;
-    line-height: 150%;
-    font-weight: 300;
-    border: 1px solid #CED4DA;
-    border-radius: 5px;
-}
-
-@media (max-height: 800px) {
-    .input-field {
-      padding: 4px 8px;
-    }
-}
-
 @media (max-height: 650px) {
     .form-box {
         min-height: 100%;
