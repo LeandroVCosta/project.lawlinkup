@@ -1,0 +1,17 @@
+@import "index.css";
+
+.container-contact {
+background-color: #B8D9FF;
+margin-top: 92px;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+padding: 22px;
+}
+
+.form-contact {
+    margin-top: 50px;
+    width: 700px;
+    height: 600px;
+}
