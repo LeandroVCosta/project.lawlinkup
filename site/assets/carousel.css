@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -62,8 +63,9 @@ h1, h2, h3, h4, h5, h6 {
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
-  text-align: center;
+  text-align:  center;
 }
+
 /* rtl:end:ignore */
 
 
@@ -71,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
 ------------------------- */
 
 .featurette-divider {
-  margin: 5rem 0;/* Space out the Bootstrap <hr> more */
+  margin: 3rem ;/* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -88,6 +90,7 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   border-radius: 36px;
   box-shadow: #5a5a5a 0 8px 24px;
+  padding-top: 20rem;
 }
 
 /* rtl:end:remove */
@@ -135,4 +138,11 @@ h1, h2, h3, h4, h5, h6 {
   border-color: black;
   transition-duration: 0.2s;
 }
+
+.mb-5{
+  align-items: start;
+  margin-right: 5rem;
+  margin-bottom: 0rem;
+}
+
 

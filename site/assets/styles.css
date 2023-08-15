@@ -86,7 +86,9 @@
 }
 
 .col-lg-7{
-    align-items: start;
+    /*align-items: start;*/
+    margin-top: -7rem;
+    margin-bottom: -5rem;
 }
 
 .lead{
@@ -95,4 +97,9 @@
 
 .mb-5{
     align-items: start;
+    margin-right: 5rem;
+}
+
+.featurette-heading{
+text-align: left;
 }
