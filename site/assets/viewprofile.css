@@ -1,0 +1,18 @@
+ body{
+    overflow: auto;
+ }
+ .div_descricoes{
+    display: flex;
+    
+    }
+.div_cardbtn{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+
+.btn-enviar {
+    text-align: end;
+}

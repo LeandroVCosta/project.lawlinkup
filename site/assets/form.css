@@ -1,0 +1,193 @@
+@import "index.css";
+
+body {
+    overflow: hidden;
+}
+
+.container-full-page {
+    background-image: url(img/form-bg.png);
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #e7f1ffb3;
+    width: 50%;
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    min-width: 562px;
+    max-height: 80%;
+}
+
+.form-outer {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.form-outer::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+/* Track */
+.form-outer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 12px;
+}
+
+/* Handle */
+.form-outer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 12px;
+}
+
+/* Handle on hover */
+.form-outer::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.form-box form {
+    display: flex;
+    width: 400%;
+}
+
+.page {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+@media (max-width: 642px) {
+    .form-box {
+      min-width: calc(100% - 32px);
+      box-sizing: border-box;
+    }
+}
+
+.input-area {
+    min-width: 320px;
+    width: 50%;
+    padding: 8px;
+}
+
+@media (max-height: 650px) {
+    .form-box {
+        min-height: 100%;
+        border-radius: 0;
+    }
+}
+
+.bar-progress{
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    margin: 8px 0;
+    user-select: none;
+    width: fit-content;
+}
+.bar-progress .step-progress{
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+.bar-progress .step-progress .bullet-progress{
+    height: 30px;
+    width: 30px;
+    background-color: var(--secondary);
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    transition: 0.2s;
+    margin-right: 42px;
+}
+
+.bar-progress .step-progress:last-child .bullet-progress {
+    margin-right: 0;
+}
+
+.bar-progress .step-progress .bullet-progress.active{
+    background-color: var(--primary);
+}
+
+.bar-progress .step-progress .bullet-progress.past{
+    background-color: var(--blue-400);
+}
+
+.bar-progress .step-progress .bullet-progress:before,
+.bar-progress .step-progress .bullet-progress:after{
+    position: absolute;
+    content: '';
+    bottom: 12px;
+    right: -44px;
+    height: 3px;
+    width: 44px;
+    background-color: var(--secondary)
+}
+.bar-progress .step-progress .bullet-progress.past:after{
+    background-color: var(--blue-400);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 0.3s linear forwards;
+}
+
+@keyframes animate {
+    100%{
+        transform: scaleX(1);
+    }
+
+}
+
+.bar-progress .step-progress:last-child .bullet-progress:before,
+.bar-progress .step-progress:last-child .bullet-progress:after{
+    display: none;
+}
+
+.login-link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    color: #0051AD;
+    margin: 16px 0;
+}
+
+.terms {
+    margin: 24px 0;
+    width: auto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+/* colocar no index.css, para ser utilizado globalmente */
+
+.div_voltar {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    margin-top: 48px;
+    border-radius: 40px;
+
+    background: #002855;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    user-select: none;
+}
+
+.seta{
+    height: 30px;
+    width: 25px;
+}

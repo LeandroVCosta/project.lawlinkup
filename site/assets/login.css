@@ -1,0 +1,140 @@
+@import "index.css";
+
+body {
+    overflow: hidden;
+}
+
+.container-full-page {
+    background-image: url(img/form-bg.png);
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #e7f1ffb3;
+    width: 50%;
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    min-width: 562px;
+    max-height: 80%;
+}
+
+.form-outer {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.form-outer::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+/* Track */
+.form-outer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 12px;
+}
+
+/* Handle */
+.form-outer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 12px;
+}
+
+/* Handle on hover */
+.form-outer::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.form-box form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 642px) {
+    .form-box {
+      min-width: calc(100% - 32px);
+      box-sizing: border-box;
+    }
+}
+
+.input-area {
+    min-width: 320px;
+    width: 50%;
+    padding: 8px;
+}
+
+.input-label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+
+.input-field {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 8px;
+    font-size: 20px;
+    line-height: 150%;
+    font-weight: 300;
+    border: 1px solid #CED4DA;
+    border-radius: 5px;
+}
+
+@media (max-height: 800px) {
+    .input-field {
+      padding: 4px 8px;
+    }
+}
+
+@media (max-height: 650px) {
+    .form-box {
+        min-height: 100%;
+        border-radius: 0;
+    }
+}
+
+.cadastro-link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    margin: 16px 0;
+}
+
+.cadastro-link .link {
+    color: #0051AD;
+}
+
+/* colocar no index.css, para ser utilizado globalmente */
+
+.div_voltar {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    margin-top: 8px;
+    border-radius: 40px;
+
+    background: #002855;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    user-select: none;
+}
+
+.seta{
+    height: 30px;
+    width: 25px;
+}
