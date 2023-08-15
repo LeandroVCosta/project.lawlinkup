@@ -85,17 +85,16 @@
                     
                     
 
-                    <a href="./chat.html"><button id="submit" class="btn-lg">Enviar caso</button></a>
+                    <a href="./chat.html"><button id="submit" class="btn-lg" onclick="cadastrarCaso()">Enviar caso</button></a>
 
-                </form>
+                </form> 
             </div>
         </div>
     </div>
 </body>
 </html>
-
+<script src="../assets/js/scripts.js"></script>
 <script>
-
     window.onload = function() {
         console.log(sessionStorage)
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
@@ -104,23 +103,4 @@
         event.preventDefault()
     })
     // passar essas funções post e get para um arquivo JS
-   async function cadastrarCaso(){
-        const caso = {
-            servico: document.getElementById("serviceInput").value,
-            especificacao: document.getElementById("specificationInput").value,
-            detalhamento: document.getElementById("detailsInput").value,
-            idCliente: sessionStorage.getItem()
-        } 
-         
-        await fetch('http://localhost:8080/caso',{
-            method: "POST",
-            body: JSON.stringify(caso),
-            headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-             }).then((response) => console.log(response))
-
-
-        
-    }
 </script>
