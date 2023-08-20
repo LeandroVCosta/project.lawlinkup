@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+html, body {
+    height: 100%;
+    min-height: 100% !important;
+}
+
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -23,6 +28,15 @@ body {
 .container-full-page {
     height: 100vh;
     display: flex;
+}
+
+main {
+    padding-top: 132px;
+    min-height: 100%;
+}
+
+.main-no-scroll {
+    height: 100%;
 }
 
 .btn {
