@@ -271,5 +271,29 @@
         setTimeout(() => window.location.href = "./login.html", 2000)
     }
 
+    const cepInput = document.getElementById('cepInput');
+        const cidadeInput = document.getElementById('cidadeInput');
+        const bairroInput = document.getElementById('bairroInput');
+
+        cepInput.addEventListener('input', buscarCep);
+
+        function buscarCep() {
+            const cep = cepInput.value.replace(/\D/g, '');
+
+            if (cep.length === 8) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            cidadeInput.value = data.localidade;
+                            bairroInput.value = data.bairro;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar CEP', error);
+                    });
+            }
+        }
+
 
 </script>
