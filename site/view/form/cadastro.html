@@ -57,9 +57,8 @@
                         <div class="input-area">
                             <label for="typeInput" class="">Tipo</label>
                             <select name="typeInput" class="input-field" id="typeInput">
-                                <option value="" selected disabled hidden>Que tipo de usuário eu sou?</option>
-                                <option value="cliente">Cliente</option>
-                                <option value="advogado">Advogado</option>
+                                <option value="0" selected disabled hidden>Que tipo de usuário eu sou?</option>
+                                <!--mais options sendo adicionadas a partir do retorno da API-->
                             </select>
                         </div>
 
@@ -149,7 +148,7 @@
 
     // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
 
-    let userType = ""
+    let userType = 0
 
     document.getElementById("typeInput").addEventListener("click", (event) => {
         document.getElementById("typeInput").style = null
@@ -157,8 +156,8 @@
     document.getElementById("typeInput").addEventListener("change", (event) => {
         userType = event.target.value
         switch (userType) {
-            case "cliente":
-            case "advogado":
+            case "1":
+            case "2":
                 nextBtn[0].disabled = false;
                 alterarForm()
                 break
@@ -168,12 +167,12 @@
     })
 
     function alterarForm() {
-        if (userType == "advogado" && bullet.length == 3) {
+        if (userType == "1" && bullet.length == 3) {
             bullet.splice(2, 0, document.querySelector(".bullet-progress-advogado"))
             document.querySelector(".step-progress.step-progress-advogado").style.display = "block"
             document.querySelector(".page-advogado").style.display = "flex"
         }
-        if (userType == "cliente" && bullet.length == 4) {
+        if (userType == "2" && bullet.length == 4) {
             bullet.splice(2, 1)
             document.querySelector(".step-progress.step-progress-advogado").style.display = "none"
             document.querySelector(".page-advogado").style.display = "none"
@@ -213,7 +212,7 @@
     nextBtn.forEach(btn => btn.addEventListener("click", function (event) {
         event.preventDefault();
         document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
-        if (userType != "advogado" && userType != "cliente") {
+        if (userType != "1" && userType != "2") {
             document.getElementById("typeInput").style.borderColor = "red"
             document.getElementById("typeInput").style.color = "red"
             return
@@ -236,29 +235,43 @@
             nome: document.getElementById("nameInput").value,
             email: document.getElementById("emailInputCadastro").value,
             senha: document.getElementById("senhaInput").value,
-            contato: "11952849601"
+            contato: "11952849601",
+            cep: document.getElementById("cepInput").value,
+            cidade: document.getElementById("cidadeInput").value,
+            bairro: document.getElementById("bairroInput").value,
+            numero: document.getElementById("numeroInput").value,
+            tipoUsuarioId: userType
         }
-
-        if (userType == "cliente") {
-            usuario.cep = document.getElementById("cepInput").value
-            usuario.cidade = document.getElementById("cidadeInput").value
-            usuario.bairro = document.getElementById("bairroInput").value
-            usuario.numero = document.getElementById("numeroInput").value
-        } else if (userType == "advogado") {
+        if (userType == "1") {
             usuario.cpf = document.getElementById("cpfInput").value
             usuario.especializacao = "Imobiliário"
             usuario.numeroOab = document.getElementById("numeroOabInput").value
             // usuario.fotoOab = document.getElementById("fotoOabInput").value
             // usuario.carteiraOab = document.getElementById("carteiraOabInput").value
-        } else {
-            return
         }
         cadastrarUsuario(usuario)
-
     });
 
+    window.addEventListener("load", getUserTypes);
+
+    async function getUserTypes() {
+        let values = await fetch(`http://localhost:8080/tipoUsuario`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then((response) => response.json())
+
+        console.log(values)
+        values.forEach(value => {
+            console.log(value)
+            document.getElementById("typeInput").add(new Option(value.nome, value.idTipo))
+        })
+    }
+
     async function cadastrarUsuario(usuario) {
-        await fetch(`http://localhost:8080/${userType}`, {
+        await fetch(`http://localhost:8080/usuario`, {
                 method: "POST",
                 body: JSON.stringify(usuario),
                 headers: {
