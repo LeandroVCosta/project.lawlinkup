@@ -31,7 +31,7 @@
             const perfil = {
                 foto: document.getElementById("div_perfil") ? document.getElementById("div_perfil").value : "aaaa",
                 nome: document.getElementById("nameInput").value,
-                especializacao: document.getElementById("specialization").value,
+                especializacao: document.getElementById("specializationInput").value,
                 sobre: document.getElementById("aboutInput").value
 
             }
@@ -46,4 +46,17 @@
                  .then(desaparecerModal())
         
          }
+         async function pesquisarAdvogado(nome){
+            await fetch(`http://localhost:8080/usuario/${nome}`,{
+                method: "GET",
+                headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+                    }
+                 }).then((response) => response.json())
+                 .then((json) => console.log(JSON.stringify(json)));
+                 
+                 
+         }
+         
         
