@@ -37,6 +37,10 @@
                     <div class="bullet-progress bullet-progress-advogado">
                     </div>
                 </div>
+                <div class="step-progress step-progress-cliente" style="display: none;">
+                    <div class="bullet-progress bullet-progress-cliente">
+                    </div>
+                </div>
                 <div class="step-progress">
                     <div class="bullet-progress">
                     </div>
@@ -47,17 +51,27 @@
                 <form>
                     <div id="slide-page" class="page">
                         <div class="input-area">
-                            <label for="nameInput" class="">Nome</label>
-                            <input type="text" class="input-field" placeholder="Nome" id="nameInput">
+                            <label for="nomeInput" class="">Nome</label>
+                            <input type="text" class="input-field" placeholder="Digite o seu Nome" id="nomeInput">
                         </div>
+
                         <div class="input-area">
-                            <label for="emailInput" class="">Email</label>
-                            <input type="email" class="input-field" placeholder="Email" id="emailInput">
+                            <label for="emailInputCadastro" class="">Email</label>
+                            <input type="email" class="input-field" placeholder="Digite o seu Email" id="emailInputCadastro">
                         </div>
+
+                        <!-- <div class="input-area">
+                            <label for="contatoInput" class="">Contato</label>
+                            <input type="text" class="input-field" placeholder="Digite o seu telefone" id="contatoInput">
+                        </div> -->
+                        
                         <div class="input-area">
                             <label for="typeInput" class="">Tipo</label>
                             <select name="typeInput" class="input-field" id="typeInput">
                                 <option value="0" selected disabled hidden>Que tipo de usuário eu sou?</option>
+                                <option value="2">Cliente</option>
+                                <option value="1">Advogado</option>
+                                <!--Por enquanto manter com duas options até fazer o endpoint-->
                                 <!--mais options sendo adicionadas a partir do retorno da API-->
                             </select>
                         </div>
@@ -70,19 +84,19 @@
                     <div class="page">
                         <div class="input-area">
                             <label for="cepInput" class="">CEP</label>
-                            <input type="text" class="input-field" placeholder="CEP" id="cepInput">
+                            <input type="text" class="input-field" placeholder="Digite o seu CEP" id="cepInput">
                         </div>
                         <div class="input-area">
                             <label for="cidadeInput" class="">Cidade</label>
-                            <input type="text" class="input-field" placeholder="Cidade" id="cidadeInput">
+                            <input type="text" class="input-field" disabled placeholder="Digite o seu CEP" id="cidadeInput">
                         </div>
                         <div class="input-area">
                             <label for="bairroInput" class="">Bairro</label>
-                            <input type="text" class="input-field" placeholder="Bairro" id="bairroInput">
+                            <input type="text" class="input-field" disabled placeholder="Digite o seu CEP" id="bairroInput">
                         </div>
                         <div class="input-area">
                             <label for="numeroInput" class="">Número</label>
-                            <input type="text" class="input-field" placeholder="Número" id="numeroInput">
+                            <input type="text" class="input-field" placeholder="Digite o seu Número" id="numeroInput">
                         </div>
 
                         <button class="btn btn-lg text-light next">Próximo</button>
@@ -90,39 +104,80 @@
                     </div>
 
                     <div class="page page-advogado" style="display: none;">
+
+                        <div class="input-area">
+                            <label for="carteiraOabInput" class="">Especialização</label>
+                            <input type="text" class="input-field" placeholder="Digite a sua Especialização" id="especializacaoInput">
+                        </div>
+
                         <div class="input-area">
                             <label for="numeroOabInput" class="">Número OAB</label>
-                            <input type="text" class="input-field" placeholder="Número da OAB" id="numeroOabInput">
+                            <input type="text" class="input-field" placeholder="Digite o Número da OAB" id="numeroOabInput">
                         </div>
+
+                        <div class="input-area">
+                            <label for="carteiraOabInput" class="">Número da Carteira da OAB</label>
+                            <input type="text" class="input-field" placeholder="Digite o Numero do Cartão" id="carteiraOabInput">
+                        </div>
+
                         <div class="input-area">
                             <label for="fotoOabInput" class="">Foto OAB</label>
                             <input type="file" class="form-control form-control-lg" id="fotoOabInput">
-                        </div>
-                        <div class="input-area">
-                            <label for="cpfInput" class="">CPF</label>
-                            <input type="text" class="input-field" placeholder="CPF" id="cpfInput">
-                        </div>
-                        <div class="input-area">
-                            <label for="carteiraOabInput" class="">Número da Carteira da OAB</label>
-                            <input type="text" class="input-field" placeholder="Numero do Cartão" id="carteiraOabInput">
                         </div>
 
                         <button class="btn btn-lg text-light next">Próximo</button>
 
                     </div>
 
+                    <div class="page page-cliente" style="display: none;">
+                        <div class="input-area">
+                            <label for="numeroOabInput" class="">Profissão</label>
+                            <input type="text" class="input-field" placeholder="Digite a sua Profissão" id="profissaoInput">
+                        </div>
+
+                        <div class="input-area">
+                            <label for="numeroOabInput" class="">Data de Nascimento</label>
+                            <input type="date" class="input-field" placeholder="Data de Nascimento" id="nascimentoInput">
+                        </div>
+
+                        <div class="input-area">
+                        <label for="cpfInput" class="">Estado Civil</label>
+                        <select class="input-field" id="estadoCivilInput">
+                            <option value="0" selected disabled hidden>Selecione seu estado civil</option>
+                            <option value="1">Solteiro</option>
+                            <option value="2">Casado</option>
+                            <option value="3">Divorciado</option>
+                            <option value="4">Separado</option>
+                            <option value="5">Viúvo</option>
+                        </select>
+                    </div>
+                    <div class="input-area">
+                        <label for="carteiraOabInput" class="">Gênero</label>
+                        <select name="typeInput" class="input-field" id="generoInput">
+                            <option value="0" selected disabled hidden>Selecione seu gênero</option>
+                            <option value="1">Masculino</option>
+                            <option value="2">Feminino</option>
+                            <option value="3">Outros</option>
+                        </select>
+                    </div>
+
+                        <button class="btn btn-lg text-light next">Próximo</button>
+
+                    </div>
+
+
                     <div class="page">
                         <div class="input-area">
-                            <label for="emailInputCadastro" class="">Email</label>
-                            <input type="text" class="input-field" placeholder="Email" id="emailInputCadastro">
+                            <label for="cpfInput" class="">CPF</label>
+                            <input type="text" class="input-field" placeholder="Digite o seu CPF" id="cpfInput">
                         </div>
                         <div class="input-area">
                             <label for="senhaInput" class="">Senha</label>
-                            <input type="text" class="input-field" placeholder="Senha" id="senhaInput">
+                            <input type="text" class="input-field" placeholder="Digite a sua Senha" id="senhaInput">
                         </div>
                         <div class="input-area">
                             <label for="confirmarsenhaInput" class="">Confirmar Senha</label>
-                            <input type="text" class="input-field" placeholder="Confirmar Senha"
+                            <input type="text" class="input-field" placeholder="Confirme a Senha"
                                 id="confirmarsenhaInput">
                         </div>
                         <p class="terms">Ao criar uma conta, você concorda com nossa <a href="#">Política <br>de
@@ -148,7 +203,7 @@
 
     // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
 
-    let userType = 0
+    let userType = document.getElementById("typeInput").value
 
     document.getElementById("typeInput").addEventListener("click", (event) => {
         document.getElementById("typeInput").style = null
@@ -167,15 +222,21 @@
     })
 
     function alterarForm() {
-        if (userType == "1" && bullet.length == 3) {
-            bullet.splice(2, 0, document.querySelector(".bullet-progress-advogado"))
+        if (userType == "1" && bullet.length == 4) {
+            document.querySelector(".step-progress.step-progress-cliente").style.display = "none"
+            document.querySelector(".page-cliente").style.display = "none"
+
+            bullet.splice(2, 1, document.querySelector(".bullet-progress-advogado"))
             document.querySelector(".step-progress.step-progress-advogado").style.display = "block"
             document.querySelector(".page-advogado").style.display = "flex"
         }
         if (userType == "2" && bullet.length == 4) {
-            bullet.splice(2, 1)
             document.querySelector(".step-progress.step-progress-advogado").style.display = "none"
             document.querySelector(".page-advogado").style.display = "none"
+
+            bullet.splice(2, 1, document.querySelector(".bullet-progress-cliente"))
+            document.querySelector(".step-progress.step-progress-cliente").style.display = "block"
+            document.querySelector(".page-cliente").style.display = "flex"
         }
     }
 
@@ -211,7 +272,8 @@
 
     nextBtn.forEach(btn => btn.addEventListener("click", function (event) {
         event.preventDefault();
-        document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
+        // document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
+        // Não sei o pq isso existe 
         if (userType != "1" && userType != "2") {
             document.getElementById("typeInput").style.borderColor = "red"
             document.getElementById("typeInput").style.color = "red"
@@ -232,22 +294,30 @@
         event.preventDefault();
 
         let usuario = {
-            nome: document.getElementById("nameInput").value,
+            nome: document.getElementById("nomeInput").value,
             email: document.getElementById("emailInputCadastro").value,
             senha: document.getElementById("senhaInput").value,
             contato: "11952849601",
+            // contato: document.getElementById("contatoInput").value,
+            // descomentar input html para funcionar
             cep: document.getElementById("cepInput").value,
             cidade: document.getElementById("cidadeInput").value,
             bairro: document.getElementById("bairroInput").value,
             numero: document.getElementById("numeroInput").value,
+            cpf: document.getElementById("cpfInput").value,
             tipoUsuarioId: userType
         }
         if (userType == "1") {
-            usuario.cpf = document.getElementById("cpfInput").value
-            usuario.especializacao = "Imobiliário"
+            usuario.especializacao = document.getElementById("especializacaoInput").value
             usuario.numeroOab = document.getElementById("numeroOabInput").value
-            // usuario.fotoOab = document.getElementById("fotoOabInput").value
             // usuario.carteiraOab = document.getElementById("carteiraOabInput").value
+            // usuario.fotoOab = document.getElementById("fotoOabInput").value
+        }
+        if (userType == "2") {
+            usuario.profissao = document.getElementById("profissaoInput").value
+            usuario.nascimento = document.getElementById("nascimentoInput").value
+            usuario.genero = document.getElementById("estadoCivilInput").value
+            usuario.genero = document.getElementById("generoInput").value
         }
         cadastrarUsuario(usuario)
     });
