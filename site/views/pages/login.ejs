@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-    <link rel="icon" href="../assets/img/favicon.ico.png" type="image/png">
+    <link rel="icon" href="img/favicon.ico.png" type="image/png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
@@ -10,7 +10,7 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-    <link rel="stylesheet" href="../../assets/login.css">
+    <link rel="stylesheet" href="css/login.css">
   
 </head>
 
@@ -20,7 +20,7 @@
         <div class="form-box">
             <div style="width: 100%;">
                 <div class="div_voltar div_voltar-login prev">
-                    <img src="../../assets/img/seta-esquerda.png" class="seta" alt="">
+                    <img src="img/seta-esquerda.png" class="seta" alt="">
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                         </select>
                     </div>
                     
-                    <p class="cadastro-link">Ainda não possui conta? <a href="./cadastro.html" class="link">CADASTRE-SE</a></p>
+                    <p class="cadastro-link">Ainda não possui conta? <a href="cadastro" class="link">CADASTRE-SE</a></p>
 
                     <button id="submit" class="btn btn-lg text-light">Enviar</button>
 
@@ -114,7 +114,7 @@
             })
                 .then((response) => response.json())
                 .then((json) => {window.alert(JSON.stringify(json)); sessionStorage.setItem("userName", json.nome)})
-        window.location.href = userType == "cliente" ? "../marketplace.html" : "../profile.html"
+        window.location.href = userType == "cliente" ? "marketplace" : "profile"
     }
 
 

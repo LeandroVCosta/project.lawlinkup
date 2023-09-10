@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-    <link rel="icon" href="../assets/img/favicon.ico.png" type="image/png">
+    <link rel="icon" href="img/favicon.ico.png" type="image/png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastre-se</title>
@@ -10,7 +10,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-    <link rel="stylesheet" href="../../assets/form.css">
+    <link rel="stylesheet" href="css/form.css">
 
 </head>
 
@@ -20,7 +20,7 @@
         <div class="form-box">
             <div style="width: 100%;">
                 <div class="div_voltar prev">
-                    <img src="../../assets/img/seta-esquerda.png" class="seta" alt="">
+                    <img src="img/seta-esquerda.png" class="seta" alt="">
                 </div>
             </div>
 
@@ -76,7 +76,7 @@
                             </select>
                         </div>
 
-                        <a href="./login.html" class="login-link">Já possui cadastro? Clique aqui</a>
+                        <a href="login" class="login-link">Já possui cadastro? Clique aqui</a>
 
                         <button class="btn btn-lg text-light next">Próximo</button>
 
@@ -351,7 +351,7 @@
                 .then((response) => response.json())
                 .then((json) => console.log(json));
         
-        setTimeout(() => window.location.href = "./login.html", 2000)
+        setTimeout(() => window.location.href = "login", 2000)
     }
 
     const cepInput = document.getElementById('cepInput');
