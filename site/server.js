@@ -2,23 +2,23 @@ PORT = 3000
 
 const express = require('express');
 const path = require('path');
+const ejs = require('ejs')
 
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const router = require('./router')
 
-app.use(express.static(path.join(__dirname,'public/')));
-app.use(express.static(path.join(__dirname,'public/view')));
+app.use(router);
+// app.use(express.static(path.join(__dirname,'public')));
+// app.engine('html',require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
-app.set('views', path.join(__dirname,'public/view'));
-app.engine('html',require('ejs').renderFile);
-app.set('view engine', 'html');
+app.use('/img', express.static('public/assets/img'));
+app.use('/css', express.static('public/css'));
+app.use('/js', express.static('public/js'));
 
 let messages = []
-
-app.use('/',(req,res)  => {
-    res.render('index.html');
-});
 
 io.on('connection', socket => {
     socket.emit('loadMessage',messages);
@@ -33,4 +33,4 @@ io.on('connection', socket => {
 });
 
 console.log(`Server Running in PORT ${PORT}`)
-server.listen(3000)
+server.listen(PORT)
