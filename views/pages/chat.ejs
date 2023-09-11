@@ -151,8 +151,12 @@
             renderMessage(data)
         })
 
-        function renderMessage(message){
+        function renderMyMessage(message){
             $('.mensagens').append(`<div class="div_mensagem2">${message.message}</div>`)
+        }
+
+        function renderMessage(message){
+            $('.mensagens').append(`<div class="div_mensagem1">${message.message}</div>`)
         }
     
         $('#btn_enviar').click(function(event) {
@@ -166,7 +170,7 @@
                 };
                 socket.emit('sendMessage',messageObject)
             }
-            renderMessage(messageObject);
+            renderMyMessage(messageObject);
         });
     
 
