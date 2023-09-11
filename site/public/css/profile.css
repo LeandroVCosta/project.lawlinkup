@@ -41,6 +41,7 @@ input[type = 'file']{
 }
 
 .info-col {
+    margin-left: 15px;
     width: 100%;
 }
 
@@ -152,7 +153,9 @@ input[type = 'file']{
     width: 200px;
     height: 200px;
     margin-right: 56px;
- 
+    background-image: url("../img/advogado2.jfif");
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 100px;
     border: var(--primary) solid 2px;
     min-width: 200px;
