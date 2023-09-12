@@ -68,50 +68,7 @@
     </div>
 
     <div class="cardgroup">
-        <div class="card card_adv">
-            <div class="card-body card-style">
-              <img src="img/advogado2.jfif" class="img-adv" alt="Responsive image">
-              <ul class="adv-info">
-                <li>Marcos Araujo</li>
-                <li>São Paulo</li>
-                <li>Direito Imobiliário</li>
-              </ul>
-              <div class="btn-perfil">
-                <a href="viewprofile"><button type="button" class="btn btn-primary">Perfil</button></a>
-                <a href="case"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
-              </div>
-            </div>
-        </div>
-
-          <div class="card card_adv">
-              <div class="card-body card-style">
-              <img src="img/advogado2.jfif" class="img-adv" alt="Responsive image">
-                <ul class="adv-info">
-                  <li>Marcos Araujo</li>
-                  <li>São Paulo</li>
-                  <li>Direito Imobiliário</li>
-                </ul>
-                <div class="btn-perfil">
-                  <a href="viewprofile"><button type="button" class="btn btn-primary">Perfil</button></a>
-                  <a href="case"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
-                </div>
-              </div>
-          </div>
-
-        <div class="card card_adv">
-            <div class="card-body card-style">
-              <img src="img/advogado2.jfif" class="img-adv" alt="Responsive image">
-              <ul class="adv-info">
-                <li>Marcos Araujo</li>
-                <li>São Paulo</li>
-                <li>Direito Imobiliário</li>
-              </ul>
-              <div class="btn-perfil">
-                <a href="viewprofile"><button type="button" class="btn btn-primary">Perfil</button></a>
-                <a href="case"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
-              </div>
-            </div>
-</div>
+    </div>
 </body>
 </html>
 
@@ -119,9 +76,46 @@
 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 crossorigin="anonymous"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+
 
 <script>
   window.onload = function() {
       document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+      renderAdvogado()
   }
+
+  async function renderAdvogado(){
+            const retorno = await fetch(`http://localhost:8080/usuario/todos`, {
+                                      method: "GET",
+                                      headers: {
+                                          "Content-type": "application/json; charset=UTF-8"
+                                      }
+                                  })
+            const dadosRequisicao = await retorno.json()
+            
+            dadosRequisicao.forEach(element => {
+                console.log(element)
+                loadAdvogado(element)
+            });
+
+  }
+
+  function loadAdvogado(advogado){
+            $('.cardgroup').append(`
+            <div class="card card_adv">
+            <div class="card-body card-style">
+              <img src="img/advogado2.jfif" class="img-adv" alt="Responsive image">
+              <ul class="adv-info">
+                <li>${advogado.nome}</li>
+                <li>${advogado.cidade}</li>
+                <li>${advogado.especializacao}</li>
+              </ul>
+              <div class="btn-perfil">
+                <a href="viewprofile"><button type="button" class="btn btn-primary">Perfil</button></a>
+                <a href="case"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
+              </div>
+            </div>
+            </div>`)
+        }
 </script>
