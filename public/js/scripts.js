@@ -4,7 +4,7 @@
         servico: document.getElementById("serviceInput").value,
         especificacao: document.getElementById("specificationInput").value,
         detalhamento: document.getElementById("detailsInput").value,
-        idCliente: sessionStorage.getItem("userId")
+        clienteId: sessionStorage.getItem("userId")
     } 
      
     await fetch('http://localhost:8080/caso',{
@@ -13,7 +13,10 @@
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
-    }).then((response) => console.log(response))
+    }).then((response) => {
+        console.log(response)
+        window.location.href = "chat"
+    })
     
 }
     //trocando o display do modal de atualização de perfil
@@ -36,11 +39,12 @@
 
             }
             
-            await fetch(`http://localhost:8080/advogado//atualizarPerfil/${id}`,{
+            await fetch(`http://localhost:8080/usuario/atualizarPerfil/${sessionStorage.getItem("userId")}`,{
                 method: "PATCH",
                 body: JSON.stringify(perfil),
                 headers: {
-                        "Content-type": "application/json; charset=UTF-8"
+                        "Content-type": "application/json; charset=UTF-8",
+                        "Access-Control-Allow-Origin": "http://localhost:8080"
                     }
                  }).then((response) => console.log(response))
                  .then(desaparecerModal())

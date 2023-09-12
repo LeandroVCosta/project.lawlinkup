@@ -68,7 +68,7 @@
                 <div class="info-col">
                     <div class="info-row">
                         <div class="div_descricoes">
-                            <h2 class="texto">José da Silva Romeiro</h2>
+                            <h2 class="texto" id="nome_adv">José da Silva Romeiro</h2>
                             <h4 class="descricao">Doutor em direito imobiliário</h4>
                             <p class="estado">São Paulo, SP</p>
                         </div>
@@ -119,6 +119,7 @@
 
     window.onload = function () {
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+        document.getElementById("nome_adv").innerHTML = sessionStorage.getItem("userName");
     }
 
 </script>

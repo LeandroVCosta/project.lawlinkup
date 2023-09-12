@@ -65,27 +65,26 @@
                         <label for="serviceInput" class="">Tipo de serviço</label>
                         <select name="serviceInput" class="input-field" id="serviceInput">
                             <option value="" selected disabled hidden>Tipo de serviço</option>
-                            <option value="1">Serviço 1</option>
-                            <option value="2">Serviço 2</option>
+                            <option value="serviço exemplo 1">Serviço 1</option>
+                            <option value="serviço exemplo 2">Serviço 2</option>
                         </select>
                     </div>
                     <div class="input-area">
                         <label for="specificationInput" class="">Especificação</label>
                         <select name="specificationInput" class="input-field" id="specificationInput">
                             <option value="" selected disabled hidden>Especificação</option>
-                            <option value="1">Especificação 1</option>
-                            <option value="2">Especificação 2</option>
+                            <option value="especializacao ex 1">Especificação 1</option>
+                            <option value="especializacao ex 2">Especificação 2</option>
                         </select>
                     </div>
                     <div class="input-area">
                         <label for="detailsInput" class="">Detalhamento</label>
-                        <textarea type="text" class="area-field" id="detailsInput">
-                        </textarea>
+                        <textarea type="text" class="area-field" id="detailsInput"></textarea>
                     </div>
                     
                     
 
-                    <a href="chat"><button id="submit" class="btn-lg" onclick="cadastrarCaso()">Enviar caso</button></a>
+                    <a href="chat"><button id="submit" class="btn-lg">Enviar caso</button></a>
 
                 </form> 
             </div>
@@ -101,6 +100,7 @@
     }
     document.getElementById("submit").addEventListener("click", function () {
         event.preventDefault()
+        cadastrarCaso()
     })
     // passar essas funções post e get para um arquivo JS
 </script>

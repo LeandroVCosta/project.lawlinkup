@@ -115,6 +115,7 @@
                 .then((json) => {
                     window.alert(JSON.stringify(json));
                     sessionStorage.setItem("userName", json.nome)
+                    sessionStorage.setItem("userId", json.idUsuario)
                     userType = json.tipoUsuario.nome.toLowerCase()
             })
         window.location.href = userType == "cliente" ? "marketplace" : "profile"
