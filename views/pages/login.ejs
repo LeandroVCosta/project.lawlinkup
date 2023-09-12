@@ -35,14 +35,14 @@
                         <label for="senhaInput" class="">Senha</label>
                         <input type="text" class="input-field" placeholder="Senha" id="senhaInput">
                     </div>
-                    <div class="input-area">
+                    <!-- <div class="input-area">
                         <label for="typeInput" class="">Tipo</label>
                         <select name="typeInput" class="input-field" id="typeInput">
                             <option value="" selected disabled hidden>Que tipo de usuário eu sou?</option>
                             <option value="cliente">Cliente</option>
                             <option value="advogado">Advogado</option>
                         </select>
-                    </div>
+                    </div> -->
                     
                     <p class="cadastro-link">Ainda não possui conta? <a href="cadastro" class="link">CADASTRE-SE</a></p>
 
@@ -63,24 +63,24 @@
 
 <script>
 
-// SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
+// // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
 
-    let userType = ""
+//     // let userType = ""
 
-    document.getElementById("typeInput").addEventListener("click", (event) => {
-        document.getElementById("typeInput").style = null
-    })
-    document.getElementById("typeInput").addEventListener("change", (event) => {
-        userType = event.target.value
-        switch (userType) {
-        case "cliente":
-        case "advogado":
-            submitBtn.disabled = false;
-            break
-        default: submitBtn.disabled = true;
-    }
+//     // document.getElementById("typeInput").addEventListener("click", (event) => {
+//     //     document.getElementById("typeInput").style = null
+//     // })
+//     document.getElementById("typeInput").addEventListener("change", (event) => {
+//         userType = event.target.value
+//         switch (userType) {
+//         case "cliente":
+//         case "advogado":
+//             submitBtn.disabled = false;
+//             break
+//         default: submitBtn.disabled = true;
+//     }
     
-    })
+//     })
 
     const prevBtn = document.querySelector(".prev");
 
@@ -99,7 +99,6 @@
             let usuario = {
                 email: document.getElementById("emailInput").value,
                 senha: document.getElementById("senhaInput").value,
-                tipo: userType.toUpperCase(),
             }
             LogarUsuario(usuario)
     });
@@ -113,7 +112,11 @@
                 }
             })
                 .then((response) => response.json())
-                .then((json) => {window.alert(JSON.stringify(json)); sessionStorage.setItem("userName", json.nome)})
+                .then((json) => {
+                    window.alert(JSON.stringify(json));
+                    sessionStorage.setItem("userName", json.nome)
+                    userType = json.tipoUsuario.nome.toLowerCase()
+            })
         window.location.href = userType == "cliente" ? "marketplace" : "profile"
     }
 
