@@ -19,6 +19,9 @@
     })
     
 }
+
+
+
     //trocando o display do modal de atualização de perfil
     function desaparecerModal() {
        div_modal.style.display = "none"
@@ -28,8 +31,13 @@
        div_modal.style.display = "block"
        document.body.style.overflow = "hidden"
    }
-         //funções de atualização de perfil
-         async function atualizarPerfil(){
+
+
+
+
+   
+     //funções de atualização de perfil
+     async function atualizarPerfil(){
             console.log("aaaaa: ", document.getElementById("div_perfil"))
             const perfil = {
                 foto: document.getElementById("div_perfil") ? document.getElementById("div_perfil").value : "aaaa",
