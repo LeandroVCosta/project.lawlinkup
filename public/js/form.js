@@ -1,0 +1,195 @@
+
+    // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
+
+    let userType = document.getElementById("typeInput").value
+    let nome = document.getElementById("nomeInput").value
+
+    document.getElementById("typeInput").addEventListener("click", (event) => {
+        document.getElementById("typeInput").style = null
+    })
+    document.getElementById("typeInput").addEventListener("change", (event) => {
+        userType = event.target.value
+        switch (userType) {
+            case "1":
+            case "2":
+                nextBtn[0].disabled = false;
+                alterarForm()
+                break
+            default: nextBtn[0].disabled = true;
+        }
+
+    })
+
+    function alterarForm() {
+        if (userType == "1" && bullet.length == 4) {
+            document.querySelector(".step-progress.step-progress-cliente").style.display = "none"
+            document.querySelector(".page-cliente").style.display = "none"
+
+            bullet.splice(2, 1, document.querySelector(".bullet-progress-advogado"))
+            document.querySelector(".step-progress.step-progress-advogado").style.display = "block"
+            document.querySelector(".page-advogado").style.display = "flex"
+        }
+        if (userType == "2" && bullet.length == 4) {
+            document.querySelector(".step-progress.step-progress-advogado").style.display = "none"
+            document.querySelector(".page-advogado").style.display = "none"
+
+            bullet.splice(2, 1, document.querySelector(".bullet-progress-cliente"))
+            document.querySelector(".step-progress.step-progress-cliente").style.display = "block"
+            document.querySelector(".page-cliente").style.display = "flex"
+        }
+    }
+
+    const slidePage = document.getElementById("slide-page");
+
+    const nextBtn = document.querySelectorAll(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    const submitBtn = document.getElementById("submit");
+
+    const bullet = Array.from(document.querySelectorAll(".bullet-progress:not(.bullet-progress-advogado)"));
+
+    let current = 0;
+    let posicaoForm = 0
+
+    function nextButton() {
+        bullet[current].classList.remove("active");
+        bullet[current].classList.add("past");
+        bullet[current + 1].classList.add("active");
+        current += 1;
+        posicaoForm -= 25
+        slidePage.style.marginLeft = `${posicaoForm}%`
+    }
+
+    function prevButton() {
+        bullet[current - 1].classList.remove("past");
+        bullet[current - 1].classList.add("active");
+        bullet[current].classList.remove("active");
+        current -= 1;
+        posicaoForm += 25
+        slidePage.style.marginLeft = `${posicaoForm}%`
+    }
+
+    nextBtn[0].addEventListener("click", function (event) {
+        event.preventDefault();
+      let email = document.getElementById("emailInputCadastro").value
+        if (userType != "1" && userType != "2") {
+            document.getElementById("typeInput").style.borderColor = "red"
+            document.getElementById("typeInput").style.color = "red"
+            return
+        }
+        if(nomeInput.length < 3){
+           document.getElementById("nomeInput").style.borderColor = "red"
+           document.getElementById("nomeInput").style.color = "red"
+        return
+        }
+        if(email == 0 || email.indexOf("@") == -1 ){
+        document.getElementById("emailInputCadastro").style.borderColor = "red"
+        
+        return
+        }
+        nextButton();
+
+
+    })
+
+    nextBtn.forEach(btn => btn.addEventListener("click", function (event) {
+        event.preventDefault();
+        // document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
+        // Não sei o pq isso existe 
+    }));
+
+    prevBtn.addEventListener("click", function (event) {
+        if (current == 0) {
+            history.back()
+            return
+        }
+        prevButton();
+    });
+
+    submitBtn.addEventListener("click", function () {
+        event.preventDefault();
+
+        let usuario = {
+            nome: document.getElementById("nomeInput").value,
+            email: document.getElementById("emailInputCadastro").value,
+            senha: document.getElementById("senhaInput").value,
+            contato: "11952849601",
+            // contato: document.getElementById("contatoInput").value,
+            // descomentar input html para funcionar
+            cep: document.getElementById("cepInput").value,
+            cidade: document.getElementById("cidadeInput").value,
+            bairro: document.getElementById("bairroInput").value,
+            numero: document.getElementById("numeroInput").value,
+            cpf: document.getElementById("cpfInput").value,
+            tipoUsuarioId: userType
+        }
+        if (userType == "1") {
+            usuario.especializacao = document.getElementById("especializacaoInput").value
+            usuario.numeroOab = document.getElementById("numeroOabInput").value
+            // usuario.carteiraOab = document.getElementById("carteiraOabInput").value
+            // usuario.fotoOab = document.getElementById("fotoOabInput").value
+        }
+        if (userType == "2") {
+            usuario.profissao = document.getElementById("profissaoInput").value
+            usuario.nascimento = document.getElementById("nascimentoInput").value
+            usuario.genero = document.getElementById("estadoCivilInput").value
+            usuario.genero = document.getElementById("generoInput").value
+        }
+        cadastrarUsuario(usuario)
+    });
+
+    window.addEventListener("load", getUserTypes);
+
+    async function getUserTypes() {
+        let values = await fetch(`http://localhost:8080/tipoUsuario`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+
+        console.log(values)
+        values.forEach(value => {
+            console.log(value)
+            document.getElementById("typeInput").add(new Option(value.nome, value.idTipo))
+        })
+    }
+
+    async function cadastrarUsuario(usuario) {
+        await fetch(`http://localhost:8080/usuario`, {
+            method: "POST",
+            body: JSON.stringify(usuario),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+
+        setTimeout(() => window.location.href = "login", 2000)
+    }
+
+    const cepInput = document.getElementById('cepInput');
+    const cidadeInput = document.getElementById('cidadeInput');
+    const bairroInput = document.getElementById('bairroInput');
+
+    cepInput.addEventListener('input', buscarCep);
+
+    function buscarCep() {
+        const cep = cepInput.value.replace(/\D/g, '');
+
+        if (cep.length === 8) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        cidadeInput.value = data.localidade;
+                        bairroInput.value = data.bairro;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar CEP', error);
+                });
+        }
+    }
