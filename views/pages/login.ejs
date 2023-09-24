@@ -7,16 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
     <link rel="stylesheet" href="css/login.css">
-  
+
 </head>
 
 <body>
 
     <div class="container-full-page">
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
         <div class="form-box">
             <div style="width: 100%;">
                 <div class="div_voltar div_voltar-login prev">
@@ -43,7 +49,7 @@
                             <option value="advogado">Advogado</option>
                         </select>
                     </div> -->
-                    
+
                     <p class="cadastro-link">Ainda não possui conta? <a href="cadastro" class="link">CADASTRE-SE</a></p>
 
                     <button id="submit" class="btn btn-lg text-light">Enviar</button>
@@ -53,9 +59,14 @@
         </div>
     </div>
 
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
 
 </body>
 
@@ -63,24 +74,24 @@
 
 <script>
 
-// // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
+    // // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
 
-//     // let userType = ""
+    //     // let userType = ""
 
-//     // document.getElementById("typeInput").addEventListener("click", (event) => {
-//     //     document.getElementById("typeInput").style = null
-//     // })
-//     document.getElementById("typeInput").addEventListener("change", (event) => {
-//         userType = event.target.value
-//         switch (userType) {
-//         case "cliente":
-//         case "advogado":
-//             submitBtn.disabled = false;
-//             break
-//         default: submitBtn.disabled = true;
-//     }
-    
-//     })
+    //     // document.getElementById("typeInput").addEventListener("click", (event) => {
+    //     //     document.getElementById("typeInput").style = null
+    //     // })
+    //     document.getElementById("typeInput").addEventListener("change", (event) => {
+    //         userType = event.target.value
+    //         switch (userType) {
+    //         case "cliente":
+    //         case "advogado":
+    //             submitBtn.disabled = false;
+    //             break
+    //         default: submitBtn.disabled = true;
+    //     }
+
+    //     })
 
     const prevBtn = document.querySelector(".prev");
 
@@ -90,33 +101,33 @@
         history.back()
     }
 
-    prevBtn.addEventListener("click", function(event){
+    prevBtn.addEventListener("click", function (event) {
         prevButton();
     });
 
-    submitBtn.addEventListener("click", function(){
+    submitBtn.addEventListener("click", function () {
         event.preventDefault();
-            let usuario = {
-                email: document.getElementById("emailInput").value,
-                senha: document.getElementById("senhaInput").value,
-            }
-            LogarUsuario(usuario)
+        let usuario = {
+            email: document.getElementById("emailInput").value,
+            senha: document.getElementById("senhaInput").value,
+        }
+        LogarUsuario(usuario)
     });
 
     async function LogarUsuario(usuario) {
         await fetch(`http://localhost:8080/login`, {
-                method: "POST",
-                body: JSON.stringify(usuario),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-                .then((response) => response.json())
-                .then((json) => {
-                    window.alert(JSON.stringify(json));
-                    sessionStorage.setItem("userName", json.nome)
-                    sessionStorage.setItem("userId", json.idUsuario)
-                    userType = json.tipoUsuario.nome.toLowerCase()
+            method: "POST",
+            body: JSON.stringify(usuario),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((json) => {
+                window.alert(JSON.stringify(json));
+                sessionStorage.setItem("userName", json.nome)
+                sessionStorage.setItem("userId", json.idUsuario)
+                userType = json.tipoUsuario.nome.toLowerCase()
             })
         window.location.href = userType == "cliente" ? "marketplace" : "profile"
     }

@@ -19,8 +19,8 @@
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
-                    <img src="img/Logo-SemFundo.svg" width="120" height="100"
-                        class="d-inline-block align-center" alt="">
+                    <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
+                        alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +47,13 @@
         </nav>
     </header>
     <main class="main-no-scroll">
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
         <div class="case-container">
             <div class="card-case">
                 <div class="conteudo">
@@ -64,8 +71,8 @@
                         </select>
                     </div>
                     <div class="case-desc">
-                        <p class="cadastro-link">Ainda não possui um caso? Crie um <a href="case"
-                                class="link">clicando aqui.</a></p>
+                        <p class="cadastro-link">Ainda não possui um caso? Crie um <a href="case" class="link">clicando
+                                aqui.</a></p>
                     </div>
                     <button id="submit" class="btn btn-lg text-light">Enviar</button>
 
@@ -74,6 +81,11 @@
         </div>
 
     </main>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 
@@ -84,7 +96,7 @@
         window.location.href = "marketplace";
     });
 
-//     document.getElementById("createCase").addEventListener("click", function() {
-//     window.location.href = "case.html";
-// });
+    //     document.getElementById("createCase").addEventListener("click", function() {
+    //     window.location.href = "case.html";
+    // });
 </script>

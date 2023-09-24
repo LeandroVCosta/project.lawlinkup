@@ -15,6 +15,12 @@
 </head>
 
 <body>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
 
     <div class="container-full-page">
         <div class="form-box">
@@ -57,14 +63,15 @@
 
                         <div class="input-area">
                             <label for="emailInputCadastro" class="">Email</label>
-                            <input type="email" class="input-field" placeholder="Digite o seu Email" id="emailInputCadastro">
+                            <input type="email" class="input-field" placeholder="Digite o seu Email"
+                                id="emailInputCadastro">
                         </div>
 
                         <!-- <div class="input-area">
                             <label for="contatoInput" class="">Contato</label>
                             <input type="text" class="input-field" placeholder="Digite o seu telefone" id="contatoInput">
                         </div> -->
-                        
+
                         <div class="input-area">
                             <label for="typeInput" class="">Tipo</label>
                             <select name="typeInput" class="input-field" id="typeInput">
@@ -88,11 +95,13 @@
                         </div>
                         <div class="input-area">
                             <label for="cidadeInput" class="">Cidade</label>
-                            <input type="text" class="input-field" disabled placeholder="Digite o seu CEP" id="cidadeInput">
+                            <input type="text" class="input-field" disabled placeholder="Digite o seu CEP"
+                                id="cidadeInput">
                         </div>
                         <div class="input-area">
                             <label for="bairroInput" class="">Bairro</label>
-                            <input type="text" class="input-field" disabled placeholder="Digite o seu CEP" id="bairroInput">
+                            <input type="text" class="input-field" disabled placeholder="Digite o seu CEP"
+                                id="bairroInput">
                         </div>
                         <div class="input-area">
                             <label for="numeroInput" class="">Número</label>
@@ -107,17 +116,20 @@
 
                         <div class="input-area">
                             <label for="carteiraOabInput" class="">Especialização</label>
-                            <input type="text" class="input-field" placeholder="Digite a sua Especialização" id="especializacaoInput">
+                            <input type="text" class="input-field" placeholder="Digite a sua Especialização"
+                                id="especializacaoInput">
                         </div>
 
                         <div class="input-area">
                             <label for="numeroOabInput" class="">Número OAB</label>
-                            <input type="text" class="input-field" placeholder="Digite o Número da OAB" id="numeroOabInput">
+                            <input type="text" class="input-field" placeholder="Digite o Número da OAB"
+                                id="numeroOabInput">
                         </div>
 
                         <div class="input-area">
                             <label for="carteiraOabInput" class="">Número da Carteira da OAB</label>
-                            <input type="text" class="input-field" placeholder="Digite o Numero do Cartão" id="carteiraOabInput">
+                            <input type="text" class="input-field" placeholder="Digite o Numero do Cartão"
+                                id="carteiraOabInput">
                         </div>
 
                         <div class="input-area">
@@ -132,34 +144,36 @@
                     <div class="page page-cliente" style="display: none;">
                         <div class="input-area">
                             <label for="numeroOabInput" class="">Profissão</label>
-                            <input type="text" class="input-field" placeholder="Digite a sua Profissão" id="profissaoInput">
+                            <input type="text" class="input-field" placeholder="Digite a sua Profissão"
+                                id="profissaoInput">
                         </div>
 
                         <div class="input-area">
                             <label for="numeroOabInput" class="">Data de Nascimento</label>
-                            <input type="date" class="input-field" placeholder="Data de Nascimento" id="nascimentoInput">
+                            <input type="date" class="input-field" placeholder="Data de Nascimento"
+                                id="nascimentoInput">
                         </div>
 
                         <div class="input-area">
-                        <label for="cpfInput" class="">Estado Civil</label>
-                        <select class="input-field" id="estadoCivilInput">
-                            <option value="0" selected disabled hidden>Selecione seu estado civil</option>
-                            <option value="1">Solteiro</option>
-                            <option value="2">Casado</option>
-                            <option value="3">Divorciado</option>
-                            <option value="4">Separado</option>
-                            <option value="5">Viúvo</option>
-                        </select>
-                    </div>
-                    <div class="input-area">
-                        <label for="carteiraOabInput" class="">Gênero</label>
-                        <select name="typeInput" class="input-field" id="generoInput">
-                            <option value="0" selected disabled hidden>Selecione seu gênero</option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Feminino</option>
-                            <option value="3">Outros</option>
-                        </select>
-                    </div>
+                            <label for="cpfInput" class="">Estado Civil</label>
+                            <select class="input-field" id="estadoCivilInput">
+                                <option value="0" selected disabled hidden>Selecione seu estado civil</option>
+                                <option value="1">Solteiro</option>
+                                <option value="2">Casado</option>
+                                <option value="3">Divorciado</option>
+                                <option value="4">Separado</option>
+                                <option value="5">Viúvo</option>
+                            </select>
+                        </div>
+                        <div class="input-area">
+                            <label for="carteiraOabInput" class="">Gênero</label>
+                            <select name="typeInput" class="input-field" id="generoInput">
+                                <option value="0" selected disabled hidden>Selecione seu gênero</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Feminino</option>
+                                <option value="3">Outros</option>
+                            </select>
+                        </div>
 
                         <button class="btn btn-lg text-light next">Próximo</button>
 
@@ -194,6 +208,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 
@@ -326,12 +345,12 @@
 
     async function getUserTypes() {
         let values = await fetch(`http://localhost:8080/tipoUsuario`, {
-                method: "GET",
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-                .then((response) => response.json())
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
 
         console.log(values)
         values.forEach(value => {
@@ -342,41 +361,41 @@
 
     async function cadastrarUsuario(usuario) {
         await fetch(`http://localhost:8080/usuario`, {
-                method: "POST",
-                body: JSON.stringify(usuario),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-                .then((response) => response.json())
-                .then((json) => console.log(json));
-        
+            method: "POST",
+            body: JSON.stringify(usuario),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+
         setTimeout(() => window.location.href = "login", 2000)
     }
 
     const cepInput = document.getElementById('cepInput');
-        const cidadeInput = document.getElementById('cidadeInput');
-        const bairroInput = document.getElementById('bairroInput');
+    const cidadeInput = document.getElementById('cidadeInput');
+    const bairroInput = document.getElementById('bairroInput');
 
-        cepInput.addEventListener('input', buscarCep);
+    cepInput.addEventListener('input', buscarCep);
 
-        function buscarCep() {
-            const cep = cepInput.value.replace(/\D/g, '');
+    function buscarCep() {
+        const cep = cepInput.value.replace(/\D/g, '');
 
-            if (cep.length === 8) {
-                fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.erro) {
-                            cidadeInput.value = data.localidade;
-                            bairroInput.value = data.bairro;
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erro ao buscar CEP', error);
-                    });
-            }
+        if (cep.length === 8) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        cidadeInput.value = data.localidade;
+                        bairroInput.value = data.bairro;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar CEP', error);
+                });
         }
+    }
 
 
 </script>

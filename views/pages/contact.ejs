@@ -19,8 +19,8 @@
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary py-3 px-2" style="font-family: 'Brawler';">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
-                    <img src="img/Logo-SemFundo.svg" width="120" height="100"
-                        class="d-inline-block align-center" alt="">
+                    <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
+                        alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,8 +35,7 @@
                             <a class="nav-link" href="marketplace">Buscar Advogado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login"><button
-                                    class="btn btn-outline-light">Login</button></a>
+                            <a class="nav-link" href="login"><button class="btn btn-outline-light">Login</button></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cadastro"><button
@@ -47,12 +46,25 @@
             </div>
         </nav>
     </header>
+
+
     <main class="main-no-scroll">
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
         <div class="container-contact">
             <iframe class="form-contact" src='https://app.pipefy.com/public/form/nFU8Udnq?embedded=true'
                 frameborder='5'></iframe>
         </div>
     </main>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 
 </html>
