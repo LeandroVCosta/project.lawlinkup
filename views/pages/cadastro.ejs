@@ -1,21 +1,23 @@
 <!doctype html>
 <html lang="pt-BR">
-
-<head>
-    <link rel="icon" href="img/favicon.ico.png" type="image/png">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastre-se</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    
+    <head>
+        <link rel="icon" href="img/favicon.ico.png" type="image/png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cadastre-se</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-    <link rel="stylesheet" href="css/form.css">
-    <link rel="stylesheet" href="../../public/css/form.css">
-</head>
-
-<body>
-
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
+        
+        <link rel="stylesheet" href="css/form.css">
+        <link rel="stylesheet" href="../../public/css/form.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    </head>
+    
+    <body>
+        
     <div class="container-full-page">
         <div class="form-box">
             <div style="width: 100%;">
@@ -59,13 +61,13 @@
                             <label for="emailInputCadastro" class="">Email</label>
                             <input type="email" class="input-field" placeholder="Digite o seu Email"
                                 id="emailInputCadastro">
-                        </div>
-
+                            </div>
+                            
                         <!-- <div class="input-area">
                             <label for="contatoInput" class="">Contato</label>
                             <input type="text" class="input-field" placeholder="Digite o seu telefone" id="contatoInput">
                         </div> -->
-
+                        
                         <div class="input-area">
                             <label for="typeInput" class="">Tipo</label>
                             <select name="typeInput" class="input-field" id="typeInput">
@@ -91,11 +93,11 @@
                             <label for="cidadeInput" class="">Cidade</label>
                             <input type="text" class="input-field" disabled placeholder="Digite o seu CEP"
                                 id="cidadeInput">
-                        </div>
-                        <div class="input-area">
-                            <label for="bairroInput" class="">Bairro</label>
+                            </div>
+                            <div class="input-area">
+                                <label for="bairroInput" class="">Bairro</label>
                             <input type="text" class="input-field" disabled placeholder="Digite o seu CEP"
-                                id="bairroInput">
+                            id="bairroInput">
                         </div>
                         <div class="input-area">
                             <label for="numeroInput" class="">Número</label>
@@ -118,11 +120,11 @@
                             <label for="numeroOabInput" class="">Número OAB</label>
                             <input type="text" class="input-field" placeholder="Digite o Número da OAB"
                                 id="numeroOabInput">
-                        </div>
+                            </div>
 
-                        <div class="input-area">
-                            <label for="carteiraOabInput" class="">Número da Carteira da OAB</label>
-                            <input type="text" class="input-field" placeholder="Digite o Numero do Cartão"
+                            <div class="input-area">
+                                <label for="carteiraOabInput" class="">Número da Carteira da OAB</label>
+                                <input type="text" class="input-field" placeholder="Digite o Numero do Cartão"
                                 id="carteiraOabInput">
                         </div>
 
@@ -137,15 +139,15 @@
 
                     <div class="page page-cliente" style="display: none;">
                         <div class="input-area">
-                            <label for="numeroOabInput" class="">Profissão</label>
+                            <label for="profissaoInput" class="">Profissão</label>
                             <input type="text" class="input-field" placeholder="Digite a sua Profissão"
                                 id="profissaoInput">
                         </div>
-
+                        
                         <div class="input-area">
-                            <label for="numeroOabInput" class="">Data de Nascimento</label>
+                            <label for="nascimentoInput" class="">Data de Nascimento</label>
                             <input type="date" class="input-field" placeholder="Data de Nascimento"
-                                id="nascimentoInput">
+                            id="nascimentoInput">
                         </div>
 
                         <div class="input-area">
@@ -173,7 +175,7 @@
 
                     </div>
 
-
+                    
                     <div class="page">
                         <div class="input-area">
                             <label for="cpfInput" class="">CPF</label>
@@ -186,7 +188,7 @@
                         <div class="input-area">
                             <label for="confirmarsenhaInput" class="">Confirmar Senha</label>
                             <input type="password" class="input-field" placeholder="Confirme a Senha"
-                                id="confirmarsenhaInput">
+                            id="confirmarsenhaInput">
                         </div>
                         <p class="terms">Ao criar uma conta, você concorda com nossa <a href="#">Política <br>de
                                 Privacidade</a> e nossas <a href="#">Condições de Uso</a>.</p>
@@ -198,16 +200,16 @@
             </div>
         </div>
     </div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-
-</body>
-
-</html>
-<script src="../../public/js/form.js"></script>
-<script>
+        
+    </body>
+    
+    </html>
+    <script src="../../js/form.js"></script>
+    <script>
 
     // // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
 
@@ -389,5 +391,6 @@
     //             });
     //     }
     // }
+    
 
 </script>

@@ -3,7 +3,7 @@
 
     let userType = document.getElementById("typeInput").value
     let nome = document.getElementById("nomeInput").value
-
+    
     document.getElementById("typeInput").addEventListener("click", (event) => {
         document.getElementById("typeInput").style = null
     })
@@ -72,41 +72,95 @@
     nextBtn[0].addEventListener("click", function (event) {
         event.preventDefault();
       let email = document.getElementById("emailInputCadastro").value
+      let nome = document.getElementById("nomeInput").value
         if (userType != "1" && userType != "2") {
             document.getElementById("typeInput").style.borderColor = "red"
-            document.getElementById("typeInput").style.color = "red"
+            
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Selecione um tipo de usuário para continuar',
+                showCloseButton: true
+                
+            })
             return
         }
-        if(nomeInput.length < 3){
-           document.getElementById("nomeInput").style.borderColor = "red"
-           document.getElementById("nomeInput").style.color = "red"
-        return
-        }
-        if(email == 0 || email.indexOf("@") == -1 ){
-        document.getElementById("emailInputCadastro").style.borderColor = "red"
-        
-        return
-        }
-        nextButton();
-
-
-    })
-
-    nextBtn.forEach(btn => btn.addEventListener("click", function (event) {
-        event.preventDefault();
-        // document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
-        // Não sei o pq isso existe 
-    }));
-
-    prevBtn.addEventListener("click", function (event) {
-        if (current == 0) {
-            history.back()
+        if(nome.length < 3){
+            document.getElementById("nomeInput").style.borderColor = "red"
+            document.getElementById("nomeInput").style.color = "red"
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'O nome deve conter pelo menos três caracteres',
+                showCloseButton: true
+                
+              })
             return
+        }
+            if(email.length == 0){
+                document.getElementById("emailInputCadastro").style.borderColor = "red"
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: 'Insira um e-mail para continuar',
+                    showCloseButton: true
+                    
+                })
+                
+                return
+            } if(email.indexOf("@") == -1){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Insira um e-mail válido para continuar',
+                showCloseButton: true
+                
+            })
+            return
+        }
+            
+            nextButton();
+            
+                
+            })
+            nextBtn[1].addEventListener("click", function (event) {
+                event.preventDefault();
+            let cep = document.getElementById("cepInput").value
+                if(cep.length != 8){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops!',
+                        text: 'Insira um cep válido para continuar',
+                        showCloseButton: true
+                        
+                    })
+                    return
+                }
+                nextButton()
+            })
+              
+            nextBtn[2].addEventListener("click", function (event){
+                event.preventDefault();
+                console.log("Cheguei aqui")
+        })
+
+
+            nextBtn.forEach(btn => btn.addEventListener("click", function (event) {
+                event.preventDefault();
+                
+                // document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
+                // Não sei o pq isso existe 
+            }));
+            
+            prevBtn.addEventListener("click", function (event) {
+                if (current == 0) {
+                    history.back()
+                    return
         }
         prevButton();
     });
 
-    submitBtn.addEventListener("click", function () {
+    submitBtn.addEventListener("click", function (event) {
         event.preventDefault();
 
         let usuario = {
