@@ -10,7 +10,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="css/form.css">
         <link rel="stylesheet" href="../../public/css/form.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="input-area">
-                            <label for="cpfInput" class="">Estado Civil</label>
+                            <label for="estadoCivilInput" class="">Estado Civil</label>
                             <select class="input-field" id="estadoCivilInput">
                                 <option value="0" selected disabled hidden>Selecione seu estado civil</option>
                                 <option value="1">Solteiro</option>
@@ -162,7 +162,7 @@
                             </select>
                         </div>
                         <div class="input-area">
-                            <label for="carteiraOabInput" class="">Gênero</label>
+                            <label for="generoInput" class="">Gênero</label>
                             <select name="typeInput" class="input-field" id="generoInput">
                                 <option value="0" selected disabled hidden>Selecione seu gênero</option>
                                 <option value="1">Masculino</option>
@@ -181,14 +181,15 @@
                             <label for="cpfInput" class="">CPF</label>
                             <input type="text" class="input-field" placeholder="Digite o seu CPF" id="cpfInput">
                         </div>
-                        <div class="input-area">
+                        <div class="input-area inputSenha" >
                             <label for="senhaInput" class="">Senha</label>
                             <input type="password" class="input-field" placeholder="Digite a sua Senha" id="senhaInput">
+                            <!-- <i class="bi bi-eye-fill visibility"></i> -->
                         </div>
-                        <div class="input-area">
+                        <div class="input-area inputSenha" >
                             <label for="confirmarsenhaInput" class="">Confirmar Senha</label>
                             <input type="password" class="input-field" placeholder="Confirme a Senha"
-                            id="confirmarsenhaInput">
+                            id="confirmarSenhaInput">
                         </div>
                         <p class="terms">Ao criar uma conta, você concorda com nossa <a href="#">Política <br>de
                                 Privacidade</a> e nossas <a href="#">Condições de Uso</a>.</p>
