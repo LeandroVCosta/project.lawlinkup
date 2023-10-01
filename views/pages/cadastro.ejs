@@ -10,11 +10,14 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="../../public/css/form.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
+
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -65,15 +68,12 @@
                             <label for="emailInputCadastro" class="">Email</label>
                             <input type="email" class="input-field" placeholder="Digite o seu Email"
                                 id="emailInputCadastro">
-                            <input type="email" class="input-field" placeholder="Digite o seu Email"
-                                id="emailInputCadastro">
                         </div>
 
                         <!-- <div class="input-area">
                             <label for="contatoInput" class="">Contato</label>
                             <input type="text" class="input-field" placeholder="Digite o seu telefone" id="contatoInput">
                         </div> -->
-
 
                         <div class="input-area">
                             <label for="typeInput" class="">Tipo</label>
@@ -146,19 +146,19 @@
 
                     <div class="page page-cliente" style="display: none;">
                         <div class="input-area">
-                            <label for="numeroOabInput" class="">Profissão</label>
+                            <label for="profissaoInput" class="">Profissão</label>
                             <input type="text" class="input-field" placeholder="Digite a sua Profissão"
                                 id="profissaoInput">
                         </div>
 
                         <div class="input-area">
-                            <label for="numeroOabInput" class="">Data de Nascimento</label>
+                            <label for="nascimentoInput" class="">Data de Nascimento</label>
                             <input type="date" class="input-field" placeholder="Data de Nascimento"
                                 id="nascimentoInput">
                         </div>
 
                         <div class="input-area">
-                            <label for="cpfInput" class="">Estado Civil</label>
+                            <label for="estadoCivilInput" class="">Estado Civil</label>
                             <select class="input-field" id="estadoCivilInput">
                                 <option value="0" selected disabled hidden>Selecione seu estado civil</option>
                                 <option value="1">Solteiro</option>
@@ -169,7 +169,7 @@
                             </select>
                         </div>
                         <div class="input-area">
-                            <label for="carteiraOabInput" class="">Gênero</label>
+                            <label for="generoInput" class="">Gênero</label>
                             <select name="typeInput" class="input-field" id="generoInput">
                                 <option value="0" selected disabled hidden>Selecione seu gênero</option>
                                 <option value="1">Masculino</option>
@@ -188,14 +188,15 @@
                             <label for="cpfInput" class="">CPF</label>
                             <input type="text" class="input-field" placeholder="Digite o seu CPF" id="cpfInput">
                         </div>
-                        <div class="input-area">
+                        <div class="input-area inputSenha">
                             <label for="senhaInput" class="">Senha</label>
                             <input type="password" class="input-field" placeholder="Digite a sua Senha" id="senhaInput">
+                            <!-- <i class="bi bi-eye-fill visibility"></i> -->
                         </div>
-                        <div class="input-area">
+                        <div class="input-area inputSenha">
                             <label for="confirmarsenhaInput" class="">Confirmar Senha</label>
                             <input type="password" class="input-field" placeholder="Confirme a Senha"
-                                id="confirmarsenhaInput">
+                                id="confirmarSenhaInput">
                         </div>
                         <p class="terms">Ao criar uma conta, você concorda com nossa <a href="#">Política <br>de
                                 Privacidade</a> e nossas <a href="#">Condições de Uso</a>.</p>
@@ -220,7 +221,7 @@
 </body>
 
 </html>
-<script src="../../public/js/form.js"></script>
+<script src="../../js/form.js"></script>
 <script>
 
     // // SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
@@ -305,7 +306,7 @@
     // nextBtn.forEach(btn => btn.addEventListener("click", function (event) {
     //     event.preventDefault();
     //     // document.getElementById("emailInputCadastro").value = document.getElementById("emailInput").value
-    //     // Não sei o pq isso existe 
+    //     // Não sei o pq isso existe
     // }));
 
     // prevBtn.addEventListener("click", function (event) {
@@ -403,5 +404,6 @@
     //             });
     //     }
     // }
+
 
 </script>
