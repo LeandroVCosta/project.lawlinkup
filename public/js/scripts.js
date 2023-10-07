@@ -47,7 +47,7 @@
 
             }
             
-            await fetch(`http://localhost:8080/usuario/atualizarPerfil/${sessionStorage.getItem("userId")}`,{
+            await fetch(`http://localhost:8080/usuario/advogado/editar/${sessionStorage.getItem("userId")}`,{
                 method: "PATCH",
                 body: JSON.stringify(perfil),
                 headers: {
@@ -56,7 +56,7 @@
                     }
                  }).then((response) => console.log(response))
                  .then(desaparecerModal())
-                .then(document.getElementById("descricao").value = response[3]) 
+                
                  
          }
          async function pesquisarAdvogado(nome){
