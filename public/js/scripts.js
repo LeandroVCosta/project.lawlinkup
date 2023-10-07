@@ -52,11 +52,12 @@
                 body: JSON.stringify(perfil),
                 headers: {
                         "Content-type": "application/json; charset=UTF-8",
-                        "Access-Control-Allow-Origin": "http://localhost:8080"
+                        "Access-Control-Allow-Origin": "http://localhost:3000"
                     }
                  }).then((response) => console.log(response))
                  .then(desaparecerModal())
-        
+                .then(document.getElementById("descricao").value = response[3]) 
+                 
          }
          async function pesquisarAdvogado(nome){
             await fetch(`http://localhost:8080/usuario/${nome}`,{

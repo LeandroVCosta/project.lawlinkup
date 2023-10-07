@@ -62,7 +62,7 @@
                     <div class="card-titulo">Solicitação de prestação de serviço</div>
                     <div>
                         <div class="card-label">Tipo serviço</div>
-                        <select class="card-input">
+                        <select id="servicoInput" class="card-input">
                             <option value="">Selecione um serviço</option>
                             <option value="">Opção 1</option>
                             <option value="">Opção 1</option>
@@ -71,24 +71,24 @@
                     </div>
                     <div>
                         <div class="card-label">Caso</div>
-                        <select class="card-input">
-                            <option value="">Nome do caso</option>
-                            <option value="">Opção 1</option>
-                            <option value="">Opção 1</option>
-                            <option value="">Opção 2</option>
+                        <select id = "casoInput"class="card-input">
+                            <option value="1">Nome do caso</option>
+                            <option value="2">Opção 1</option>
+                            <option value="3">Opção 1</option>
+                            <option value="4">Opção 2</option>
                         </select>
                     </div>
                     <div>
                         <div class="card-label">Detalhamento</div>
-                        <textarea class="card-textarea" placeholder="Descreva com mais detalhes o seu caso"></textarea>
+                        <textarea id = "detalhamentoInput"class="card-textarea" placeholder="Descreva com mais detalhes o seu caso"></textarea>
                     </div>
                     <div>
                         <div class="card-label">Valor</div>
-                        <input class="card-input" type="number" placeholder="Valor do orçamento(R$)" />
+                        <input class="card-input" id="valorInput" type="number" placeholder="Valor do orçamento(R$)" />
                     </div>
                     <div>
                         <div class="card-label">Prazo final</div>
-                        <input class="card-input" type="date" placeholder="DD/MM/AAAA" />
+                        <input class="card-input" id="prazoInput"type="date" placeholder="DD/MM/AAAA" />
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
 </body>
 
 </html>
-
+<script src="../../public/js/orcamento.js"></script>
 <script>
     document.getElementById("goBack").addEventListener("click", function () {
         window.location.href = "chat";
