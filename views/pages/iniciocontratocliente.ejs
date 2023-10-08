@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/iniciocontratocliente.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
+    <script src="js/scripts.js"></script>
 
 </head>
 
@@ -22,8 +23,8 @@
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
-                    <img src="img/Logo-SemFundo.svg" width="120" height="100"
-                        class="d-inline-block align-center" alt="">
+                    <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
+                        alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,8 +94,11 @@
                         </div>
                         <p class="p_aceitacao">Deseja aceitar a prestação desse serviço?</p>
                         <div class="div-botoes">
-                            <div class="btn-acao-neg"><img src="img/CorrectIcon.svg"></div>
-                            <div class="btn-acao-pos"><img src="img/ExitIcon.svg"></div>
+                            <a href="chat.ejs">
+                                <div class="btn-acao-neg"><img src="img/ExitIcon.svg"></div>
+                            </a>
+                            <div class="btn-acao-pos" onclick="aparecerModalAceite()"><img src="img/CorrectIcon.svg">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,6 +106,19 @@
 
             </div>
 
+        </div>
+        <div class="modal" id="div_modal">
+            <div class="div_corpo_modal">
+                <div class="header-modal">
+                    <div onclick="desaparecerModalAceite()" class="div_voltar_modal">
+                        <img src="img/seta-esquerda.png" class="seta" alt="">
+                    </div>
+                    <h2 class="modal-title">Contrato de prestação de serviço aceito</h2>
+                </div>
+                <a href="chat.ejs">
+                    <div class="botao-aceitar"><img src="img/CorrectIcon.svg"></div>
+                </a>
+            </div>
         </div>
     </div>
 

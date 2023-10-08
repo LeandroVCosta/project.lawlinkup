@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="img/favicon.ico.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestação de Serviço</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/solicitacaovincliente.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home">
+                    <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
+                        alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="contact">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="marketplace">Buscar Advogado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cadastro"><button
+                                    class="btn btn-outline-light">Cadastre-se</button></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container-full-page-contrato">
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <div class="form-box">
+            <div style="width: 100%;">
+                <div onclick="history.back()" class="div_voltar div_voltar-login prev">
+                    <img src="img/seta-esquerda.png" class="seta" alt="">
+                </div>
+            </div>
+
+            <h4>Solicitação de Início de Vínculo</h4>
+            <div class="form-outer-contrato">
+                <div class="input-cliente">
+                    <b>Cliente</b>: Adamastor Vieira
+                </div>
+                <div class="input-caso">
+                    <b>Caso</b>: Contrato de Compra de Imóvel
+                </div>
+                <div class="input-descricao">
+                    <b>Descrição</b>: Gostaria que verificasse se o contrato do imóvel que estou
+                    adquirindo está dentro dos conformes e não vai me causar nenhum malefício no futuro.
+                </div>
+            </div>
+            <b>Aceitar criação de Vínculo</b>
+            <div class="botoes-vinculo">
+                <a href="marketplace.ejs">
+                    <div class="botao-negar"><img src="img/ExitIcon.svg"></div>
+                </a>
+                <a href="chat.ejs">
+                    <div class="botao-aceitar"><img src="img/CorrectIcon.svg"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+
+</html>
