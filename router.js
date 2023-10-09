@@ -69,6 +69,10 @@ router.get('/viewprofile', (req, res) => {
     res.render(path.join(baseURL, 'viewprofile'))
 })
 
+router.get('/metricasadvogados', (req, res) => {
+    res.render(path.join(baseURL, 'metricasadvogados'))
+})
+
 router.get('/solicitacaovincliente', (req, res) => {
     res.render(path.join(baseURL, 'solicitacaovincliente'))
 })
