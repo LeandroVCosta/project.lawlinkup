@@ -73,6 +73,10 @@ router.get('/metricasadvogados', (req, res) => {
     res.render(path.join(baseURL, 'metricasadvogados'))
 })
 
+router.get('/metricasclientes', (req, res) => {
+    res.render(path.join(baseURL, 'metricasclientes'))
+})
+
 router.get('/solicitacaovincliente', (req, res) => {
     res.render(path.join(baseURL, 'solicitacaovincliente'))
 })
