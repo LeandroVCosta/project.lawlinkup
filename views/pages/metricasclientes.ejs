@@ -9,15 +9,15 @@
     <title>Métricas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+    
+    <link rel="stylesheet" href="css/metricas.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/metricasclientes.css'">
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
 
 </head>
 
-<body>
+<body class="body_metricas">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
@@ -51,11 +51,24 @@
 
     </header>
 
+<div id="conteudo">
 
-    <div style="margin-bottom: 48px;">
-       
-    </div>
-
+    <h1>Charts:</h1>
+ 
+</div>
+ 
+<div class="menu_lateral">
+    <ul class="ul">
+        <li><b>Métricas:</b></li>
+		<li><a href="link"><img id="img_barra_lateral" src="img/ListChecks.png" alt="">Relatórios</a></li>
+        <ul id="espaco_barra_lateral"></ul>
+		<li><a href="link"><img id="img_barra_lateral" src="img/User.png" alt="">Perfil</a></li>
+		<li><a href="link"><img id="img_barra_lateral" src="img/notificacao.png" alt="">Notificações</a></li>
+		<li><a href="link"><img id="img_barra_lateral" src="img/Gear.png" alt="">Configurações</a></li>
+		<li><a href="link"><img id="img_barra_lateral" src="img/Question.png" alt="">FAQ</a></li>
+        <li><a href="link"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
+	  </ul>
+</div>
 
 </body>
 
@@ -64,4 +77,5 @@
     window.onload = function () {
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
     }
+
 </script>
