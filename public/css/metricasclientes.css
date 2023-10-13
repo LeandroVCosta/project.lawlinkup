@@ -14,74 +14,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-
-}
-
-#espaco_chart1 {
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-}
-
-#grafico1 {
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-#grafico2 {
-    border-radius: 8px;
-    margin-top: 24px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-#espaco_chart2 {
-    display: flex;
-    justify-content: center;
-}
-
-#kpis div {
-    justify-content: start;
-    margin: 20px;
-    width: 400px;
-    height: 104px;
-    display: inline-block;
-}
-
-#kpis h4 {
-    margin: 8px;
-    text-align: start;
-    color: #5A5A5F;
-}
-
-
-#kpis h1 {
-    margin: 8px;
-    text-align: center;
-    color: #004EDA;
-}
-
-#kpi1 {
-    padding-bottom: 8px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-#kpi2 {
-    padding-bottom: 8px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-#kpi3 {
-    padding-bottom: 8px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-#kpi4 {
-    padding-bottom: 8px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    align-items: center;
 }
 
 .menu_lateral {
@@ -129,28 +62,34 @@ body {
     color: #000;
 }
 
-.espaco_chart1 {
-    display: flex;
-    justify-content: center;
-}
-
-.espaco_chart2 {
-    display: flex;
-    justify-content: center;
-}
-
 /* Métricas Clientes:*/
 
-.avaliacao li {
+.media_avaliacao {
+    height: 360px;
+    width: 40%;
+    justify-content: center;
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.media_avaliacao h1 {
+    color: #004EDA;
+}
+
+.media_avaliacao h2 {
+    text-align: start;
+    color: #004EDA;
+}
+
+.media_avaliacao li {
     display: inline-block;
 }
 
 .star-icon {
     list-style-type: none;
-    border: 1px solid #fff;
     cursor: pointer;
-    color: #004EDA;
-    font-size: 40px;
+    color: #002855;
+    font-size: 120px;
     /* alterar o tamanho das estrelas */
 }
 
@@ -168,4 +107,59 @@ body {
 
 .star-icon:hover~.star-icon::before {
     content: "\2606";
+}
+
+
+/*Relatorio casos*/
+
+.relatorio_casos {
+    margin-top: 24px;
+    height: 360px;
+    width: 40%;
+    justify-content: center;
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    flex-direction: column;
+}
+
+.relatorio_casos h2 {
+    text-align: start;
+    color: #004EDA;
+}
+
+.ul_tabela {
+    text-align: start;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+}
+
+.ul_tabela .li_conteudo {
+    color: #004EDA;
+    font-size: 24px;
+    width: 280px;
+    height: 40px;
+    margin: 0;
+    margin-left: 120px;
+    border: 1px solid #CCCCCC;
+    background: #FFF;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.ul_tabela .li_text {
+    padding: 8px;
+    color: #5A5A5F;
+    font-size: 24px;
+    width: 280px;
+    height: 40px;
+    margin: 0;
+    margin-left: 120px;
+    background: #FFF;
+    overflow: hidden;
+}
+
+.ul_tabela li:nth-child(odd) {
+    float: left;
 }
