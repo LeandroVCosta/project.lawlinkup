@@ -1,53 +1,140 @@
 body {
     overflow: hidden;
     color: #000;
-	font: 12px Verdana, sans-serif;
+    font: 12px Verdana, sans-serif;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 #conteudo {
+    padding-top: 24px;
+    height: 100%;
     width: 85%;
     float: right;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#espaco_chart1 {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+#grafico1 {
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#grafico2 {
+    border-radius: 8px;
+    margin-top: 24px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#espaco_chart2 {
+    display: flex;
+    justify-content: center;
+}
+
+#kpis div {
+    justify-content: start;
+    margin: 20px;
+    width: 400px;
+    height: 104px;
+    display: inline-block;
+}
+
+#kpis h4 {
+    margin: 8px;
+    text-align: start;
+    color: #5A5A5F;
+}
+
+
+#kpis h1 {
+    margin: 8px;
+    text-align: center;
+    color: #004EDA;
+}
+
+#kpi1 {
+    padding-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#kpi2 {
+    padding-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#kpi3 {
+    padding-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#kpi4 {
+    padding-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .menu_lateral {
-	background: #F5F5F5;
-	color: #666;
+    background: #F5F5F5;
+    color: #666;
     width: 15%;
-	margin: 0; padding: 0;
-	float: left;
+    margin: 0;
+    padding: 0;
+    float: left;
     height: 100%;
     box-shadow: 5px 0 5px -2px #888;
 }
 
-.menu_lateral ul{
+.menu_lateral ul {
     padding-right: 16px;
 }
 
 .menu_lateral ul li {
-    margin: 0; padding: 0px;
+    margin: 0;
+    padding: 0px;
     padding-top: 10px;
     text-align: left;
     list-style-type: none;
 }
 
-#espaco_barra_lateral{
- height: 170px;   
+#espaco_barra_lateral {
+    height: 480px;
 }
 
-#img_barra_lateral{
+#img_barra_lateral {
     margin-right: 8px;
 }
 
 .menu_lateral a:link {
-	background: #F5F5F5;
-	color: #666;
-	font-weight: bold;
-	text-decoration: none;
-	padding: 8px;
-	display: block;
+    background: #F5F5F5;
+    color: #666;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+    font-size: 16px;
 }
 
 .menu_lateral a:hover {
     color: #000;
+}
+
+.espaco_chart1 {
+    display: flex;
+    justify-content: center;
+}
+
+.espaco_chart2 {
+    display: flex;
+    justify-content: center;
 }

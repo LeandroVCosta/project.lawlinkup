@@ -53,7 +53,36 @@
 
 <div id="conteudo">
 
-    <h1>Charts:</h1>
+    <div id="kpis">
+        <div id="kpi1">
+            <h4>Total Clientes</h4>
+            <h1>120</h1>
+        </div>
+
+        <div id="kpi2">
+            <h4>Visitas</h4>
+            <h1>120</h1>
+        </div>
+
+        <div id="kpi3">
+            <h4>Contatos</h4>
+            <h1>120</h1>
+        </div>
+
+        <div id="kpi4">
+            <h4>Casos em andamento</h4>
+            <h1>120</h1>
+        </div>
+
+    </div>
+
+    <div id="espaco_chart1" style="height: 280px; width: 100%;">
+        <canvas id="grafico1" style="height: 280px; width: 1040px;"></canvas>
+    </div>
+
+    <div id="espaco_chart2" style="height: 280px; width: 100%;">
+        <canvas id="grafico2" style="height: 280px; width: 1040px;"></canvas>
+    </div>      
  
 </div>
  
@@ -73,9 +102,125 @@
 </body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     window.onload = function () {
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
     }
+
+    const ctx = document.getElementById('grafico1');
+
+    Chart.defaults.font.size = 18;
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
+    datasets: [{
+                backgroundColor: 'rgb(224, 113, 47)',    
+                borderColor: 'rgb(224, 113, 47)',
+                pointBorderColor: "#E0712F",
+                pointBackgroundColor: "#FFFF",
+                pointBorderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 1,
+                pointRadius: 4,
+                BackgroundColor: "#E0712F",
+      label: 'Casos',
+      data: [12, 19, 3, 5, 2, 3, 10, 12, 4],
+      borderWidth: 2
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
+    plugins: {
+          legend: {
+            display: true,
+            position: "bottom",
+            align: "center"
+          },
+          title: {
+                font: {weight: 'bold'},
+                color: 'rgb(0,78,218)',
+                display: true,
+                text: 'Quantidade de casos mensais',
+                padding: {
+                    top: 10,
+                    bottom: 10
+                }
+  }
+}
+}
+}
+);
+
+const ctx2 = document.getElementById('grafico2');
+
+new Chart(ctx2, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
+    datasets: [{
+                backgroundColor: 'rgb(224, 113, 47)',
+                borderColor: 'rgb(224, 113, 47)',
+                pointBorderColor: "#E0712F",
+                pointBackgroundColor: "#FFFF",
+                pointBorderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 1,
+                pointRadius: 4,
+                BackgroundColor: "#E0712F",
+      label: 'Qtd. Acessos',
+      data: [12, 9, 3, 5, 2, 3, 10, 12, 4],
+      borderWidth: 2
+    },
+    {           backgroundColor: 'rgb(154,128,83)',
+                borderColor: 'rgb(154,128,83)',
+                pointBorderColor: "#9A8053",
+                pointBackgroundColor: "#FFFF",
+                pointBorderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 1,
+                pointRadius: 4,
+                BackgroundColor: "#E0712F",
+      label: 'Contatos',
+      data: [22, 17, 11, 9, 12, 10, 12, 12, 20],
+      borderWidth: 2,
+    }
+]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
+    plugins: {
+          legend: {
+            display: true,
+            position: "bottom",
+            align: "center"
+          },
+          title: {
+                font: {weight: 'bold'},
+                color: 'rgb(0,78,218)',
+                display: true,
+                text: 'Acessos X Contatos',
+                padding: {
+                    top: 10,
+                    bottom: 10
+                }
+  }
+}
+}
+}
+);
+
 
 </script>
