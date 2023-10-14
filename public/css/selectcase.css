@@ -7,80 +7,93 @@
 
 .case-container {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     height: 100%;
+}
+
+.selectcase-title {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.card-no-case {
+    display: flex;
+    height: 175px;
+    width: 750px;
+    background-color: #AF9469;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: start;
+}
+
+.card-content {
+    height: 80%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.case-desc {
+    font-size: 18px;
 }
 
 .card-case {
     display: flex;
-    justify-content: center;
-    background-color: rgba(77, 160, 255, 0.4);
-    width: 50%;
-    height: 55%;
+    height: 175px;
+    width: 750px;
+    background-color: #B8D9FF;
+    margin-bottom: 40px;
     border-radius: 10px;
-    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
 }
 
-.conteudo {
+.action-icons {
     display: flex;
-    align-items: center;
     flex-direction: column;
 }
 
-.card-titulo {
-    margin-top: 24px;
-    margin-bottom: 24px;
-    font-size: 32px;
-    color: #000;
-}
-
-.card-label {
-    font-size: 16px;
-    color: #000;
-}
-
-.card-input {
-    height: 48px;
-    width: 464px;
-    border-radius: 5px;
-    border-style: none;
-    margin-bottom: 10px;
-    color: #6C757D;
-}
-
-.case-desc {
-    color: #000;
-    text-decoration: none;
-}
-
-.case-click {
-    color: #002855;
-}
-
-.div_voltar {
-    width: 40px;
-    height: 40px;
-    margin-top: 8px;
-    border-radius: 40px;
-
-    background: #002855;
-    position: absolute;
+.action {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+}
+
+.button-newcase {
+    background-color: #002855;
+    border: #002855;
+    border-radius: 10px;
+    color: #FFFFFF;
+    height: 45px;
+    width: 130px;
+    font-size: 18px;
+    margin-top: auto;
+}
+
+.button-retomar {
+    background-color: #002855;
+    border: #002855;
+    border-radius: 10px;
+    color: #FFFFFF;
+    height: 45px;
+    width: 130px;
+    font-size: 18px;
+    margin-top: 70px;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icon {
     cursor: pointer;
-    align-self: self-start;
-    margin-top: 40px;
-    margin-left: -130px;
-
-}
-
-.seta{
-    height: 30px;
-    width: 25px;
-}
-
-.link {
-    color: #002855;
-    text-decoration: none;
 }
