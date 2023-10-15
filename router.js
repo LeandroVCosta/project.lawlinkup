@@ -81,4 +81,8 @@ router.get('/solicitacaovincliente', (req, res) => {
     res.render(path.join(baseURL, 'solicitacaovincliente'))
 })
 
+router.get('/avaliacaoadv', (req, res) => {
+    res.render(path.join(baseURL, 'avaliacaoadv'))
+})
+
 module.exports = router
