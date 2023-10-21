@@ -41,3 +41,7 @@ async function LogarUsuario(usuario) {
         })
     window.location.href = userType == "cliente" ? "marketplace" : "profile"
 }
+
+prevBtn.addEventListener("click", function(event){
+    history.back()
+})

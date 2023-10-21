@@ -379,15 +379,3 @@ function buscarCep() {
             });
     }
 }
-
-//Login
-    function prevButton() {
-        history.back()
-    }
-
-    prevBtn.addEventListener("click", function(event){
-        prevButton();
-    });
-
-   
-

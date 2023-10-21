@@ -70,55 +70,9 @@
                                 Sem problemas, você pode criar um novo clicando em <b>Novo Caso</b>
                             </div>
                         </div>
-                        <button class="button-newcase">
+                        <button onclick="criarNovoCaso()" class="button-newcase">
                             Novo Caso
                         </button>
-                    </div>
-                </div>
-                <div class="card-case">
-                    <div class="card-content">
-                        <div class="card-text">
-                            <div class="card-title">
-                                Problemas com contrato
-                            </div>
-                            <div class="case-desc">
-                                Estou com problemas par assinar um contrato de compra de imóvel...
-                            </div>
-                        </div>
-                        <div class="action">
-                            <div class="action-icons">
-                                <div class="icons">
-                                    <img src="img/edit-icon.svg" alt="" class="icon">
-                                    <img src="img/delete-icon.svg" alt="" class="icon">
-                                </div>
-                                <button class="button-retomar">
-                                    Retomar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-case">
-                    <div class="card-content">
-                        <div class="card-text">
-                            <div class="card-title">
-                                Problemas com contrato
-                            </div>
-                            <div class="case-desc">
-                                Estou com problemas par assinar um contrato de compra de imóvel...
-                            </div>
-                        </div>
-                        <div class="action">
-                            <div class="action-icons">
-                                <div class="icons">
-                                    <img src="img/edit-icon.svg" alt="" class="icon">
-                                    <img src="img/delete-icon.svg" alt="" class="icon">
-                                </div>
-                                <button class="button-retomar">
-                                    Retomar
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -130,17 +84,83 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
 
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const idAdvogado = urlParams.get('advogado');
+        window.onload = function () {
+            document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+            renderCaso()
+        }
+
+        async function renderCaso() {
+            const idUsuario = sessionStorage.getItem("userId");
+            const retorno = await fetch(`http://localhost:8080/caso/${idUsuario}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            const dadosRequisicao = await retorno.json()
+
+            dadosRequisicao.forEach(element => {
+                console.log(element)
+                loadCaso(element)
+            });
+
+        }
+
+        function loadCaso(caso) {
+            $('.container-cards').append(`
+                <div class="card-case">
+                    <div class="card-content">
+                        <div class="card-text">
+                            <div class="card-title">
+                                ${caso.servico}
+                            </div>
+                            <div class="case-desc">
+                                ${caso.detalhamento}
+                            </div>
+                        </div>
+                        <div class="action">
+                            <div class="action-icons">
+                                <div class="icons">
+                                    <img src="img/edit-icon.svg" alt="" class="icon">
+                                    <img src="img/delete-icon.svg" alt="" class="icon">
+                                </div>
+                                <button onclick="enviarCaso(${caso.idCaso})" class="button-retomar">
+                                    Retomar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `)
+        }
+
+        function criarNovoCaso() {
+            window.location.href = `case?advogado=${idAdvogado}`;
+        }
+
+        async function enviarCaso(idCaso) {
+            const idUsuario = sessionStorage.getItem("userId");
+            const retorno = await fetch(`http://localhost:8080/vinculo`, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify({
+                    advogadoId: idAdvogado,
+                    casoId: idCaso
+                })
+            })
+            if (retorno.ok) {
+                window.location = "chat"
+            }
+        }
+
+    </script>
 </body>
 
 </html>
-
-<script>
-    document.getElementById("goBack").addEventListener("click", function () {
-        window.location.href = "marketplace";
-    });
-
-    //     document.getElementById("createCase").addEventListener("click", function() {
-    //     window.location.href = "case.html";
-    // });
-</script>

@@ -7,6 +7,9 @@ async function cadastrarCaso() {
         clienteId: sessionStorage.getItem("userId")
     }
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const idAdvogado = urlParams.get('advogado');
+
     await fetch('http://localhost:8080/caso', {
         method: "POST",
         body: JSON.stringify(caso),
@@ -15,7 +18,7 @@ async function cadastrarCaso() {
         }
     }).then((response) => {
         console.log(response)
-        window.location.href = "chat"
+        window.location.href = `selectcase?advogado=${idAdvogado}`
     })
 
 }

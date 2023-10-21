@@ -22,8 +22,8 @@
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
-                    <img src="img/Logo-SemFundo.svg" width="120" height="100"
-                        class="d-inline-block align-center" alt="">
+                    <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
+                        alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,17 +64,18 @@
                 </div>
                 <div class="info-col">
                     <div class="div_descricoes">
-                        <h2 class="texto">José da Silva Romeiro</h2>
-                        <h4 class="descricao">Doutor em direito imobiliário</h4>
-                        <p class="estado">São Paulo, SP</p>
+                        <h2 id="nomeAdvogado" class="texto">José da Silva Romeiro</h2>
+                        <h4 id="especializacaoAdvogado" class="descricao">Doutor em direito imobiliário</h4>
+                        <p id="cidadeAdvogado" class="estado">São Paulo, SP</p>
                     </div>
-                    <div class="card">
-                        Olá, eu me chamo José da Silva Romeiro sou formado em direito pela USP, estou nesse ramo a 30 anos e estou disposto a te ajudar a resolver seus problemas.
+                    <div id="descricaoAdvogado" class="card">
+                        Olá, eu me chamo José da Silva Romeiro sou formado em direito pela USP, estou nesse ramo a 30
+                        anos e estou disposto a te ajudar a resolver seus problemas.
                     </div>
                 </div>
             </div>
             <div class="btn-enviar">
-                <a href="case"><button class="btn-lg" id="btn_enviar">Enviar caso</button></a>
+                <button id="btnEnviarCaso" class="btn-lg" id="btn_enviar">Enviar caso</button>
             </div>
         </div>
     </div>
@@ -84,7 +85,49 @@
 
 </html>
 <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const idAdvogado = urlParams.get('advogado');
     window.onload = function () {
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+        getAdvogado(idAdvogado)
+        addVisita(idAdvogado)
     }
+
+    async function getAdvogado(idAdvogado) {
+        const retorno = await fetch(`http://localhost:8080/usuario/advogado/buscarPorId/${idAdvogado}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const dadosRequisicao = await retorno.json()
+
+        console.log(dadosRequisicao)
+        loadAdvogado(dadosRequisicao)
+
+    }
+    
+    function loadAdvogado(advogado) {
+        document.getElementById("nomeAdvogado").innerHTML = advogado.nome
+        document.getElementById("especializacaoAdvogado").innerHTML = advogado.especializacao
+        document.getElementById("cidadeAdvogado").innerHTML = advogado.cidade
+        document.getElementById("descricaoAdvogado").innerHTML = advogado.sobre ? advogado.sobre : "Sem descrição"
+
+        document.getElementById("btnEnviarCaso").addEventListener("click", () => {
+            window.location = `selectcase?advogado=${advogado.idUsuario}`
+        })
+    }
+
+    function addVisita(idAdvogado) {
+        fetch(`http://localhost:8080/usuario/advogado/adicionarVisita/${idAdvogado}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+    }
+
+
+
+
 </script>
