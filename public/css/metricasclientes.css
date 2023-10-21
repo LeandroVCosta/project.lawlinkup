@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow: auto;
     color: #000;
     font: 12px Verdana, sans-serif;
     padding-top: 0;
@@ -18,17 +18,21 @@ body {
 }
 
 .menu_lateral {
+    position: fixed;
+    align-items: start;
+    height: 130vh;
+    transition: left 0.5s linear;
     background: #F5F5F5;
     color: #666;
     width: 15%;
     margin: 0;
     padding: 0;
     float: left;
-    height: 100%;
     box-shadow: 5px 0 5px -2px #888;
 }
 
 .menu_lateral ul {
+    padding-top: 16px;
     padding-right: 16px;
 }
 
@@ -41,7 +45,7 @@ body {
 }
 
 #espaco_barra_lateral {
-    height: 480px;
+    height: 266px;
 }
 
 #img_barra_lateral {
@@ -65,10 +69,11 @@ body {
 /* Métricas Clientes:*/
 
 .media_avaliacao {
-    height: 360px;
-    width: 40%;
+    border-radius: 8px;
+    height: 280px;
+    width: 75%;
     justify-content: center;
-    padding: 40px;
+    padding: 24px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -89,7 +94,7 @@ body {
     list-style-type: none;
     cursor: pointer;
     color: #002855;
-    font-size: 120px;
+    font-size: 80px;
     /* alterar o tamanho das estrelas */
 }
 
@@ -113,13 +118,15 @@ body {
 /*Relatorio casos*/
 
 .relatorio_casos {
+    border-radius: 8px;
     margin-top: 24px;
-    height: 360px;
-    width: 40%;
+    height: 280px;
+    width: 75%;
     justify-content: center;
-    padding: 40px;
+    padding: 32px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     flex-direction: column;
+    margin-bottom: 24px;
 }
 
 .relatorio_casos h2 {

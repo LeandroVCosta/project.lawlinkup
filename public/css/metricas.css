@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow: auto;
     color: #000;
     font: 12px Verdana, sans-serif;
     padding-top: 0;
@@ -7,8 +7,8 @@ body {
 }
 
 #conteudo {
-    padding-top: 24px;
-    height: 100%;
+    padding-top: 0px;
+    height: 120%;
     width: 85%;
     float: right;
     text-align: center;
@@ -42,19 +42,19 @@ body {
 #kpis div {
     justify-content: start;
     margin: 20px;
-    width: 400px;
-    height: 104px;
+    width: 232px;
+    height: 88px;
     display: inline-block;
 }
 
-#kpis h4 {
+#kpis h5 {
     margin: 8px;
     text-align: start;
     color: #5A5A5F;
 }
 
 
-#kpis h1 {
+#kpis h2 {
     margin: 8px;
     text-align: center;
     color: #004EDA;
@@ -85,17 +85,23 @@ body {
 }
 
 .menu_lateral {
+    position: fixed;
+    align-items: start;
+    height: 130vh;
+    transition: left 0.5s linear;
     background: #F5F5F5;
     color: #666;
     width: 15%;
     margin: 0;
     padding: 0;
     float: left;
-    height: 100%;
     box-shadow: 5px 0 5px -2px #888;
 }
 
+
+
 .menu_lateral ul {
+    padding-top: 16px;
     padding-right: 16px;
 }
 
@@ -108,7 +114,7 @@ body {
 }
 
 #espaco_barra_lateral {
-    height: 480px;
+    height: 266px;
 }
 
 #img_barra_lateral {
