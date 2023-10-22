@@ -45,37 +45,6 @@ function desaparecerModalAceite() {
     document.body.style.overflow = "auto"
 }
 
-
-
-
-
-
-//funções de atualização de perfil
-async function atualizarPerfil() {
-    console.log("aaaaa: ", document.getElementById("div_perfil"))
-    const perfil = {
-        foto: document.getElementById("div_perfil") ? document.getElementById("div_perfil").value : "aaaa",
-        nome: document.getElementById("nameInput").value,
-        especializacao: document.getElementById("specializationInput").value,
-        sobre: document.getElementById("aboutInput").value
-
-    }
-
-    await fetch(`http://localhost:8080/usuario/advogado/editar/${sessionStorage.getItem("userId")}`, {
-        method: "PATCH",
-        body: JSON.stringify(perfil),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            "Access-Control-Allow-Origin": "http://localhost:3000"
-        }
-    }).then((response) => console.log(response))
-    .then(desaparecerModal())
-    document.getElementById("nome_adv").innerHTML = perfil.nome
-    document.getElementById("descricao").innerHTML = perfil.sobre
-    document.getElementById("especializacao").innerHTML = perfil.especializacao
-    
-
-}
 async function pesquisarAdvogado(nome) {
     await fetch(`http://localhost:8080/usuario/${nome}`, {
         method: "GET",

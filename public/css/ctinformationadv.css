@@ -1,5 +1,4 @@
 @import url('index.css');
-@import url('form.css');
 
 
 .profile-banner {
@@ -17,7 +16,6 @@
 
 .completed-page {
     height: 560px;
-    overflow-y: auto;
 }
 
 .div_voltar {
@@ -82,6 +80,7 @@
     border-radius: 10px;
     text-align: center;
     padding: 10px 30px 10px 30px;
+    overflow: auto;
 }
 
 .div_titulo {

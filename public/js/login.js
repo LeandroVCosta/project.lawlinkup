@@ -35,6 +35,7 @@ async function LogarUsuario(usuario) {
             .then((response) => response.json())
             .then((json) => {
                 window.alert(JSON.stringify(json));
+                sessionStorage.setItem("userType", json.tipoUsuario.nome.toLowerCase())
                 sessionStorage.setItem("userName", json.nome)
                 sessionStorage.setItem("userId", json.idUsuario)
                 userType = json.tipoUsuario.nome.toLowerCase()
