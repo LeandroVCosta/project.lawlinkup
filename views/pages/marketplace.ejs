@@ -56,6 +56,9 @@
       <h4 class="side-title">Filtrar por</h4>
       <button class="side-btn">Localização</button>
       <button class="side-btn">Avaliação</button>
+      <select class="side-btn" id="listarEspecializacao" onchange="loadByEspecializacao()">Especialização
+        <option value="todos">Escolha a Especialização</option>
+      </select>
       <h4 class="side-title">Ordenar por</h4>
       <button class="side-btn">Alfabética</button>
     </div>
@@ -83,6 +86,10 @@
 
 
 <script>
+window.onload = getAdvogadoByEspecializacao()
+var especializacoes_adv = null
+var dadosRequisicao = null
+
   window.onload = function () {
     alterarNavbar()
     renderAdvogado()
@@ -95,10 +102,9 @@
         "Content-type": "application/json; charset=UTF-8"
       }
     })
-    const dadosRequisicao = await retorno.json()
+    dadosRequisicao = await retorno.json()
 
     dadosRequisicao.forEach(element => {
-      console.log(element)
       loadAdvogado(element)
     });
 
@@ -121,4 +127,42 @@
             </div>
             </div>`)
   }
+
+ async function getAdvogadoByEspecializacao(){
+    const retorno = await fetch(`http://localhost:8080/usuario/advogado/filtrarespecializacao`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+   especializacoes_adv = await retorno.json()
+   let keys = Object.keys(especializacoes_adv)
+   for (i in keys){
+      if (keys[i] == ""){
+        continue
+      }
+        document.getElementById("listarEspecializacao").add(new Option(keys[i], keys[i]))
+   }
+  }
+
+
+function loadByEspecializacao(){
+    let especializacao =  document.getElementById("listarEspecializacao").value
+
+    if (especializacao == "todos"){
+        console.log(dadosRequisicao)
+        $('.cardgroup').empty()
+        dadosRequisicao.forEach(element => {
+        loadAdvogado(element)
+    });
+    return
+    }
+    console.log(especializacao)
+    let lista_adv = especializacoes_adv[especializacao]
+    $('.cardgroup').empty()
+    lista_adv.forEach(element => {
+      console.log(element)
+      loadAdvogado(element)
+    });
+}
 </script>
