@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="css/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/75218518b3.js" crossorigin="anonymous"></script>
+    <script src="js/navbar.js"></script>
 </head>
 
 <body>
-    <header>
+    <header id="header-site">
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
@@ -90,7 +91,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const idAdvogado = urlParams.get('advogado');
         window.onload = function () {
-            document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+            alterarNavbar()
             renderCaso()
         }
 

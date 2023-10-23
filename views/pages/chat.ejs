@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="css/chat.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-
+    <script src="js/navbar.js"></script>
 </head>
 
 <body>
-    <header>
+    <header id="header-site">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-color-primary" style="font-family: 'Roboto' ;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
@@ -176,6 +176,6 @@
 
 
     window.onload = function() {
-        document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+        alterarNavbar()
     }
 </script>

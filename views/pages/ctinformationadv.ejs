@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="css/ctinformationadv.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-
+    <script src="js/navbar.js"></script>
 </head>
 
 <body>
-    <header>
+    <header id="header-site">
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
@@ -50,39 +50,41 @@
         </nav>
 
     </header>
-    <div class="completed-page">
-        <div class="profile-banner">
-            <div onclick="history.back()" class="div_voltar">
-                <img src="img/seta-esquerda.png" class="seta" alt="">
-            </div>
-            <div class="div_foto">
-            </div>
-            <div class="div_descricoes">
-                <div class="div_cardbotao">
-                    <h2 class="texto_nome">José da Silva Romeiro</h2>
+    <main>
+        <div class="completed-page">
+            <div class="profile-banner">
+                <div onclick="history.back()" class="div_voltar">
+                    <img src="img/seta-esquerda.png" class="seta" alt="">
                 </div>
-                <div class="div_contrato">
-                    <div class="div_titulo">Solicitação de prestação de serviço</div>
-                    <div class="div_informacoes">
-                        <b class="b_campos">Prestador:</b> José Silva Romeiro <br>
-                        <b class="b_campos">Tomador:</b> Carlos Augusto<br>
-                        <p class="p_contrato">José Silva Romeiro(Prestador), vem por meio desse contrato, afirmar que o
-                            tal irá se disponibilizar a prestação do serviço “Análise de contrato imobiliário”
-                            solicitado por Carlos Augusto(Tomador) que tem valor de R$ 300,00. Logo após o pagamento
-                            dessa dívida, José Silva Romeiro estará disponível e autorizado a trabalhar no caso
-                            demandado.</p>
-                        <p class="p_contrato">Aceitando esse contrato, ambos afirmam estarem cientes dos seus papéis e
-                            se responsabilizam pelo não cumprimento do tal.</p>
-
-                        <b class="b_campos">Valor:</b> R$ 300,00<br>
-                        <b class="b_campos">Prazo Final:</b> 22/05/2023
+                <div class="div_foto">
+                </div>
+                <div class="div_descricoes">
+                    <div class="div_cardbotao">
+                        <h2 class="texto_nome">José da Silva Romeiro</h2>
                     </div>
+                    <div class="div_contrato">
+                        <div class="div_titulo">Solicitação de prestação de serviço</div>
+                        <div class="div_informacoes">
+                            <b class="b_campos">Prestador:</b> José Silva Romeiro <br>
+                            <b class="b_campos">Tomador:</b> Carlos Augusto<br>
+                            <p class="p_contrato">José Silva Romeiro(Prestador), vem por meio desse contrato, afirmar que o
+                                tal irá se disponibilizar a prestação do serviço “Análise de contrato imobiliário”
+                                solicitado por Carlos Augusto(Tomador) que tem valor de R$ 300,00. Logo após o pagamento
+                                dessa dívida, José Silva Romeiro estará disponível e autorizado a trabalhar no caso
+                                demandado.</p>
+                            <p class="p_contrato">Aceitando esse contrato, ambos afirmam estarem cientes dos seus papéis e
+                                se responsabilizam pelo não cumprimento do tal.</p>
+    
+                            <b class="b_campos">Valor:</b> R$ 300,00<br>
+                            <b class="b_campos">Prazo Final:</b> 22/05/2023
+                        </div>
+                    </div>
+    
+    
                 </div>
-
-
             </div>
         </div>
-    </div>
+    </main>
 
 </body>
 
@@ -90,6 +92,6 @@
 
 <script>
     window.onload = function () {
-        document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+        alterarNavbar()
     }
 </script>

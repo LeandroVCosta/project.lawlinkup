@@ -10,16 +10,16 @@
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="css/avaliacaoadv.css">
-        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-        <script src="js/scripts.js"></script>
-        
-    </head>
-    
-    <body>
-        <header>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/avaliacaoadv.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
+    <script src="js/scripts.js"></script>
+    <script src="js/navbar.js"></script>
+</head>
+
+<body>
+    <header id="header-site">
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
@@ -51,80 +51,84 @@
         </nav>
         
     </header>
-    <div class="completed-page">
-
-        <div class="profile-banner">
-            <div onclick="history.back()" class="div_voltar">
-                <img src="img/seta-esquerda.png" class="seta" alt="">
-            </div>
-            <div class="div_foto">
-            </div>
-            <div class="div_descricoes">
-                <div class="div_cardbotao">
-                    <h2 class="texto_nome">José da Silva Romeiro</h2>
-                    <h2 class="texto_esp">Doutor em direito imobiliário</h2>
-                    <h2 class="texto_local">São Paulo, SP</h2>
+    <main>
+        <div class="completed-page">
+    
+            <div class="profile-banner">
+                <div onclick="history.back()" class="div_voltar">
+                    <img src="img/seta-esquerda.png" class="seta" alt="">
                 </div>
-                <div class="div_info">
-                    <div class="div-textos">
-                        <p class="p_info">Com 15 anos atuando na área de direito, sendo 10 deles na
-                            área do direito imobiliário, mais de 400 consultorias prestadas 15 anos atuando
-                            na área de direito, sendo 10 deles na área do direito imobiliário, mais de 400
-                            consultorias prestadas 15 anos atuando na área de direito, sendo 10 deles na área
-                            do direito imobiliário, mais de 400 consultorias prestadas.
-                            15 anos atuando na área de direito, sendo 10 deles na área do direito
-                            imobiliário, mais de 400 consultorias prestadas 15 anos atuando na área de
-                            direito, sendo 10 deles na área do direito imobiliário, mais de 400 consultorias
-                            prestadas.
-                        </p>
+                <div class="div_foto">
+                </div>
+                <div class="div_descricoes">
+                    <div class="div_cardbotao">
+                        <h2 class="texto_nome">José da Silva Romeiro</h2>
+                        <h2 class="texto_esp">Doutor em direito imobiliário</h2>
+                        <h2 class="texto_local">São Paulo, SP</h2>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="container-ava">
-            <div class="content-ava">
-                <div class="title-ava">
-                    Avaliar Serviço do Advogado
-                </div>
-                <div class="members-ava">
-                    <b>Prestador:</b> José da Silva Romeiro
-                </div>
-                <div class="members-ava">
-                    <b>Tomador:</b> Carlos Alberto da Silva
-                </div>
-                <div class="div-avaliacao">
-                    <b>Avaliar:</b>
-                    <div class="div-icons">
-                        <div class="star-group">
-                            <ul class="avaliacao"></ul>
-                            <li class="star-icon"></li>
-                            <li class="star-icon"></li>
-                            <li class="star-icon"></li>
-                            <li class="star-icon"></li>
-                            <li class="star-icon ativo"></li>
-                        </div>
-                        <div class="emoji-group">
-                            <img src="img/emoji-sad.svg" alt="">
-                            <img src="img/emoji-happy.svg" alt="">
+                    <div class="div_info">
+                        <div class="div-textos">
+                            <p class="p_info">Com 15 anos atuando na área de direito, sendo 10 deles na
+                                área do direito imobiliário, mais de 400 consultorias prestadas 15 anos atuando
+                                na área de direito, sendo 10 deles na área do direito imobiliário, mais de 400
+                                consultorias prestadas 15 anos atuando na área de direito, sendo 10 deles na área
+                                do direito imobiliário, mais de 400 consultorias prestadas.
+                                15 anos atuando na área de direito, sendo 10 deles na área do direito
+                                imobiliário, mais de 400 consultorias prestadas 15 anos atuando na área de
+                                direito, sendo 10 deles na área do direito imobiliário, mais de 400 consultorias
+                                prestadas.
+                            </p>
                         </div>
                     </div>
+                    
                 </div>
-                <div class="comment-ava">
-                    <b>Comentário:</b>
-                    <textarea type="text" class="input-desc" id="comment-input" placeholder="Descreva sua experiência"></textarea>
-                </div>
-                <div class="buttons-ava">
-                    <button class="cancel-button">Cancelar</button>
-                    <button class="send-button" onclick="criarAvaliacao()">Enviar</button>
+            </div>
+            <div class="container-ava">
+                <div class="content-ava">
+                    <div class="title-ava">
+                        Avaliar Serviço do Advogado
+                    </div>
+                    <div class="members-ava">
+                        <b>Prestador:</b> José da Silva Romeiro
+                    </div>
+                    <div class="members-ava">
+                        <b>Tomador:</b> Carlos Alberto da Silva
+                    </div>
+                    <div class="div-avaliacao">
+                        <b>Avaliar:</b>
+                        <div class="div-icons">
+                            <div class="star-group">
+                                <ul class="avaliacao"></ul>
+                                <li class="star-icon"></li>
+                                <li class="star-icon"></li>
+                                <li class="star-icon"></li>
+                                <li class="star-icon"></li>
+                                <li class="star-icon ativo"></li>
+                            </div>
+                            <div class="emoji-group">
+                                <img src="img/emoji-sad.svg" alt="">
+                                <img src="img/emoji-happy.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-ava">
+                        <b>Comentário:</b>
+                        <textarea type="text" class="input-desc" id="comment-input" placeholder="Descreva sua experiência"></textarea>
+                    </div>
+                    <div class="buttons-ava">
+                        <button class="cancel-button">Cancelar</button>
+                        <button class="send-button" onclick="criarAvaliacao()">Enviar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
 <script src="js/avaliacao.js"></script>
 <script>
-    
+    window.onload = function () {
+        alterarNavbar()
+    }
 </script>

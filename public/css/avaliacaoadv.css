@@ -1,5 +1,4 @@
 @import url('index.css');
-@import url('form.css');
 
 
 .profile-banner {
@@ -16,7 +15,6 @@
 
 .completed-page {
     height: 560px;
-    overflow-y: auto;
 }
 
 .div_voltar {

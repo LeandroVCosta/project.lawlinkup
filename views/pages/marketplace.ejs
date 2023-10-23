@@ -14,10 +14,11 @@
   <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
   <script src="https://kit.fontawesome.com/75218518b3.js" crossorigin="anonymous"></script>
   <script src="js/scripts.js"></script>
+  <script src="js/navbar.js"></script>
 </head>
 
 <body>
-  <header>
+  <header id="header-site">
     <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="home">
@@ -83,7 +84,7 @@
 
 <script>
   window.onload = function () {
-    document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+    alterarNavbar()
     renderAdvogado()
   }
 
@@ -115,7 +116,7 @@
               </ul>
               <div class="btn-perfil">
                 <a href="viewprofile?advogado=${advogado.idUsuario}"><button type="button" class="btn btn-primary">Perfil</button></a>
-                <a href="selectcase?advogado=${advogado.idUsuario}"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
+                <a href="${sessionStorage.getItem("userId") ? `selectcase?advogado=${advogado.idUsuario}` : "login"}"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
               </div>
             </div>
             </div>`)

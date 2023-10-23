@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/viewprofile.css">
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
-
+    <script src="js/navbar.js"></script>
 </head>
 
 <body>
-    <header>
+    <header id="header-site">
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
@@ -51,34 +51,35 @@
 
     </header>
 
-
-    <div style="margin-bottom: 48px;">
-        <div class="profile-banner">
-        </div>
-        <div class="container">
-            <div class="profile-info">
-                <div onclick="history.back()" class="div_voltar">
-                    <img src="img/seta-esquerda.png" class="seta" alt="">
-                </div>
-                <div class="div_foto">
-                </div>
-                <div class="info-col">
-                    <div class="div_descricoes">
-                        <h2 id="nomeAdvogado" class="texto">José da Silva Romeiro</h2>
-                        <h4 id="especializacaoAdvogado" class="descricao">Doutor em direito imobiliário</h4>
-                        <p id="cidadeAdvogado" class="estado">São Paulo, SP</p>
+    <main>
+        <div style="margin-bottom: 48px;">
+            <div class="profile-banner">
+            </div>
+            <div class="container">
+                <div class="profile-info">
+                    <div onclick="history.back()" class="div_voltar">
+                        <img src="img/seta-esquerda.png" class="seta" alt="">
                     </div>
-                    <div id="descricaoAdvogado" class="card">
-                        Olá, eu me chamo José da Silva Romeiro sou formado em direito pela USP, estou nesse ramo a 30
-                        anos e estou disposto a te ajudar a resolver seus problemas.
+                    <div class="div_foto">
                     </div>
+                    <div class="info-col">
+                        <div class="div_descricoes">
+                            <h2 id="nomeAdvogado" class="texto">José da Silva Romeiro</h2>
+                            <h4 id="especializacaoAdvogado" class="descricao">Doutor em direito imobiliário</h4>
+                            <p id="cidadeAdvogado" class="estado">São Paulo, SP</p>
+                        </div>
+                        <div id="descricaoAdvogado" class="card">
+                            Olá, eu me chamo José da Silva Romeiro sou formado em direito pela USP, estou nesse ramo a 30
+                            anos e estou disposto a te ajudar a resolver seus problemas.
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-enviar">
+                    <button id="btnEnviarCaso" class="btn-lg" id="btn_enviar">Enviar caso</button>
                 </div>
             </div>
-            <div class="btn-enviar">
-                <button id="btnEnviarCaso" class="btn-lg" id="btn_enviar">Enviar caso</button>
-            </div>
         </div>
-    </div>
+    </main>
 
 
 </body>
@@ -88,7 +89,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const idAdvogado = urlParams.get('advogado');
     window.onload = function () {
-        document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+        alterarNavbar()
         getAdvogado(idAdvogado)
         addVisita(idAdvogado)
     }
@@ -114,7 +115,7 @@
         document.getElementById("descricaoAdvogado").innerHTML = advogado.sobre ? advogado.sobre : "Sem descrição"
 
         document.getElementById("btnEnviarCaso").addEventListener("click", () => {
-            window.location = `selectcase?advogado=${advogado.idUsuario}`
+            window.location = sessionStorage.getItem("userId") ? `selectcase?advogado=${advogado.idUsuario}` : "login"
         })
     }
 
