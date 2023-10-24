@@ -97,7 +97,7 @@
 
         async function renderCaso() {
             const idUsuario = sessionStorage.getItem("userId");
-            const retorno = await fetch(`http://localhost:8080/caso/${idUsuario}`, {
+            const retorno = await fetch(`http://localhost:8080/caso/listarCasosInativos/${idUsuario}`, {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

@@ -218,16 +218,24 @@
                 // chat.situacao == "FINALIZADO" advogado chat/ cliente chat
                 sessionStorage.getItem("userType") == "cliente" ? 
                     chat.situacao == "ACEITO" ? 
-                        `<button class="btn btn-lg text-light btn_all">Finalizar Vínculo</button>`
+                        `<button onclick="finalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Finalizar Vínculo</button>`
                     :
                         ""
                 :
                     chat.situacao == "AGUARDANDO_RESPOSTA" ? 
-                        `<button class="btn btn-lg text-light btn_all">Verificar Caso</button>`
+                        `<button onclick="verificarCaso(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Verificar Caso</button>`
                     :
                         ""
             }
         `
+    }
+
+    function verificarCaso(idVinculo) {
+        window.location = `solicitacaovincliente?vinculo=${idVinculo}`;
+    }
+    
+    function finalizarVinculo(idVinculo) {
+        window.location = `avaliacaoadv?vinculo=${idVinculo}`;
     }
 
     async function getVinculosCliente(idUsuario) {

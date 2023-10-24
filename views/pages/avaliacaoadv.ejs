@@ -62,13 +62,13 @@
                 </div>
                 <div class="div_descricoes">
                     <div class="div_cardbotao">
-                        <h2 class="texto_nome">José da Silva Romeiro</h2>
-                        <h2 class="texto_esp">Doutor em direito imobiliário</h2>
-                        <h2 class="texto_local">São Paulo, SP</h2>
+                        <h2 id="nome_adv" class="texto_nome">José da Silva Romeiro</h2>
+                        <h2 id="especializacao_adv" class="texto_esp">Doutor em direito imobiliário</h2>
+                        <h2 id="cidade_adv" class="texto_local">São Paulo, SP</h2>
                     </div>
                     <div class="div_info">
                         <div class="div-textos">
-                            <p class="p_info">Com 15 anos atuando na área de direito, sendo 10 deles na
+                            <p id="sobre_adv" class="p_info">Com 15 anos atuando na área de direito, sendo 10 deles na
                                 área do direito imobiliário, mais de 400 consultorias prestadas 15 anos atuando
                                 na área de direito, sendo 10 deles na área do direito imobiliário, mais de 400
                                 consultorias prestadas 15 anos atuando na área de direito, sendo 10 deles na área
@@ -89,21 +89,21 @@
                         Avaliar Serviço do Advogado
                     </div>
                     <div class="members-ava">
-                        <b>Prestador:</b> José da Silva Romeiro
+                        <b>Prestador:</b> <span id="nome2_adv">José da Silva Romeiro</span>
                     </div>
                     <div class="members-ava">
-                        <b>Tomador:</b> Carlos Alberto da Silva
+                        <b>Tomador:</b> <span id="nome_cliente">Carlos Alberto da Silva</span>
                     </div>
                     <div class="div-avaliacao">
                         <b>Avaliar:</b>
                         <div class="div-icons">
                             <div class="star-group">
                                 <ul class="avaliacao"></ul>
-                                <li class="star-icon"></li>
-                                <li class="star-icon"></li>
-                                <li class="star-icon"></li>
-                                <li class="star-icon"></li>
-                                <li class="star-icon ativo"></li>
+                                <li id="star-1" class="star-icon"></li>
+                                <li id="star-2" class="star-icon"></li>
+                                <li id="star-3" class="star-icon"></li>
+                                <li id="star-4" class="star-icon"></li>
+                                <li id="star-5" class="star-icon"></li>
                             </div>
                             <div class="emoji-group">
                                 <img src="img/emoji-sad.svg" alt="">
@@ -117,7 +117,7 @@
                     </div>
                     <div class="buttons-ava">
                         <button class="cancel-button">Cancelar</button>
-                        <button class="send-button" onclick="criarAvaliacao()">Enviar</button>
+                        <button class="send-button" onclick="finalizarVinculo()">Enviar</button>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,61 @@
 </html>
 <script src="js/avaliacao.js"></script>
 <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const idVinculo = urlParams.get('vinculo');
     window.onload = function () {
         alterarNavbar()
+        loadAdvogado()
+    }
+
+    let qtdEstrelas = 5
+
+    const stars = Array.from(document.querySelectorAll(".star-icon"))
+    stars.forEach((star, i) => {
+        star.addEventListener("click", () => {
+            qtdEstrelas = i+1
+            stars.forEach((star, index) => {
+                if (index >= i) {
+                    star.classList.add("ativo")
+                } else {
+                    star.classList.remove("ativo")
+                }
+            })
+        })
+    })
+
+    async function loadAdvogado() {
+        const retorno = await fetch(`http://localhost:8080/vinculo/${idVinculo}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const json = await retorno.json()
+
+        console.log(json)
+        document.getElementById("nome_adv").innerHTML = json.advogado.nome
+        document.getElementById("nome2_adv").innerHTML = json.advogado.nome
+        document.getElementById("especializacao_adv").innerHTML = json.advogado.especializacao
+        document.getElementById("cidade_adv").innerHTML = json.advogado.cidade
+        document.getElementById("sobre_adv").innerHTML = json.advogado.sobre
+        document.getElementById("nome_cliente").innerHTML = json.caso.cliente.nome
+        
+    }
+
+    async function finalizarVinculo() {
+        const retorno = await fetch(`http://localhost:8080/vinculo/finalizar/${idVinculo}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            },
+            body: JSON.stringify({
+                avaliacao: qtdEstrelas,
+                comentario: document.getElementById("comment-input").value
+            })
+        })
+        if (retorno.ok) {
+            window.location = "chat"
+        }
     }
 </script>
