@@ -63,27 +63,26 @@
                         <img src="img/seta-esquerda.png" class="seta" alt="">
                     </div>
                 </div>
-    
+
                 <h4>Solicitação de Início de Vínculo</h4>
                 <div class="form-outer-contrato">
                     <div class="input-cliente">
-                        <b>Cliente</b>: Adamastor Vieira
+                        <b>Cliente</b>: <span id="nomeCliente"></span>
                     </div>
                     <div class="input-caso">
-                        <b>Caso</b>: Contrato de Compra de Imóvel
+                        <b>Caso</b>: <span id="nomeCaso"></span>
                     </div>
                     <div class="input-descricao">
-                        <b>Descrição</b>: Gostaria que verificasse se o contrato do imóvel que estou
-                        adquirindo está dentro dos conformes e não vai me causar nenhum malefício no futuro.
+                        <b>Descrição</b>: <span id="detalhamento"></span>
                     </div>
                 </div>
                 <b>Aceitar criação de Vínculo</b>
                 <div class="botoes-vinculo">
-                    <a href="marketplace">
-                        <div class="botao-negar"><img src="img/ExitIcon.svg"></div>
+                    <a href="chat">
+                        <div class="botao-negar" onclick="rejeitarVinculo()"><img src="img/ExitIcon.svg"></div>
                     </a>
                     <a href="chat">
-                        <div class="botao-aceitar"><img src="img/CorrectIcon.svg"></div>
+                        <div class="botao-aceitar" onclick="aceitarVinculo()"><img src="img/CorrectIcon.svg"></div>
                     </a>
                 </div>
             </div>
@@ -96,8 +95,52 @@
     </script>
 
     <script>
-        window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const idVinculo = urlParams.get('vinculo');
+
+        async function renderVinculo() {
+            const idUsuario = sessionStorage.getItem("userId");
+            const retorno = await fetch(`http://localhost:8080/vinculo/${idVinculo}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            const dadosRequisicao = await retorno.json();
+            loadVinculo(dadosRequisicao)
+            console.log(retorno)
+
+        }
+
+        function loadVinculo(vinculo) {
+            document.getElementById("nomeCliente").innerHTML = vinculo.caso.cliente.nome
+            document.getElementById("nomeCaso").innerHTML = vinculo.caso.especificacao
+            document.getElementById("detalhamento").innerHTML = vinculo.caso.detalhamento
+        }
+
+        function aceitarVinculo() {
+            fetch(`http://localhost:8080/vinculo/aceitar/${idVinculo}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+        }
+
+        function rejeitarVinculo() {
+            fetch(`http://localhost:8080/vinculo/rejeitar/${idVinculo}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+        }
+
+
+        console.log(idVinculo)
+        window.onload = function () {
             alterarNavbar()
+            renderVinculo()
         }
     </script>
 </body>
