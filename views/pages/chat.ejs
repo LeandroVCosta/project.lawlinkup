@@ -22,8 +22,8 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-color-primary" style="font-family: 'Roboto' ;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
-                    <img src="img/Logo-SemFundo.svg" width="120" height="100"
-                        class="d-inline-block align-center" alt="">
+                    <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
+                        alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,50 +61,16 @@
             </div>
 
             <div class="div_pesquisa">
-                <input type= "search" class="i_pesquisa" placeholder="Pesquisar Conversa">
+                <input type="search" class="i_pesquisa" placeholder="Pesquisar Conversa">
             </div>
 
-            <div class="div_conversas">
-                <div class="div_foto">
-                    <img src="img/foto_adv.png" alt="">
-                </div>
-                <div class="div_info">
-                    <div class="div_nome">José Silva Romeira</div>
-                    <div class="div_caso">Informação do caso</div>
-                </div>
-            </div>
-            <div class="div_conversas2">
-                <div class="div_foto"> </div>
-                <div class="div_info">
-                    <div class="div_nome">José Silva Romeira</div>
-                    <div class="div_caso">Informação do caso</div>
-                </div>
-            </div>
-            <div class="div_conversas">
-                <div class="div_foto"></div>
-                <div class="div_info">
-                    <div class="div_nome">José Silva Romeira</div>
-                    <div class="div_caso">Informação do caso</div>
-                </div>
-            </div>
-            <div class="div_conversas2">
-                <div class="div_foto"></div>
-                <div class="div_info">
-                    <div class="div_nome">José Silva Romeira</div>
-                    <div class="div_caso">Informação do caso</div>
-                </div>
+            <div class="chats">
+
             </div>
         </div>
         <div class="div_mensagens">
-            <div class="div_correspondente">
-                <div class="div_foto">
-                    <img src="img/foto_adv.png" alt="">
-                </div>
-                <div class="div_info">
-                    <div class="div_nome">José Silva Romeira</div>
-                    <div class="div_caso">Minhas informações</div>
-                </div>
-
+            <div id="remetente" class="div_correspondente">
+                
             </div>
             <div class="mensagens">
 
@@ -116,8 +82,8 @@
                 </div>
 
             </div>
-    
-            
+
+
             <div class="div_enviar">
                 <input id="message" type="text" class="i_enviar-mensagem" placeholder="Digite algo">
                 <button id="btn_enviar" class="btn_enviar"><img src="img/Arrow 5.svg"></button>
@@ -139,43 +105,154 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
 
 <script>
-        var socket = io('localhost:3000')
+    var socket = io('localhost:3000')
 
-        socket.on('loadMessage',function (listMessages) {
-            for (messageObject of listMessages){
-                renderMessage(messageObject)
-            }
-        })
-
-        socket.on('receivedMessage',function (data) {
-            renderMessage(data)
-        })
-
-        function renderMyMessage(message){
-            $('.mensagens').append(`<div class="div_mensagem2">${message.message}</div>`)
+    socket.on('loadMessage', function (listMessages) {
+        for (messageObject of listMessages) {
+            renderMessage(messageObject)
         }
+    })
 
-        function renderMessage(message){
-            $('.mensagens').append(`<div class="div_mensagem1">${message.message}</div>`)
-        }
-    
-        $('#btn_enviar').click(function(event) {
-            event.preventDefault();
-            var message = $('input[id=message]').val();
-    
-            if (message.length){
-                var messageObject = {
-                    message:message,
-                    destinatario:false
-                };
-                socket.emit('sendMessage',messageObject)
-            }
-            renderMyMessage(messageObject);
-        });
-    
+    socket.on('receivedMessage', function (data) {
+        renderMessage(data)
+    })
 
-
-    window.onload = function() {
-        alterarNavbar()
+    function renderMyMessage(message) {
+        $('.mensagens').append(`<div class="div_mensagem2">${message.message}</div>`)
     }
+
+    function renderMessage(message) {
+        $('.mensagens').append(`<div class="div_mensagem1">${message.message}</div>`)
+    }
+
+    $('#btn_enviar').click(function (event) {
+        event.preventDefault();
+        var message = $('input[id=message]').val();
+
+        if (message.length) {
+            var messageObject = {
+                message: message,
+                destinatario: false
+            };
+            socket.emit('sendMessage', messageObject)
+        }
+        renderMyMessage(messageObject);
+    });
+
+
+
+    window.onload = function () {
+        alterarNavbar()
+        carregarChats()
+    }
+
+    async function carregarChats() {
+        const idUsuario = sessionStorage.getItem("userId");
+        const userType = sessionStorage.getItem("userType");
+        const vinculos = userType == "cliente" ? await getVinculosCliente(idUsuario) : await getVinculosAdvogado(idUsuario)
+
+        const chats = []
+
+        console.log(vinculos)
+
+        if (userType == "cliente") {
+            vinculos.forEach(vinculo => {
+                chats.push({
+                    idVinculo: vinculo.idVinculo,
+                    situacao: vinculo.situacao,
+                    user: vinculo.advogado.nome,
+                    caso: vinculo.caso.servico
+                })
+            })
+        } else {
+            vinculos.forEach(vinculo => {
+                chats.push({
+                    idVinculo: vinculo.idVinculo,
+                    situacao: vinculo.situacao,
+                    user: vinculo.caso.cliente.nome,
+                    caso: vinculo.caso.servico
+                })
+            })
+        }
+        console.log(chats)
+        for (i = 0; i < chats.length; i++) {
+            renderChat(chats[i], i)
+        }
+    }
+
+    function renderChat(chat, index) {
+        console.log(JSON.stringify(chat))
+        const chat2 = JSON.stringify(chat)
+        $('.chats').append(`
+            <div onclick='trocarChat(${chat2})' class="div_conversas${index % 2 == 1 ? "2" : ""}">
+                <div class="div_foto">
+                    <img src="img/foto_adv.png" alt="">
+                </div>
+                <div class="div_info">
+                    <div class="div_nome">${chat.user}</div>
+                    <div class="div_caso">${chat.caso}</div>
+                </div>
+            </div>
+        `)
+    }
+
+    function trocarChat(chat) {
+        console.log(chat)
+        
+        document.getElementById("remetente").innerHTML = `
+            <div style="display: flex;">
+                <div class="div_foto">
+                    <img src="img/foto_adv.png" alt="">
+                </div>
+                <div class="div_info">
+                    <div class="div_nome">${chat.user}</div>
+                    <div class="div_caso">${chat.caso}</div>
+                </div>
+                </div>
+                ${
+                // chat.situacao == "AGUARDANDO_RESPOSTA" advogado "botão aceitar"/ cliente nada
+                // chat.situacao == "REJEITADO" advogado nada/ cliente selectcase
+                // chat.situacao == "ACEITO" advogado chat futuro -> botao "gerar orcamento"/ cliente botao "finalizar vinculo" futuro -> cliente chat
+                // pro futuro -> chat.situacao == "ORCAMENTO_GERADO" advogado chat/ cliente "aceitar orcamento"
+                // pro futuro -> chat.situacao == "ORCAMENTO_ACEITO" advogado chat/ cliente botao "finalizar vinculo"
+                // chat.situacao == "FINALIZADO" advogado chat/ cliente chat
+                sessionStorage.getItem("userType") == "cliente" ? 
+                    chat.situacao == "ACEITO" ? 
+                        `<button class="btn btn-lg text-light btn_all">Finalizar Vínculo</button>`
+                    :
+                        ""
+                :
+                    chat.situacao == "AGUARDANDO_RESPOSTA" ? 
+                        `<button class="btn btn-lg text-light btn_all">Verificar Caso</button>`
+                    :
+                        ""
+            }
+        `
+    }
+
+    async function getVinculosCliente(idUsuario) {
+        const retorno = await fetch(`http://localhost:8080/vinculo/listarPorCliente/${idUsuario}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const vinculos = await retorno.json()
+        console.log(vinculos)
+        return vinculos
+    }
+
+    async function getVinculosAdvogado(idUsuario) {
+        const retorno = await fetch(`http://localhost:8080/vinculo/listarPorAdvogado/${idUsuario}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const vinculos = await retorno.json()
+        console.log(vinculos)
+        return vinculos
+    }
+
+
 </script>

@@ -98,6 +98,7 @@
     border-bottom: 3px solid #8A8A8A;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .div_mensagens {
@@ -165,3 +166,6 @@
     height: 400px;
 }
 
+.btn_all {
+    margin-right: 24px;
+}

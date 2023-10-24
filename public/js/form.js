@@ -317,7 +317,7 @@ submitBtn.addEventListener("click", function (event) {
     }
     if (userType == "2") {
         usuario.profissao = document.getElementById("profissaoInput").value
-        usuario.nascimento = document.getElementById("nascimentoInput").value
+        usuario.dataNascimento = document.getElementById("nascimentoInput").value
         usuario.genero = document.getElementById("estadoCivilInput").value
         usuario.genero = document.getElementById("generoInput").value
     }
@@ -327,6 +327,7 @@ submitBtn.addEventListener("click", function (event) {
 window.addEventListener("load", getUserTypes);
 
 async function getUserTypes() {
+    return
     let values = await fetch(`http://localhost:8080/tipoUsuario`, {
         method: "GET",
         headers: {
@@ -343,6 +344,7 @@ async function getUserTypes() {
 }
 
 async function cadastrarUsuario(usuario) {
+    console.log(usuario)
     await fetch(`http://localhost:8080/usuario`, {
         method: "POST",
         body: JSON.stringify(usuario),
