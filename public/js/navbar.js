@@ -24,6 +24,9 @@ function alterarNavbar() {
                                 <a class="nav-link" href="chat">Chat</a>
                             </li>
                             <li class="nav-item">
+                                ${sessionStorage.getItem("userType") == "cliente" ? `<a class="nav-link" href="metricasclientes">Métricas</a>` : `<a class="nav-link" href="metricasadvogados">Métricas</a>`}
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" id="userName" onclick="deslogar()">Logoff</a>
                             </li>
                         </ul>

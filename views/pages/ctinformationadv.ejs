@@ -52,6 +52,12 @@
     </header>
     <main>
         <div class="completed-page">
+            <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                  <div class="vw-plugin-top-wrapper"></div>
+                </div>
+              </div>
             <div class="profile-banner">
                 <div onclick="history.back()" class="div_voltar">
                     <img src="img/seta-esquerda.png" class="seta" alt="">
@@ -85,13 +91,14 @@
             </div>
         </div>
     </main>
-
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 
 </html>
 
 <script>
-    window.onload = function () {
-        alterarNavbar()
-    }
+    alterarNavbar()
 </script>
