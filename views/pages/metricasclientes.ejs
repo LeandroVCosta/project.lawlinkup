@@ -59,8 +59,8 @@
             <li class="star-icon"></li>
             <li class="star-icon"></li>
             <li class="star-icon"></li>
-            <li class="star-icon ativo"></li>
-        <h1><u>5.0</u></h2>
+            <li class="star-icon"></li>
+        <h1><u id="avaliacao"></u></h2>
     </div>
 
     <div class="relatorio_casos">
@@ -98,7 +98,20 @@
 <script>
     window.onload = function () {
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
+        dashAvaliacaoCliente()
     }
+
+    async function dashAvaliacaoCliente(){
+    const retorno = await fetch(`http://localhost:8080/dashboard/cliente/1`, {
+      method: "GET",
+      headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+    })
+
+    avaliacao = await retorno.text()
+
+    document.getElementById("avaliacao").innerHTML = avaliacao
 
     var stars = document.querySelectorAll('.star-icon');
                   
@@ -109,8 +122,27 @@
                         star.classList.remove('ativo');
                       });
                       classStar.add('ativo');
-                      console.log(e.target.getAttribute('data-avaliacao'));
                     }
                   });
+
+    if(avaliacao >= 1.0){
+        classStar1.add('ativo')
+    }
+    else if(avaliacao >= 2.0){
+        classStar2.add('ativo')
+    }
+    else if(avaliacao >= 3.0){
+        classStar3.add('ativo')
+    }
+    else if(avaliacao >= 4.0){
+        classStar4.add('ativo')
+    }
+    else if(avaliacao == 5){
+        classStar5.add('ativo')
+    }
+    
+    document.getElementById("buscaAvaliacao")
+
+    }
 
 </script>
