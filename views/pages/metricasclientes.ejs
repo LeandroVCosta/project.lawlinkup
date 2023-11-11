@@ -54,26 +54,22 @@
 <div id="conteudo">
     <div class="media_avaliacao">
         <h2><u>Média de Avaliações</u></h2>
+        <div id="star-container">
         <ul class="avaliacao"></ul>
-            <li class="star-icon"></li>
-            <li class="star-icon"></li>
-            <li class="star-icon"></li>
-            <li class="star-icon"></li>
-            <li class="star-icon"></li>
+            <li class="star-icon"><img src="img/star0.png" id="s1"></a></li>
+            <li class="star-icon"><img src="img/star0.png" id="s2"></a></li>
+            <li class="star-icon"><img src="img/star0.png" id="s3"></a></li>
+            <li class="star-icon"><img src="img/star0.png" id="s4"></a></li>
+            <li class="star-icon"><img src="img/star0.png" id="s5"></a></li>
+        </div>    
         <h1><u id="avaliacao"></u></h2>
     </div>
 
     <div class="relatorio_casos">
         <h2><u>Relatório de Casos</u></h2>
-        <ul class="ul_tabela">
+        <ul id="ul_tabela">
             <li class="li_text">Advogado</li>
             <li class="li_text">Caso</li>
-            <li class="li_conteudo">Rodrigo Sanchez</li>
-            <li class="li_conteudo">Avaliação de contrato</li>
-            <li class="li_conteudo">Rodrigo Sanchez</li>
-            <li class="li_conteudo">Consulta</li>
-            <li class="li_conteudo">Marcos Rocha</li>
-            <li class="li_conteudo">Consulta</li>
         </ul>
     </div>
 
@@ -88,7 +84,7 @@
 		<li><a href="link"><img id="img_barra_lateral" src="img/notificacao.png" alt="">Notificações</a></li>
 		<li><a href="link"><img id="img_barra_lateral" src="img/Gear.png" alt="">Configurações</a></li>
 		<li><a href="link"><img id="img_barra_lateral" src="img/Question.png" alt="">FAQ</a></li>
-        <li><a href="/"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
+        <li><a href="link"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
 	  </ul>
 </div>
 
@@ -98,7 +94,8 @@
 <script>
     window.onload = function () {
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
-        dashAvaliacaoCliente()
+        dashAvaliacaoCliente();
+        dashRelatorio();
     }
 
     async function dashAvaliacaoCliente(){
@@ -114,35 +111,80 @@
     document.getElementById("avaliacao").innerHTML = avaliacao
 
     var stars = document.querySelectorAll('.star-icon');
-                  
-                  document.addEventListener('click', function(e){
-                    var classStar = e.target.classList;
-                    if(!classStar.contains('ativo')){
-                      stars.forEach(function(star){
-                        star.classList.remove('ativo');
-                      });
-                      classStar.add('ativo');
-                    }
-                  });
 
-    if(avaliacao >= 1.0){
-        classStar1.add('ativo')
+    var avaliacaoInt = parseFloat(avaliacao);
+
+    // Arredonda a avaliação para o número mais próximo
+    var avaliacaoArredondada = Math.round(avaliacaoInt);
+
+    // Garante que a avaliação esteja no intervalo de 0 a 5
+    avaliacaoArredondada = Math.max(0, Math.min(avaliacaoArredondada, 5));
+
+        //ESTRELA 1
+        if (avaliacao >= 1){ 
+        document.getElementById("s1").src = "img/star1.png";
+        document.getElementById("s2").src = "img/star0.png";
+        document.getElementById("s3").src = "img/star0.png";
+        document.getElementById("s4").src = "img/star0.png";
+        document.getElementById("s5").src = "img/star0.png";
+        }
+        //ESTRELA 2
+        if (avaliacao >= 2){ 
+        document.getElementById("s1").src = "img/star1.png";
+        document.getElementById("s2").src = "img/star1.png";
+        document.getElementById("s3").src = "img/star0.png";
+        document.getElementById("s4").src = "img/star0.png";
+        document.getElementById("s5").src = "img/star0.png";
+        }
+
+        //ESTRELA 3
+        if (avaliacao >= 3){ 
+        document.getElementById("s1").src = "img/star1.png";
+        document.getElementById("s2").src = "img/star1.png";
+        document.getElementById("s3").src = "img/star1.png";
+        document.getElementById("s4").src = "img/star0.png";
+        document.getElementById("s5").src = "img/star0.png";
+        }
+
+        //ESTRELA 4
+        if (avaliacao >= 4){ 
+        document.getElementById("s1").src = "img/star1.png";
+        document.getElementById("s2").src = "img/star1.png";
+        document.getElementById("s3").src = "img/star1.png";
+        document.getElementById("s4").src = "img/star1.png";
+        document.getElementById("s5").src = "img/star0.png";
+        } 
+
+        //ESTRELA 5
+        if (avaliacao == 5){ 
+        document.getElementById("s1").src = "img/star1.png";
+        document.getElementById("s2").src = "img/star1.png";
+        document.getElementById("s3").src = "img/star1.png";
+        document.getElementById("s4").src = "img/star1.png";
+        document.getElementById("s5").src = "img/star1.png";
+        }  
+ 
+}
+
+    async function dashRelatorio(){
+    const retorno = await fetch(`http://localhost:8080/dashboard/casos/1`, {
+      method: "GET",
+      headers: {
+      "Content-type": "application/json; charset=UTF-8"
     }
-    else if(avaliacao >= 2.0){
-        classStar2.add('ativo')
-    }
-    else if(avaliacao >= 3.0){
-        classStar3.add('ativo')
-    }
-    else if(avaliacao >= 4.0){
-        classStar4.add('ativo')
-    }
-    else if(avaliacao == 5){
-        classStar5.add('ativo')
-    }
+    })
+
+    const relatorio = await retorno.json()
+    let keys = Object.keys(relatorio)
     
-    document.getElementById("buscaAvaliacao")
-
+    for(i in keys){
+        if (keys[i] == ""){
+        continue
+      }
+    document.getElementById("ul_tabela").innerHTML += `<li class = "li_conteudo">${relatorio[i].nomeAdvogado}</li>`
+    document.getElementById("ul_tabela").innerHTML += `<li class = "li_conteudo">${relatorio[i].tipoServico}</li>`
     }
+
+}
 
 </script>

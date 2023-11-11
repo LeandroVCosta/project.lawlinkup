@@ -21,14 +21,14 @@ app.use('/js', express.static('public/js'));
 let messages = []
 
 io.on('connection', socket => {
-    socket.emit('loadMessage',messages);
+    socket.emit('loadMessage', messages);
 
     console.log(`Socket Conectado: ${socket.id}`)
 
-    socket.on('sendMessage', data =>{
+    socket.on('sendMessage', data => {
         messages.push(data)
         console.log(data);
-        socket.broadcast.emit('receivedMessage',data);
+        socket.broadcast.emit('receivedMessage', data);
     });
 });
 
