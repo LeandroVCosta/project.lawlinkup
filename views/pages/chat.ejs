@@ -115,8 +115,9 @@
     })
 
     socket.on('receivedMessage', function (data) {
-        console.log("recebi uma mensagem")
-        renderMessage(data.mensagem)
+        if (data.idVinculo == chatAtual.idVinculo){
+            renderMessage(data.mensagem)
+        }
     })
 
     function renderMyMessage(mensagem) {
@@ -138,12 +139,12 @@
             
             var messageObject = {
                 mensagem: mensagem,
-                socketId: socketId
+                socketId: socketId,
+                idVinculo:idVinculo
             };
 
 
             statusCode = await registrarMensagem(chatAtual.idVinculo,idUsuario,chatAtual.chatUserId,mensagem)
-            console.log(statusCode)
             if (statusCode != 201 && statusCode != 200){
                 alert("Houve um erro ao enviar a mensagem!")
                 return
