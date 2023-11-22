@@ -18,17 +18,20 @@ app.use('/img', express.static('public/assets/img'));
 app.use('/css', express.static('public/css'));
 app.use('/js', express.static('public/js'));
 
-let messages = []
+// let messages = []
+
+
 
 io.on('connection', socket => {
-    socket.emit('loadMessage',messages);
+    socket.emit('loadMessage', null);
+    socket.emit('updateSocketId', socket.id);
 
     console.log(`Socket Conectado: ${socket.id}`)
 
-    socket.on('sendMessage', data =>{
-        messages.push(data)
-        console.log(data);
-        socket.broadcast.emit('receivedMessage',data);
+    socket.on('sendMessage', data => {
+        console.log("Enviando uma Mensagem")
+        console.log("Mensagem:" + data)
+        io.to(data.socketId).emit('receivedMessage',data);
     });
 });
 
