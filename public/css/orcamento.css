@@ -17,7 +17,7 @@
     align-self: center;
     background-color: rgba(77, 160, 255, 0.4);
     width: 50%;
-    height: 95%;
+    padding: 24px;
     border-radius: 10px;
 }
 
@@ -26,6 +26,15 @@
     align-items: center;
     flex-direction: column;
 }
+
+.btn-lg{
+    height: 48px;
+    font-size: 20px;
+    background-color: #002855;
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 5px;
+}   
 
 .card-titulo {
     margin-top: 24px;

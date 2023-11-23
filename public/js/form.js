@@ -318,8 +318,8 @@ submitBtn.addEventListener("click", function (event) {
     if (userType == "2") {
         usuario.profissao = document.getElementById("profissaoInput").value
         usuario.dataNascimento = document.getElementById("nascimentoInput").value
-        usuario.genero = document.getElementById("estadoCivilInput").value
-        usuario.genero = document.getElementById("generoInput").value
+        usuario.estadoCivil = document.getElementById("estadoCivilInput").value
+        usuario.sexo = document.getElementById("generoInput").value
     }
     cadastrarUsuario(usuario)
 });

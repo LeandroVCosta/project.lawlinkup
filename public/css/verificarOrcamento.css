@@ -1,0 +1,121 @@
+@import url(login.css);
+
+body {
+    overflow: auto;
+}
+
+.container-full-page-contrato{
+    display: flex;
+    justify-content: center;
+
+}
+
+.form-box {
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    box-shadow: 5px 05px 15px #4b4a4a;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    height: 400px;
+    width: 35%;
+    
+    }
+
+.btn-lg{
+    height: 48px;
+    font-size: 20px;
+    background-color: #002855;
+    color: #FFFFFF;
+    margin-top: 40px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border-width: 0px;
+}   
+
+.btn-lg:hover{
+    height: 48px;
+    font-size: 20px;
+    background-color:#a88e5e;
+    color: #FFFFFF;
+    margin-top: 40px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border-width: 0px;
+}   
+
+.div_voltar {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    margin-top: 2px;
+    border-radius: 40px;
+
+    background: #002855;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    user-select: none;
+}
+
+.div_voltar:hover {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    margin-top: 2px;
+    border-radius: 40px;
+    background: #a88e5e;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    user-select: none;
+}
+
+.seta{
+    height: 30px;
+    width: 25px;
+}
+
+.form-outer-contrato {
+    width: 100%;
+    height: 40%;
+    padding-left: 7%;
+    padding-right: 7%;
+    margin-top: 5%;
+}
+
+.botoes-vinculo {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.botao-negar {
+    height: 50px;
+    width: 50px;
+    background-color: #A42E38;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.botao-aceitar {
+    height: 50px;
+    width: 50px;
+    background-color: #2D7D30;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

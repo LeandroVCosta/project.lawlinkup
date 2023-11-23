@@ -62,28 +62,6 @@
                     </div>
                     <div class="card-titulo">Solicitação de prestação de serviço</div>
                     <div>
-                        <div class="card-label">Tipo serviço</div>
-                        <select id="servicoInput" class="card-input">
-                            <option value="">Selecione um serviço</option>
-                            <option value="">Opção 1</option>
-                            <option value="">Opção 1</option>
-                            <option value="">Opção 2</option>
-                        </select>
-                    </div>
-                    <div>
-                        <div class="card-label">Caso</div>
-                        <select id = "casoInput"class="card-input">
-                            <option value="1">Nome do caso</option>
-                            <option value="2">Opção 1</option>
-                            <option value="3">Opção 1</option>
-                            <option value="4">Opção 2</option>
-                        </select>
-                    </div>
-                    <div>
-                        <div class="card-label">Detalhamento</div>
-                        <textarea id = "detalhamentoInput"class="card-textarea" placeholder="Descreva com mais detalhes o seu caso"></textarea>
-                    </div>
-                    <div>
                         <div class="card-label">Valor</div>
                         <input class="card-input" id="valorInput" type="number" placeholder="Valor do orçamento(R$)" />
                     </div>
@@ -91,6 +69,8 @@
                         <div class="card-label">Prazo final</div>
                         <input class="card-input" id="prazoInput"type="date" placeholder="DD/MM/AAAA" />
                     </div>
+
+                    <a><button id="submit" onclick="gerarOrcamento()" class="btn-lg">Enviar caso</button></a>
                 </div>
             </div>
         </div>
@@ -105,7 +85,7 @@
 </body>
 
 </html>
-<script src="../../public/js/orcamento.js"></script>
+<!-- <script src="../../public/js/orcamento.js"></script> -->
 <script>
     document.getElementById("goBack").addEventListener("click", function () {
         window.location.href = "chat";
@@ -113,5 +93,24 @@
 
     window.onload = function() {
         alterarNavbar()
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const idVinculo = urlParams.get('vinculo');
+
+    async function gerarOrcamento() {
+        const retorno = await fetch(`http://localhost:8080/orcamento`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            },
+            body: JSON.stringify({
+                vinculoId: idVinculo,
+                valorOrcamento: document.getElementById("valorInput").value,
+                prazoFinal: document.getElementById("prazoInput").value
+            })
+        })
+        if (retorno.ok) {
+            window.location = "chat"
+        }
     }
 </script>
