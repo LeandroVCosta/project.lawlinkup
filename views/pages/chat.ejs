@@ -140,7 +140,7 @@
             var messageObject = {
                 mensagem: mensagem,
                 socketId: socketId,
-                idVinculo:idVinculo
+                idVinculo:chatAtual.idVinculo
             };
 
 
@@ -216,7 +216,7 @@
         `)
     }
 
- async   function trocarChat(chat) {
+ async function trocarChat(chat) {
         $('.mensagens').empty()
         chatAtual = chat
         console.log(chat)
