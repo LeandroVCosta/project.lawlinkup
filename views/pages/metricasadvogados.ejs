@@ -9,7 +9,7 @@
     <title>Métricas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="css/metricas.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/profile.css">
@@ -22,8 +22,8 @@
         <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary" style="width: 85%; float: right;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
-                    <img src="img/Logo-SemFundo.svg" width="120" height="100"
-                        class="d-inline-block align-center" alt="">
+                    <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
+                        alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,40 +51,40 @@
 
     </header>
 
-<div id="conteudo">
+    <div id="conteudo">
 
-    <div id="kpis">
-        <div id="kpi1">
-            <h5>Total Clientes</h5>
-            <h2>120</h2>
+        <div id="kpis">
+            <div id="kpi1">
+                <h5>Total Clientes</h5>
+                <h2 id="allClients">0</h2>
+            </div>
+
+            <div id="kpi2">
+                <h5>Visitas</h5>
+                <h2 id="allVisits">0</h2>
+            </div>
+
+            <div id="kpi3">
+                <h5>Contatos</h5>
+                <h2 id="allContatcs">0</h2>
+            </div>
+
+            <div id="kpi4">
+                <h5>Casos em andamento</h5>
+                <h2 id="allCases">0</h2>
+            </div>
+
         </div>
 
-        <div id="kpi2">
-            <h5>Visitas</h5>
-            <h2>120</h2>
+        <div id="espaco_chart1" style="height: 280px; width: 100%;">
+            <canvas id="grafico1" style="height: 280px; width: 1040px;"></canvas>
         </div>
 
-        <div id="kpi3">
-            <h5>Contatos</h5>
-            <h2>120</h2>
-        </div>
-
-        <div id="kpi4">
-            <h5>Casos em andamento</h5>
-            <h2>120</h2>
+        <div id="espaco_chart2" style="height: 280px; width: 100%;">
+            <canvas id="grafico2" style="height: 280px; width: 1040px;"></canvas>
         </div>
 
     </div>
-
-    <div id="espaco_chart1" style="height: 280px; width: 100%;">
-        <canvas id="grafico1" style="height: 280px; width: 1040px;"></canvas>
-    </div>
-
-    <div id="espaco_chart2" style="height: 280px; width: 100%;">
-        <canvas id="grafico2" style="height: 280px; width: 1040px;"></canvas>
-    </div>
-
-</div>
 
 <div class="menu_lateral">
     <ul class="ul">
@@ -95,7 +95,7 @@
 		<li><a href="link"><img id="img_barra_lateral" src="img/notificacao.png" alt="">Notificações</a></li>
 		<li><a href="link"><img id="img_barra_lateral" src="img/Gear.png" alt="">Configurações</a></li>
 		<li><a href="link"><img id="img_barra_lateral" src="img/Question.png" alt="">FAQ</a></li>
-        <li><a href="link"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
+        <li><a href="/"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
 	  </ul>
 </div>
 
@@ -110,63 +110,152 @@
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
     }
 
+    var id = 2
+    var apiUrl = 'http://localhost:8080';
+
+    function allClients() {
+        fetch(`${apiUrl}/dashboard/totalClientes/${id}`, {
+            method: "GET",
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Erro na requisição');
+            }
+        }).then(data => {
+            var dataResult = data.toString()
+            if (dataResult > 0) {
+                return document.getElementById("allClients").textContent = dataResult
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+    function searchAllContatcs() {
+        fetch(`${apiUrl}/dashboard/todosContatos/${id}`, {
+            method: "GET",
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Erro na requisição');
+            }
+        }).then(data => {
+            var dataResult = data.toString()
+            if (dataResult > 0) {
+                return document.getElementById("allContatcs").textContent = dataResult
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+    function allVisits() {
+        fetch(`${apiUrl}/dashboard/quantidadeVisitas/${id}`, {
+            method: "GET",
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Erro na requisição');
+            }
+        }).then(data => {
+            var dataResult = data.toString()
+            if (dataResult > 0) {
+                return document.getElementById("allVisits").textContent = dataResult
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+    function allCases() {
+        fetch(`${apiUrl}/dashboard/totalCasosEmAndamento/${id}`, {
+            method: "GET",
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Erro na requisição');
+            }
+        }).then(data => {
+            var dataResult = data.toString()
+            if (dataResult > 0) {
+                return document.getElementById("allCases").textContent = dataResult
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
+    // ...
+
+    function updateChartWithData(data) {
+        const mesesNomes = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+        const meses = data.map(item => {
+            const dataCompleta = new Date(item.mesAno + '-02');
+            const mes = dataCompleta.getMonth();
+            const nomeMes = mesesNomes[mes];
+            return nomeMes;
+        });
+        const quantidadeTotal = data.map(item => item.quantidadeTotal);
+        myChart.data.labels = meses;
+        myChart.data.datasets[0].data = quantidadeTotal;
+        myChart.update();
+    }
+
+    // ...
+
+    function getDataFromAPI() {
+        var apiUrl2 = `${apiUrl}/dashboard/quantidadeCasosMensais/9`;
+        return fetch(apiUrl2)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao obter dados da API');
+                }
+                // console.log(response)
+                return response.json();
+            })
+            .then(data => {
+                console.log(data)
+                updateChartWithData(data)
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+
+
+
+    searchAllContatcs();
+    allVisits();
+    allClients();
+    allCases();
+    getDataFromAPI();
+
+    setInterval(() => {
+        searchAllContatcs();
+        allVisits();
+        allClients();
+        allCases();
+        getDataFromAPI();
+    }, 1000)
+
+
     const ctx = document.getElementById('grafico1');
 
     Chart.defaults.font.size = 18;
 
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
-    datasets: [{
-                backgroundColor: 'rgb(224, 113, 47)',    
-                borderColor: 'rgb(224, 113, 47)',
-                pointBorderColor: "#E0712F",
-                pointBackgroundColor: "#FFFF",
-                pointBorderWidth: 2,
-                pointHoverRadius: 4,
-                pointHoverBorderWidth: 1,
-                pointRadius: 4,
-                BackgroundColor: "#E0712F",
-      label: 'Casos',
-      data: [12, 19, 3, 5, 2, 3, 10, 12, 4],
-      borderWidth: 2
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    },
-    plugins: {
-          legend: {
-            display: true,
-            position: "bottom",
-            align: "center"
-          },
-          title: {
-                font: {weight: 'bold'},
-                color: 'rgb(0,78,218)',
-                display: true,
-                text: 'Quantidade de casos mensais',
-                padding: {
-                    top: 10,
-                    bottom: 10
-                }
-  }
-}
-}
-}
-);
 
-const ctx2 = document.getElementById('grafico2');
 
-new Chart(ctx2, {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
-    datasets: [{
+    // for(i++ )
+
+    var myChart = new Chart(ctx, {
+
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            datasets: [{
                 backgroundColor: 'rgb(224, 113, 47)',
                 borderColor: 'rgb(224, 113, 47)',
                 pointBorderColor: "#E0712F",
@@ -176,11 +265,69 @@ new Chart(ctx2, {
                 pointHoverBorderWidth: 1,
                 pointRadius: 4,
                 BackgroundColor: "#E0712F",
-      label: 'Qtd. Acessos',
-      data: [12, 9, 3, 5, 2, 3, 10, 12, 4],
-      borderWidth: 2
-    },
-    {           backgroundColor: 'rgb(154,128,83)',
+                label: 'Casos',
+                data: [],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "bottom",
+                    align: "center"
+                },
+                title: {
+                    font: { weight: 'bold' },
+                    color: 'rgb(0,78,218)',
+                    display: true,
+                    text: 'Quantidade de casos mensais',
+                    padding: {
+                        top: 10,
+                        bottom: 10
+                    }
+                }
+            }
+        }
+    }
+    );
+
+
+
+
+    // for (i = 0; i < registry.length; i++) {
+    //     var registry = [i]
+    //     ctx.dataset[0].data.push(registry.mesAno)
+    //     ctx.dataset[1].data.push(registry.quantidadeCasos)
+    // }
+
+    const ctx2 = document.getElementById('grafico2');
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
+            datasets: [{
+                backgroundColor: 'rgb(224, 113, 47)',
+                borderColor: 'rgb(224, 113, 47)',
+                pointBorderColor: "#E0712F",
+                pointBackgroundColor: "#FFFF",
+                pointBorderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 1,
+                pointRadius: 4,
+                BackgroundColor: "#E0712F",
+                label: 'Qtd. Acessos',
+                data: [12, 9, 3, 5, 2, 3, 10, 12, 4],
+                borderWidth: 2
+            },
+            {
+                backgroundColor: 'rgb(154,128,83)',
                 borderColor: 'rgb(154,128,83)',
                 pointBorderColor: "#9A8053",
                 pointBackgroundColor: "#FFFF",
@@ -189,38 +336,45 @@ new Chart(ctx2, {
                 pointHoverBorderWidth: 1,
                 pointRadius: 4,
                 BackgroundColor: "#E0712F",
-      label: 'Contatos',
-      data: [22, 17, 11, 9, 12, 10, 12, 12, 20],
-      borderWidth: 2,
-    }
-]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    },
-    plugins: {
-          legend: {
-            display: true,
-            position: "bottom",
-            align: "center"
-          },
-          title: {
-                font: {weight: 'bold'},
-                color: 'rgb(0,78,218)',
-                display: true,
-                text: 'Acessos X Contatos',
-                padding: {
-                    top: 10,
-                    bottom: 10
+                label: 'Contatos',
+                data: [22, 17, 11, 9, 12, 10, 12, 12, 20],
+                borderWidth: 2,
+            }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
-  }
-}
-}
-}
-);
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "bottom",
+                    align: "center"
+                },
+                title: {
+                    font: { weight: 'bold' },
+                    color: 'rgb(0,78,218)',
+                    display: true,
+                    text: 'Acessos X Contatos',
+                    padding: {
+                        top: 10,
+                        bottom: 10
+                    }
+                }
+            }
+        }
+    }
+    );
+
+
+    function updateGraphic(newData) {
+        myChart.data.datasets[0].data = newData
+
+        myChart.update();
+    }
 
 
 </script>

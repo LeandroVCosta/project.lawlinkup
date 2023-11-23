@@ -86,32 +86,12 @@ body {
     color: #004EDA;
 }
 
+#star-container {
+    direction: ltr;
+}
+
 .media_avaliacao li {
     display: inline-block;
-}
-
-.star-icon {
-    list-style-type: none;
-    cursor: pointer;
-    color: #002855;
-    font-size: 80px;
-    /* alterar o tamanho das estrelas */
-}
-
-.star-icon::before {
-    content: "\2605";
-}
-
-.star-icon.ativo~.star-icon::before {
-    content: "\2606";
-}
-
-.avaliacao:hover .star-icon::before {
-    content: "\2605";
-}
-
-.star-icon:hover~.star-icon::before {
-    content: "\2606";
 }
 
 
@@ -134,7 +114,7 @@ body {
     color: #004EDA;
 }
 
-.ul_tabela {
+#ul_tabela {
     text-align: start;
     margin-top: 8px;
     margin-left: auto;
@@ -142,7 +122,7 @@ body {
     padding: 8px;
 }
 
-.ul_tabela .li_conteudo {
+#ul_tabela .li_conteudo {
     color: #004EDA;
     font-size: 24px;
     width: 280px;
@@ -155,7 +135,7 @@ body {
     padding: 8px;
 }
 
-.ul_tabela .li_text {
+#ul_tabela .li_text {
     padding: 8px;
     color: #5A5A5F;
     font-size: 24px;
@@ -167,6 +147,6 @@ body {
     overflow: hidden;
 }
 
-.ul_tabela li:nth-child(odd) {
+#ul_tabela li:nth-child(odd) {
     float: left;
 }

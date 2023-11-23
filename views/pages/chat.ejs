@@ -74,19 +74,18 @@
             </div>
             <div class="mensagens">
 
-                <div class="div_mensagem1">
+                <!-- <div class="div_mensagem1">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, numquam animi?
                 </div>
                 <div class="div_mensagem2">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, numquam animi?
-                </div>
-
+                </div> -->
             </div>
 
 
-            <div class="div_enviar">
-                <input id="message" type="text" class="i_enviar-mensagem" placeholder="Digite algo">
-                <button id="btn_enviar" class="btn_enviar"><img src="img/Arrow 5.svg"></button>
+            <div class="div_enviar" id="btn_enviar" style="display: none;">
+                    <input id="message" type="text" class="i_enviar-mensagem" placeholder="Digite algo">
+                    <button id="btn_enviar" class="btn_enviar"><img src="img/Arrow 5.svg"></button>
             </div>
         </div>
 
@@ -103,40 +102,56 @@
 
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+<script src="../js/chat.js"></script>
 
 <script>
+    var chatAtual = null
+    const idUsuario = sessionStorage.getItem("userId");
+
     var socket = io('localhost:3000')
 
-    socket.on('loadMessage', function (listMessages) {
-        for (messageObject of listMessages) {
-            renderMessage(messageObject)
-        }
+    socket.on('updateSocketId', function (data) {
+        updateSocketId(idUsuario,data)
     })
 
     socket.on('receivedMessage', function (data) {
-        renderMessage(data)
+        if (data.idVinculo == chatAtual.idVinculo){
+            renderMessage(data.mensagem)
+        }
     })
 
-    function renderMyMessage(message) {
-        $('.mensagens').append(`<div class="div_mensagem2">${message.message}</div>`)
+    function renderMyMessage(mensagem) {
+        $('.mensagens').append(`<div class="div_mensagem2">${mensagem}</div>`)
     }
 
-    function renderMessage(message) {
-        $('.mensagens').append(`<div class="div_mensagem1">${message.message}</div>`)
+    function renderMessage(mensagem) {
+        $('.mensagens').append(`<div class="div_mensagem1">${mensagem}</div>`)
     }
 
-    $('#btn_enviar').click(function (event) {
+    $('#btn_enviar').click(async function (event) {
         event.preventDefault();
-        var message = $('input[id=message]').val();
+        var mensagem = $('input[id=message]').val();
 
-        if (message.length) {
+        if (mensagem.length) {
+
+            socketId = await buscarSocketId(chatAtual.chatUserId)
+
+            
             var messageObject = {
-                message: message,
-                destinatario: false
+                mensagem: mensagem,
+                socketId: socketId,
+                idVinculo:idVinculo
             };
+
+
+            statusCode = await registrarMensagem(chatAtual.idVinculo,idUsuario,chatAtual.chatUserId,mensagem)
+            if (statusCode != 201 && statusCode != 200){
+                alert("Houve um erro ao enviar a mensagem!")
+                return
+            }
             socket.emit('sendMessage', messageObject)
+            renderMyMessage(messageObject.mensagem);
         }
-        renderMyMessage(messageObject);
     });
 
 
@@ -147,7 +162,6 @@
     }
 
     async function carregarChats() {
-        const idUsuario = sessionStorage.getItem("userId");
         const userType = sessionStorage.getItem("userType");
         const vinculos = userType == "cliente" ? await getVinculosCliente(idUsuario) : await getVinculosAdvogado(idUsuario)
 
@@ -161,7 +175,9 @@
                     idVinculo: vinculo.idVinculo,
                     situacao: vinculo.situacao,
                     user: vinculo.advogado.nome,
-                    caso: vinculo.caso.servico
+                    chatUserId: vinculo.advogado.idUsuario,
+                    caso: vinculo.caso.servico,
+                    socket: vinculo.advogado.socketId
                 })
             })
         } else {
@@ -170,7 +186,9 @@
                     idVinculo: vinculo.idVinculo,
                     situacao: vinculo.situacao,
                     user: vinculo.caso.cliente.nome,
-                    caso: vinculo.caso.servico
+                    chatUserId: vinculo.caso.cliente.idUsuario,
+                    caso: vinculo.caso.servico,
+                    socket: vinculo.caso.cliente.socketId
                 })
             })
         }
@@ -193,12 +211,18 @@
                     <div class="div_caso">${chat.caso}</div>
                 </div>
             </div>
+
+            
         `)
     }
 
-    function trocarChat(chat) {
+ async   function trocarChat(chat) {
+        $('.mensagens').empty()
+        chatAtual = chat
         console.log(chat)
 
+        document.getElementById("btn_enviar").style.display = "flex"
+        
         document.getElementById("remetente").innerHTML = `
             <div style="display: flex;">
                 <div class="div_foto">
@@ -209,6 +233,7 @@
                     <div class="div_caso">${chat.caso}</div>
                 </div>
                 </div>
+
                 ${
             // chat.situacao == "AGUARDANDO_RESPOSTA" advogado "botão aceitar"/ cliente nada
             // chat.situacao == "REJEITADO" advogado nada/ cliente selectcase
@@ -246,6 +271,18 @@
                     ""
             }
         `
+
+        mensagens = await carregarMensagens(chatAtual.idVinculo)
+        console.log(mensagens)
+        for (mensagem of mensagens){
+            console.log(mensagem)
+            if (mensagem.remetente.idUsuario == parseInt(idUsuario)){
+                renderMyMessage(mensagem.mensagem)
+            }
+            else{
+                renderMessage(mensagem.mensagem)
+            }
+        }
     }
 
     function verificarCaso(idVinculo) {
