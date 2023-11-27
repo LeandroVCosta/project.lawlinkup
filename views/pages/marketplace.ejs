@@ -112,11 +112,15 @@ var dadosRequisicao = null
   }
 
   function loadAdvogado(advogado) {
+    foto_url = advogado.usuario.fotoUrl
+    if (foto_url == null || foto_url == "" ){
+        foto_url = "img/advogado2.jfif"
+    }
     $('.cardgroup').append(`
             <div class="card card_adv">
             <div class="card-body card-style">
               <div class="card-style">
-                <img src="img/advogado2.jfif" class="img-adv" alt="Responsive image">
+                <img src=${foto_url} class="img-adv" alt="Responsive image">
                 <ul class="adv-info">
                   <li>${advogado.usuario.nome}</li>
                   <li>${advogado.usuario.cidade}</li>
