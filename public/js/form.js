@@ -1,6 +1,4 @@
 
-// SEPARAR ISSO TUDO EM UM ARQUIVO .js SEPARADO
-
 let userType = document.getElementById("typeInput").value
 let nome = document.getElementById("nomeInput").value
 
@@ -257,7 +255,7 @@ prevBtn.addEventListener("click", function (event) {
     prevButton();
 });
 
-submitBtn.addEventListener("click", function (event) {
+submitBtn.addEventListener("click", async function (event) {
     event.preventDefault(); 
     let cpf = document.getElementById("cpfInput").value
     let senha = document.getElementById("senhaInput").value
@@ -312,6 +310,7 @@ submitBtn.addEventListener("click", function (event) {
     if (userType == "1") {
         usuario.especializacao = document.getElementById("especializacaoInput").value
         usuario.numeroOab = document.getElementById("numeroOabInput").value
+        usuario.fotoUrl = await uploadImage()
         // usuario.carteiraOab = document.getElementById("carteiraOabInput").value
         // usuario.fotoOab = document.getElementById("fotoOabInput").value
     }
@@ -381,3 +380,40 @@ function buscarCep() {
             });
     }
 }
+
+async function uploadImage() {
+    const fileInput = document.getElementById('fotoOabInput');
+    const file = fileInput.files[0];
+
+    const formData = new FormData();
+    formData.append('tipo', await getFileType(file));
+    formData.append('stringByte', file);
+
+    try {
+      const response = await fetch('http://localhost:8080/usuario/subirimagem', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.text();
+      if (response.ok) {
+        console.log('URL da Imagem:', data);
+        return data
+      } else {
+        console.error('Erro:', data);
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+    }
+  }
+  
+
+ async function getFileType(file) {
+    if (file.type === 'image/jpeg') {
+      return '.jpg';
+    } else if (file.type === 'image/png') {
+      return '.png';
+    } else {
+      return 'desconhecido';
+    }
+  }

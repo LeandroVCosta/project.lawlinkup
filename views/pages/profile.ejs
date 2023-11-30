@@ -73,6 +73,27 @@
                                 alt="">
                         </div>
                         <button id="btnDesfazer" style="display: none; height: auto;" class="btn-lg btn_perfil" onclick="desfazerAtualizarPerfil()">Desfazer última alteração</button>
+    <div>
+        <div class="profile-banner">
+        </div>
+        <div class="container">
+            <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                  <div class="vw-plugin-top-wrapper"></div>
+                </div>
+              </div>
+            <div class="profile-info">
+                <div onclick="history.back()" class="div_voltar">
+                    <img src="img/seta-esquerda.png" class="seta" alt="">
+                </div>
+                <div class="div_fotoeedicao">
+                    <!-- Colocar uma classe na div abaixo e inserir algumas estilizações que estão na imagem-->
+                    <div>
+                        <img class="div_foto2" id="foto_perfil"
+                            alt="">
+                    </div>
+                    <button id="btnDesfazer" style="display: none; height: auto;" class="btn-lg btn_perfil" onclick="desfazerAtualizarPerfil()">Desfazer última alteração</button>
 
                     </div>
                     <div class="info-col">
@@ -96,7 +117,9 @@
             <div class="div_editar" id="modal_box">
                 <h2 class="modal-title">Monte seu Perfil</h2>
                 <div class="div_modaldescricao">
-                    <div class="div_perfil"></div>
+                    <div class="div_perfil" src>
+                    <img src="" class = "foto_space" id="foto_editar_perfil">
+                </div>
                     <div class="modal-col">
                         <div class="input-area">
                             <label for="nameInput" class="label">Nome Completo</label>
@@ -160,6 +183,8 @@
     }
 
     function loadAdvogado(advogado) {
+        document.getElementById("foto_editar_perfil").src = advogado.fotoUrl
+        document.getElementById("foto_perfil").src = advogado.fotoUrl
         document.getElementById("nome_adv").innerHTML = advogado.nome
         document.getElementById("especializacao").innerHTML = advogado.especializacao
         document.getElementById("descricao").innerHTML = advogado.sobre
