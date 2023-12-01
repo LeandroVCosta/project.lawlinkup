@@ -96,13 +96,14 @@ var dadosRequisicao = null
   }
 
   async function renderAdvogado() {
-    const retorno = await fetch(`http://localhost:8080/usuario/advogado/todos`, {
+    const retorno = await fetch(`http://localhost:8080/usuario/advogado`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     })
     dadosRequisicao = await retorno.json()
+    console.log(dadosRequisicao)
 
     dadosRequisicao.forEach(element => {
       loadAdvogado(element)
@@ -111,23 +112,39 @@ var dadosRequisicao = null
   }
 
   function loadAdvogado(advogado) {
+    foto_url = advogado.usuario.fotoUrl
+    if (foto_url == null || foto_url == "" ){
+        foto_url = "img/advogado2.jfif"
+    }
     $('.cardgroup').append(`
             <div class="card card_adv">
             <div class="card-body card-style">
               <div class="card-style">
-                <img src="img/advogado2.jfif" class="img-adv" alt="Responsive image">
+                <img src=${foto_url} class="img-adv" alt="Responsive image">
                 <ul class="adv-info">
-                  <li>${advogado.nome}</li>
-                  <li>${advogado.cidade}</li>
-                  <li>${advogado.especializacao}</li>
+                  <li>${advogado.usuario.nome}</li>
+                  <li>${advogado.usuario.cidade}</li>
+                  <li>${advogado.usuario.especializacao}</li>
+                  <li><ul style="display: flex; padding: 0; align-items: center"><span style="margin-right: 8px; font-weight:bold">${advogado.avaliacao ? advogado.avaliacao.toFixed(1) : '0.0'}</span> ${loadAvaliacao(advogado.avaliacao ? advogado.avaliacao : 0)} <span style="font-size: 16px; color:#555">(${advogado.qtdAvaliacao ? advogado.qtdAvaliacao : 0} avaliações)</span></ul></li>
                 </ul>
               </div>
               <div class="btn-perfil">
-                <a href="viewprofile?advogado=${advogado.idUsuario}"><button type="button" class="btn btn-primary btn-right">Perfil</button></a>
-                <a href="${sessionStorage.getItem("userId") ? `selectcase?advogado=${advogado.idUsuario}` : "login"}"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
+                <a href="viewprofile?advogado=${advogado.usuario.idUsuario}"><button type="button" class="btn btn-primary btn-right">Perfil</button></a>
+                <a href="${sessionStorage.getItem("userId") ? `selectcase?advogado=${advogado.usuario.idUsuario}` : "login"}"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
               </div>
             </div>
             </div>`)
+  }
+
+  function loadAvaliacao(avaliacao) {
+    let i = 1
+    let retorno = ""
+    if (avaliacao == 0) retorno += `<li style="display:none" class="star-icon ativo"></li>`
+    while(i <= 5) {
+      retorno += `<li class="star-icon ${i == Math.round(avaliacao) ? "ativo" : ""}"></li>`
+      i++
+    }
+    return retorno
   }
 
  async function getAdvogadoByEspecializacao(){

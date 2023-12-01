@@ -70,7 +70,7 @@
         </div>
         <div class="div_mensagens">
             <div id="remetente" class="div_correspondente">
-                
+
             </div>
             <div class="mensagens">
 
@@ -140,7 +140,7 @@
             var messageObject = {
                 mensagem: mensagem,
                 socketId: socketId,
-                idVinculo:idVinculo
+                idVinculo:chatAtual.idVinculo
             };
 
 
@@ -216,7 +216,7 @@
         `)
     }
 
- async   function trocarChat(chat) {
+ async function trocarChat(chat) {
         $('.mensagens').empty()
         chatAtual = chat
         console.log(chat)
@@ -235,22 +235,40 @@
                 </div>
 
                 ${
-                // chat.situacao == "AGUARDANDO_RESPOSTA" advogado "botão aceitar"/ cliente nada
-                // chat.situacao == "REJEITADO" advogado nada/ cliente selectcase
-                // chat.situacao == "ACEITO" advogado chat futuro -> botao "gerar orcamento"/ cliente botao "finalizar vinculo" futuro -> cliente chat
-                // pro futuro -> chat.situacao == "ORCAMENTO_GERADO" advogado chat/ cliente "aceitar orcamento"
-                // pro futuro -> chat.situacao == "ORCAMENTO_ACEITO" advogado chat/ cliente botao "finalizar vinculo"
-                // chat.situacao == "FINALIZADO" advogado chat/ cliente chat
-                sessionStorage.getItem("userType") == "cliente" ? 
-                    chat.situacao == "ACEITO" ? 
-                        `<button onclick="finalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Finalizar Vínculo</button>`
+            // chat.situacao == "AGUARDANDO_RESPOSTA" advogado "botão aceitar"/ cliente nada
+            // chat.situacao == "REJEITADO" advogado nada/ cliente selectcase
+            // chat.situacao == "ACEITO" advogado chat futuro -> botao "gerar orcamento"/ cliente botao "finalizar vinculo" futuro -> cliente chat
+            // pro futuro -> chat.situacao == "ORCAMENTO_PENDENTE" advogado chat/ cliente "aceitar orcamento"
+            // pro futuro -> chat.situacao == "ORCAMENTO_ACEITO" advogado chat/ cliente botao "finalizar vinculo"
+            // chat.situacao == "FINALIZADO" advogado chat/ cliente chat
+            sessionStorage.getItem("userType") == "cliente" ?
+                    chat.situacao == "ORCAMENTO_PENDENTE" ?
+                    `<button onclick="verificarOrcamento(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Verificar Orcamento</button>`
                     :
+                    chat.situacao == "ORCAMENTO_ACEITO" ?
+                        `<button onclick="clienteFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Solicitar Encerramento</button>`
+                        :
+                    chat.situacao == "ADVOGADO_ENCERRADO" ?
+                        `<button onclick="finalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Encerrar Caso</button>`
+                        :
                         ""
                 :
-                    chat.situacao == "AGUARDANDO_RESPOSTA" ? 
+                    chat.situacao == "AGUARDANDO_RESPOSTA" ?
                         `<button onclick="verificarCaso(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Verificar Caso</button>`
                     :
-                        ""
+                    chat.situacao == "ACEITO" ?
+                        `<button onclick="gerarOrcamento(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Gerar Orcamento</button>`
+                    :
+                    chat.situacao == "ORCAMENTO_REJEITADO" ?
+                        `<button onclick="gerarOrcamento(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Gerar Novo Orcamento</button>`
+                    :
+                    chat.situacao == "ORCAMENTO_ACEITO" ?
+                        `<button onclick="advogadoFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Solicitar Encerramento</button>`
+                    :
+                    chat.situacao == "CLIENTE_ENCERRADO" ?
+                        `<button onclick="advogadoFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Confirmar Encerramento</button>`
+                    :
+                    ""
             }
         `
 
@@ -270,9 +288,37 @@
     function verificarCaso(idVinculo) {
         window.location = `solicitacaovincliente?vinculo=${idVinculo}`;
     }
-    
+
+    function gerarOrcamento(idVinculo) {
+        window.location = `orcamento?vinculo=${idVinculo}`
+    }
+
+    function verificarOrcamento(idVinculo) {
+        window.location = `verificarOrcamento?vinculo=${idVinculo}`
+    }
+
     function finalizarVinculo(idVinculo) {
         window.location = `avaliacaoadv?vinculo=${idVinculo}`;
+    }
+
+    async function advogadoFinalizarVinculo(idVinculo) {
+        await fetch(`http://localhost:8080/vinculo/solicitarFimAdvogado/${idVinculo}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        location.reload()
+    }
+    
+    async function clienteFinalizarVinculo(idVinculo) {
+        await fetch(`http://localhost:8080/vinculo/solicitarFimCliente/${idVinculo}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        location.reload()
     }
 
     async function getVinculosCliente(idUsuario) {
