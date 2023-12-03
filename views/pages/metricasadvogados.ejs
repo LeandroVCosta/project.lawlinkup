@@ -86,18 +86,18 @@
 
     </div>
 
-<div class="menu_lateral">
-    <ul class="ul">
-        <li><b>Métricas:</b></li>
-		<li><a href="link"><img id="img_barra_lateral" src="img/NotePencil.png" alt="">Mensais</a></li>
-        <ul id="espaco_barra_lateral"></ul>
-		<li><a href="link"><img id="img_barra_lateral" src="img/User.png" alt="">Perfil</a></li>
-		<li><a href="link"><img id="img_barra_lateral" src="img/notificacao.png" alt="">Notificações</a></li>
-		<li><a href="link"><img id="img_barra_lateral" src="img/Gear.png" alt="">Configurações</a></li>
-		<li><a href="link"><img id="img_barra_lateral" src="img/Question.png" alt="">FAQ</a></li>
-        <li><a href="/"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
-	  </ul>
-</div>
+    <div class="menu_lateral">
+        <ul class="ul">
+            <li><b>Métricas:</b></li>
+            <li><a href="link"><img id="img_barra_lateral" src="img/NotePencil.png" alt="">Mensais</a></li>
+            <ul id="espaco_barra_lateral"></ul>
+            <li><a href="link"><img id="img_barra_lateral" src="img/User.png" alt="">Perfil</a></li>
+            <li><a href="link"><img id="img_barra_lateral" src="img/notificacao.png" alt="">Notificações</a></li>
+            <li><a href="link"><img id="img_barra_lateral" src="img/Gear.png" alt="">Configurações</a></li>
+            <li><a href="link"><img id="img_barra_lateral" src="img/Question.png" alt="">FAQ</a></li>
+            <li><a href="/"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
+        </ul>
+    </div>
 
 </body>
 
@@ -110,11 +110,14 @@
         document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
     }
 
-    var id = 2
+
+    var id = sessionStorage.getItem("userId");
     var apiUrl = 'http://localhost:8080';
+    var dadosAcessos = [{}]
+    var dadosContatos = [{}]
 
     function allClients() {
-        fetch(`${apiUrl}/dashboard/totalClientes/${id}`, {
+        fetch(`${apiUrl}/dashboard/todosContatos/${id}`, {
             method: "GET",
         }).then(response => {
             if (response.ok) {
@@ -186,8 +189,6 @@
         });
     }
 
-    // ...
-
     function updateChartWithData(data) {
         const mesesNomes = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 
@@ -203,20 +204,54 @@
         myChart.update();
     }
 
-    // ...
+
+    function atualizarGraficoQtdAcessosVinculosMensais(dadosAcessos, dadosContatos) {
+        const mesesNomes =
+            ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+        const mesesDistintos = new Set([
+            ...dadosAcessos.map(item => item.mesAno),
+            ...dadosContatos.map(item => item.mesAno)
+        ]);
+
+        const mesesOrdenados = Array.from(mesesDistintos).sort();
+
+        const meses = mesesOrdenados.map(mesAno => {
+            const dataCompleta = new Date(mesAno + '-02');
+            const mes = dataCompleta.getMonth();
+            return mesesNomes[mes];
+        });
+
+        const quantidadeTotalAcessos = mesesOrdenados.map(mesAno => {
+            const dados = dadosAcessos.find(item => item.mesAno === mesAno);
+            return dados ? dados.quantidadeTotal : 0;
+        });
+
+        const quantidadeTotalContatos = mesesOrdenados.map(mesAno => {
+            const dados = dadosContatos.find(item => item.mesAno === mesAno);
+            return dados ? dados.quantidadeTotal : 0;
+        });
+
+
+        myChartTwo.data.labels = meses
+        myChartTwo.data.datasets[0].data = quantidadeTotalContatos;
+
+        myChartTwo.data.datasets[1].data = quantidadeTotalAcessos;
+
+        myChartTwo.update();
+    }
 
     function getDataFromAPI() {
-        var apiUrl2 = `${apiUrl}/dashboard/quantidadeCasosMensais/9`;
+        var apiUrl2 = `${apiUrl}/dashboard/quantidadeCasosMensais/${id}`;
         return fetch(apiUrl2)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao obter dados da API');
                 }
-                // console.log(response)
                 return response.json();
             })
             .then(data => {
-                console.log(data)
+                dadosAcessos = data
                 updateChartWithData(data)
             })
             .catch(error => {
@@ -224,7 +259,37 @@
             });
     }
 
+    function buscarDadosQuantidadeVisitasMensais() {
+        var apiUrl2 = `${apiUrl}/dashboard/quantidadeVisitasMensais/${id}`;
+        return fetch(apiUrl2)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao obter dados da API');
+                }
+                return response.json();
+            })
+            .then(data => {
+                dadosContatos = data
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
+    function atualizarGrafico() {
+        atualizarGraficoQtdAcessosVinculosMensais(dadosAcessos, dadosContatos)
+    }
+
+
+    function obterDadosAcessosEVisitas() {
+        Promise.all([getDataFromAPI(), buscarDadosQuantidadeVisitasMensais()])
+            .then(() => {
+                atualizarGrafico();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
 
     searchAllContatcs();
@@ -232,6 +297,7 @@
     allClients();
     allCases();
     getDataFromAPI();
+    obterDadosAcessosEVisitas();
 
     setInterval(() => {
         searchAllContatcs();
@@ -239,7 +305,8 @@
         allClients();
         allCases();
         getDataFromAPI();
-    }, 1000)
+        obterDadosAcessosEVisitas();
+    }, 5000)
 
 
     const ctx = document.getElementById('grafico1');
@@ -251,10 +318,9 @@
     // for(i++ )
 
     var myChart = new Chart(ctx, {
-
         type: 'line',
         data: {
-            labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            labels: [],
             datasets: [{
                 backgroundColor: 'rgb(224, 113, 47)',
                 borderColor: 'rgb(224, 113, 47)',
@@ -298,20 +364,12 @@
     );
 
 
-
-
-    // for (i = 0; i < registry.length; i++) {
-    //     var registry = [i]
-    //     ctx.dataset[0].data.push(registry.mesAno)
-    //     ctx.dataset[1].data.push(registry.quantidadeCasos)
-    // }
-
     const ctx2 = document.getElementById('grafico2');
 
-    new Chart(ctx2, {
+    var myChartTwo = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ['Jan', 'Fev', 'Mar', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
+            labels: [],
             datasets: [{
                 backgroundColor: 'rgb(224, 113, 47)',
                 borderColor: 'rgb(224, 113, 47)',
@@ -323,7 +381,7 @@
                 pointRadius: 4,
                 BackgroundColor: "#E0712F",
                 label: 'Qtd. Acessos',
-                data: [12, 9, 3, 5, 2, 3, 10, 12, 4],
+                data: [],
                 borderWidth: 2
             },
             {
@@ -337,7 +395,7 @@
                 pointRadius: 4,
                 BackgroundColor: "#E0712F",
                 label: 'Contatos',
-                data: [22, 17, 11, 9, 12, 10, 12, 12, 20],
+                data: [],
                 borderWidth: 2,
             }
             ]
@@ -372,8 +430,9 @@
 
     function updateGraphic(newData) {
         myChart.data.datasets[0].data = newData
-
+        myChartTwo.data.datasets[0].data = newData
         myChart.update();
+        myChartTwo.update();
     }
 
 
