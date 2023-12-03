@@ -4,7 +4,7 @@
 
 body {
   color: #5a5a5a;
-  font-family: 'roboto','sans-serif',;
+  font-family: 'roboto','sans-serif';
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -32,11 +32,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-text-background {
-  width: 100vh;
-  height: 32.5vh;
-  background-color: rgb(175, 148, 105, 0.9);
+  background-color: #00285080;
   border-radius: 8px;
   padding: 2rem 5rem;
+}
+
+.carousel-text-background h1 {
+  font-weight: bold;
 }
 
 /* Declare heights because of positioning of img element */

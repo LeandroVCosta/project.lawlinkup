@@ -58,7 +58,10 @@
     font-size: 36px;
     font-weight: bold;
     color: #000000;
-    font-family: "Roboto";   
+    font-family: "Roboto";
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .texto_esp {
@@ -79,8 +82,8 @@
     box-sizing: border-box;
     width: 60%;
     height: 100%;
+    min-height: 240px;
     margin-top: 10px;
-    margin-bottom: 15%;
     margin-left: 50px;
     background: #FFFFFF;
     border: 1px solid #000000;
@@ -117,10 +120,9 @@
 
 .container-ava {
     background-color: #B8D9FF;
-    height: 80%;
     width: 30%;
     display: flex;
-    margin-left: 70%;
+    margin-left: 68%;
     margin-top: -5%;
     border-radius: 10px;
     display: flex;
@@ -176,11 +178,11 @@
     margin-top: 10px;
     font-size: 20px;
     text-align: start;
-    height: 20%;
 }
 
 .input-desc {
     height: 100%;
+    min-height: 100px;
     width: 100%;
     border-radius: 10px;
     border-color: #FFFFFF;
@@ -188,7 +190,8 @@
 }
 
 .buttons-ava {
-    margin-top: 70px;
+    margin-top: 8px;
+    padding-block: 16px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -242,4 +245,8 @@
 
 .star-icon:hover~.star-icon::before {
     content: "\2606";
+}
+
+.div_cardbotao {
+    max-width: 70%;
 }

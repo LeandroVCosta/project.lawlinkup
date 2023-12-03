@@ -19,7 +19,7 @@
 
 <body>
     <header id="header-site">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-color-primary" style="font-family: 'Roboto' ;">
+        <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary" style="font-family: 'Roboto' ;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
                     <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
@@ -50,51 +50,56 @@
         </nav>
     </header>
 
-    <div class="div_chat">
-        <div class="div_contatos">
-            <div class="div_perfil">
-                <div class="div_foto"></div>
-                <div class="div_info">
-                    <div class="div_nome">Carlos Augusto</div>
-                    <div class="div_caso">Minhas informações</div>
+    <div class="main-no-scroll">
+        <div class="div_chat">
+            <div class="div_contatos">
+                <div class="div_perfil">
+                    <div id="foto_usuario" class="div_foto">
+                        <img src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
+                    </div>
+                    <div class="div_info">
+                        <div id="nome_usuario" class="div_nome">Carlos Augusto</div>
+                        <div id="info_usuario" class="div_caso">Minhas informações</div>
+                    </div>
+                </div>
+
+                <div class="div_pesquisa">
+                    <input type="search" class="i_pesquisa" placeholder="Pesquisar Conversa">
+                </div>
+
+                <div class="chats">
+
                 </div>
             </div>
+            <div class="div_mensagens">
+                <div id="remetente" class="div_correspondente">
 
-            <div class="div_pesquisa">
-                <input type="search" class="i_pesquisa" placeholder="Pesquisar Conversa">
-            </div>
-
-            <div class="chats">
-
-            </div>
-        </div>
-        <div class="div_mensagens">
-            <div id="remetente" class="div_correspondente">
-
-            </div>
-            <div class="mensagens">
-
-                <!-- <div class="div_mensagem1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, numquam animi?
                 </div>
-                <div class="div_mensagem2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, numquam animi?
-                </div> -->
-            </div>
+                <div id="box_mensagens" class="mensagens">
+
+                    <!-- <div class="div_mensagem1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, numquam animi?
+                    </div>
+                    <div class="div_mensagem2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, numquam animi?
+                    </div> -->
+                </div>
 
 
-            <div class="div_enviar" id="btn_enviar" style="display: none;">
+                <div class="div_enviar" id="input_enviar" style="display: none;">
                     <input id="message" type="text" class="i_enviar-mensagem" placeholder="Digite algo">
                     <button id="btn_enviar" class="btn_enviar"><img src="img/Arrow 5.svg"></button>
+                </div>
             </div>
         </div>
+    </div>
 
 
 
-        <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
+    <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
 
 </body>
 
@@ -108,14 +113,16 @@
     var chatAtual = null
     const idUsuario = sessionStorage.getItem("userId");
 
+
+
     var socket = io('localhost:3000')
 
     socket.on('updateSocketId', function (data) {
-        updateSocketId(idUsuario,data)
+        updateSocketId(idUsuario, data)
     })
 
     socket.on('receivedMessage', function (data) {
-        if (data.idVinculo == chatAtual.idVinculo){
+        if (data.idVinculo == chatAtual.idVinculo) {
             renderMessage(data.mensagem)
         }
     })
@@ -136,22 +143,24 @@
 
             socketId = await buscarSocketId(chatAtual.chatUserId)
 
-            
+
             var messageObject = {
                 mensagem: mensagem,
                 socketId: socketId,
-                idVinculo:chatAtual.idVinculo
+                idVinculo: chatAtual.idVinculo
             };
 
 
-            statusCode = await registrarMensagem(chatAtual.idVinculo,idUsuario,chatAtual.chatUserId,mensagem)
-            if (statusCode != 201 && statusCode != 200){
+            statusCode = await registrarMensagem(chatAtual.idVinculo, idUsuario, chatAtual.chatUserId, mensagem)
+            if (statusCode != 201 && statusCode != 200) {
                 alert("Houve um erro ao enviar a mensagem!")
                 return
             }
             socket.emit('sendMessage', messageObject)
             renderMyMessage(messageObject.mensagem);
         }
+        document.getElementById("message").value = ""
+        document.getElementById("box_mensagens").scrollTop = document.getElementById("box_mensagens").scrollHeight
     });
 
 
@@ -204,31 +213,29 @@
         $('.chats').append(`
             <div onclick='trocarChat(${chat2})' class="div_conversas${index % 2 == 1 ? "2" : ""}">
                 <div class="div_foto">
-                    <img src="img/foto_adv.png" alt="">
+                    <img src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
                 </div>
                 <div class="div_info">
                     <div class="div_nome">${chat.user}</div>
                     <div class="div_caso">${chat.caso}</div>
                 </div>
             </div>
-
-            
         `)
     }
 
- async function trocarChat(chat) {
+    async function trocarChat(chat) {
         $('.mensagens').empty()
         chatAtual = chat
         console.log(chat)
 
-        document.getElementById("btn_enviar").style.display = "flex"
-        
+        document.getElementById("input_enviar").style.display = "flex"
+
         document.getElementById("remetente").innerHTML = `
-            <div style="display: flex;">
-                <div class="div_foto">
-                    <img src="img/foto_adv.png" alt="">
+            <div class="div_perfil_chat">
+                <div class="div_foto_chat">
+                    <img src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
                 </div>
-                <div class="div_info">
+                <div class="div_info_chat">
                     <div class="div_nome">${chat.user}</div>
                     <div class="div_caso">${chat.caso}</div>
                 </div>
@@ -242,47 +249,48 @@
             // pro futuro -> chat.situacao == "ORCAMENTO_ACEITO" advogado chat/ cliente botao "finalizar vinculo"
             // chat.situacao == "FINALIZADO" advogado chat/ cliente chat
             sessionStorage.getItem("userType") == "cliente" ?
-                    chat.situacao == "ORCAMENTO_PENDENTE" ?
+                chat.situacao == "ORCAMENTO_PENDENTE" ?
                     `<button onclick="verificarOrcamento(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Verificar Orcamento</button>`
                     :
                     chat.situacao == "ORCAMENTO_ACEITO" ?
                         `<button onclick="clienteFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Solicitar Encerramento</button>`
                         :
-                    chat.situacao == "ADVOGADO_ENCERRADO" ?
-                        `<button onclick="finalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Encerrar Caso</button>`
-                        :
-                        ""
+                        chat.situacao == "ADVOGADO_ENCERRADO" ?
+                            `<button onclick="finalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Encerrar Caso</button>`
+                            :
+                            ""
                 :
-                    chat.situacao == "AGUARDANDO_RESPOSTA" ?
-                        `<button onclick="verificarCaso(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Verificar Caso</button>`
+                chat.situacao == "AGUARDANDO_RESPOSTA" ?
+                    `<button onclick="verificarCaso(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Verificar Caso</button>`
                     :
                     chat.situacao == "ACEITO" ?
                         `<button onclick="gerarOrcamento(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Gerar Orcamento</button>`
-                    :
-                    chat.situacao == "ORCAMENTO_REJEITADO" ?
-                        `<button onclick="gerarOrcamento(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Gerar Novo Orcamento</button>`
-                    :
-                    chat.situacao == "ORCAMENTO_ACEITO" ?
-                        `<button onclick="advogadoFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Solicitar Encerramento</button>`
-                    :
-                    chat.situacao == "CLIENTE_ENCERRADO" ?
-                        `<button onclick="advogadoFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Confirmar Encerramento</button>`
-                    :
-                    ""
+                        :
+                        chat.situacao == "ORCAMENTO_REJEITADO" ?
+                            `<button onclick="gerarOrcamento(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Gerar Novo Orcamento</button>`
+                            :
+                            chat.situacao == "ORCAMENTO_ACEITO" ?
+                                `<button onclick="advogadoFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Solicitar Encerramento</button>`
+                                :
+                                chat.situacao == "CLIENTE_ENCERRADO" ?
+                                    `<button onclick="advogadoFinalizarVinculo(${chat.idVinculo})" class="btn btn-lg text-light btn_all">Confirmar Encerramento</button>`
+                                    :
+                                    ""
             }
         `
 
         mensagens = await carregarMensagens(chatAtual.idVinculo)
         console.log(mensagens)
-        for (mensagem of mensagens){
+        for (mensagem of mensagens) {
             console.log(mensagem)
-            if (mensagem.remetente.idUsuario == parseInt(idUsuario)){
+            if (mensagem.remetente.idUsuario == parseInt(idUsuario)) {
                 renderMyMessage(mensagem.mensagem)
             }
-            else{
+            else {
                 renderMessage(mensagem.mensagem)
             }
         }
+        document.getElementById("box_mensagens").scrollTop = document.getElementById("box_mensagens").scrollHeight
     }
 
     function verificarCaso(idVinculo) {
@@ -310,7 +318,7 @@
         })
         location.reload()
     }
-    
+
     async function clienteFinalizarVinculo(idVinculo) {
         await fetch(`http://localhost:8080/vinculo/solicitarFimCliente/${idVinculo}`, {
             method: "PATCH",
@@ -344,6 +352,28 @@
         console.log(vinculos)
         return vinculos
     }
+
+    getUsuario(idUsuario)
+
+    async function getUsuario(idUsuario) {
+        const retorno = await fetch(`http://localhost:8080/usuario/advogado/buscarPorId/${idUsuario}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const dadosRequisicao = await retorno.json()
+
+        console.log(dadosRequisicao)
+        loadUsuario(dadosRequisicao)
+
+    }
+
+    function loadUsuario(usuario) {
+        document.getElementById("foto_usuario").src = usuario.fotoUrl
+        document.getElementById("nome_usuario").innerHTML = usuario.nome
+    }
+
 
 
 </script>

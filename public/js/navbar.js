@@ -1,8 +1,9 @@
 function alterarNavbar() {
     console.log(sessionStorage.getItem("userId"))
+    document.getElementById("header-site").className = "navbar-fixed-top"
     if (sessionStorage.getItem("userId")) {
         document.getElementById("header-site").innerHTML = `
-            <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary fixed-top">
+            <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="home">
                         <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
@@ -36,7 +37,7 @@ function alterarNavbar() {
         `
     } else {
         document.getElementById("header-site").innerHTML = `
-            <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary fixed-top" style="font-family: 'Brawler'; height: 112px;">
+            <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary" style="font-family: 'Brawler'; height: 112px;">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="home">
                         <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center" alt="">

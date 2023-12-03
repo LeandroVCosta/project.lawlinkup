@@ -239,4 +239,5 @@ input[type = 'file']{
 
 .btn-editar {
     margin-top: 80px;
+    white-space: nowrap;
 }
