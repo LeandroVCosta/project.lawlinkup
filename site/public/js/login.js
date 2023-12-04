@@ -25,7 +25,7 @@ submitBtn.addEventListener("click", function(event){
 });
 
 async function LogarUsuario(usuario) {
-    await fetch(`http://localhost:8080/login`, {
+    await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/login`, {
             method: "POST",
             body: JSON.stringify(usuario),
             headers: {

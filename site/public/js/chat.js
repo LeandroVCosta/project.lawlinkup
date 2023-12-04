@@ -1,5 +1,5 @@
 async function buscarSocketId(idUsuario){
-    const retorno = await fetch(`http://localhost:8080/chat/buscarSocketId/${idUsuario}`, {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/chat/buscarSocketId/${idUsuario}`, {
         method: "GET",
         headers: {
             "Content-type": "application/json; charset=UTF-8"
@@ -15,7 +15,7 @@ async function updateSocketId(id,socket){
         socketId:socket
     }
 
-    await fetch(`http://localhost:8080/chat/atualizarSocketId`, {
+    await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/chat/atualizarSocketId`, {
         method: "POST",
         body: JSON.stringify(dados),
         headers: {
@@ -29,7 +29,7 @@ async function carregarMensagens(idVinculo){
         idVinculo:parseInt(idVinculo)
     }
 
-    const retorno = await fetch(`http://localhost:8080/chat/carregarMensagens`, {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/chat/carregarMensagens`, {
         method: "POST",
         body: JSON.stringify(dados),
         headers: {
@@ -48,7 +48,7 @@ async function registrarMensagem(idVinculo,idRemetente,idDestinatario,mensagem){
         mensagem:mensagem
     }
 
-    const retorno = await fetch(`http://localhost:8080/chat/enviarmensagem`, {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/chat/enviarmensagem`, {
         method: "POST",
         body: JSON.stringify(dados),
         headers: {

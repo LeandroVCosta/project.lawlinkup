@@ -15,7 +15,7 @@
 
 // }
 // async function gerarOrcamento(orcamento){
-//     await fetch(`http://localhost:8080/orcamento`, {
+//     await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/orcamento`, {
 //         method: "POST",
 //         body: JSON.stringify(orcamento),
 //         headers: {

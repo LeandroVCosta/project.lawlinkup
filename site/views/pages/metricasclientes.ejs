@@ -99,7 +99,7 @@
     }
 
     async function dashAvaliacaoCliente(){
-    const retorno = await fetch(`http://localhost:8080/dashboard/cliente/1`, {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/dashboard/cliente/${sessionStorage.getItem("userId")}`, {
       method: "GET",
       headers: {
       "Content-type": "application/json; charset=UTF-8"
@@ -167,7 +167,7 @@
 }
 
     async function dashRelatorio(){
-    const retorno = await fetch(`http://localhost:8080/dashboard/casos/1`, {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/dashboard/casos/${sessionStorage.getItem("userId")}`, {
       method: "GET",
       headers: {
       "Content-type": "application/json; charset=UTF-8"

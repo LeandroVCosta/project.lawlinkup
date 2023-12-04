@@ -106,7 +106,7 @@
     // }
 
     async function getAdvogado(idAdvogado) {
-        const retorno = await fetch(`http://localhost:8080/usuario/advogado/buscarPorId/${idAdvogado}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/buscarPorId/${idAdvogado}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -132,7 +132,7 @@
     }
 
     function addVisita(idAdvogado) {
-        fetch(`http://localhost:8080/usuario/advogado/adicionarVisita/${idAdvogado}`, {
+        fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/adicionarVisita/${idAdvogado}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

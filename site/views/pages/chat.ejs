@@ -110,12 +110,14 @@
 <script src="../js/chat.js"></script>
 
 <script>
-    var chatAtual = null
+    var chatAtual = null;
     const idUsuario = sessionStorage.getItem("userId");
 
-
-
-    var socket = io('localhost:3000')
+    if (typeof io !== 'undefined') {
+        var socket = io({ path: '/socket' });
+    } else {
+        console.error('Socket.IO não está carregado corretamente.');
+    }
 
     socket.on('updateSocketId', function (data) {
         updateSocketId(idUsuario, data)
@@ -310,7 +312,7 @@
     }
 
     async function advogadoFinalizarVinculo(idVinculo) {
-        await fetch(`http://localhost:8080/vinculo/solicitarFimAdvogado/${idVinculo}`, {
+        await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/solicitarFimAdvogado/${idVinculo}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -320,7 +322,7 @@
     }
 
     async function clienteFinalizarVinculo(idVinculo) {
-        await fetch(`http://localhost:8080/vinculo/solicitarFimCliente/${idVinculo}`, {
+        await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/solicitarFimCliente/${idVinculo}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -330,7 +332,7 @@
     }
 
     async function getVinculosCliente(idUsuario) {
-        const retorno = await fetch(`http://localhost:8080/vinculo/listarPorCliente/${idUsuario}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/listarPorCliente/${idUsuario}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -342,7 +344,7 @@
     }
 
     async function getVinculosAdvogado(idUsuario) {
-        const retorno = await fetch(`http://localhost:8080/vinculo/listarPorAdvogado/${idUsuario}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/listarPorAdvogado/${idUsuario}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -356,7 +358,7 @@
     getUsuario(idUsuario)
 
     async function getUsuario(idUsuario) {
-        const retorno = await fetch(`http://localhost:8080/usuario/advogado/buscarPorId/${idUsuario}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/buscarPorId/${idUsuario}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

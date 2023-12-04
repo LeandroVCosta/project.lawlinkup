@@ -10,7 +10,7 @@ async function cadastrarCaso() {
     const urlParams = new URLSearchParams(window.location.search);
     const idAdvogado = urlParams.get('advogado');
 
-    await fetch('http://localhost:8080/caso', {
+    await fetch('https://project-lawlinkup-5yraro2lta-uc.a.run.app/caso', {
         method: "POST",
         body: JSON.stringify(caso),
         headers: {
@@ -46,7 +46,7 @@ function desaparecerModalAceite() {
 }
 
 async function pesquisarAdvogado(nome) {
-    await fetch(`http://localhost:8080/usuario/${nome}`, {
+    await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/${nome}`, {
         method: "GET",
         headers: {
             "Content-type": "application/json; charset=UTF-8",

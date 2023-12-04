@@ -64,22 +64,25 @@
                     </div>
                 </div>
 
-                <h4>Proposta de orçamento</h4>
+                <h4>Solicitação de Início de Vínculo</h4>
                 <div class="form-outer-contrato">
                     <div class="input-cliente">
-                        <b>Valor do Orçamento</b>: <span id="valorOrcamento"></span>
+                        <b>Cliente</b>: <span id="nomeCliente"></span>
                     </div>
                     <div class="input-caso">
-                        <b>Prazo final</b>: <span id="prazoFinal"></span>
+                        <b>Caso</b>: <span id="nomeCaso"></span>
+                    </div>
+                    <div class="input-descricao">
+                        <b>Descrição</b>: <span id="detalhamento"></span>
                     </div>
                 </div>
-                <b>Aceitar Proposta de Orçamento</b>
+                <b>Aceitar criação de Vínculo</b>
                 <div class="botoes-vinculo">
-                    <a>
-                        <div class="botao-negar" onclick="rejeitarOrcamento()"><img src="img/ExitIcon.svg"></div>
+                    <a href="chat">
+                        <div class="botao-negar" onclick="rejeitarVinculo()"><img src="img/ExitIcon.svg"></div>
                     </a>
-                    <a>
-                        <div class="botao-aceitar" onclick="aceitarOrcamento()"><img src="img/CorrectIcon.svg"></div>
+                    <a href="chat">
+                        <div class="botao-aceitar" onclick="aceitarVinculo()"><img src="img/CorrectIcon.svg"></div>
                     </a>
                 </div>
             </div>
@@ -95,49 +98,50 @@
         const urlParams = new URLSearchParams(window.location.search);
         const idVinculo = urlParams.get('vinculo');
 
-        async function renderOrcamento() {
+        async function renderVinculo() {
             const idUsuario = sessionStorage.getItem("userId");
-            const retorno = await fetch(`http://localhost:8080/orcamento/${idVinculo}`, {
+            const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/${idVinculo}`, {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
             const dadosRequisicao = await retorno.json();
-            loadOrcamento(dadosRequisicao)
+            loadVinculo(dadosRequisicao)
             console.log(retorno)
 
         }
 
-        function loadOrcamento(orcamento) {
-            document.getElementById("valorOrcamento").innerHTML = orcamento.valorOrcamento
-            document.getElementById("prazoFinal").innerHTML = orcamento.prazoFinal
+        function loadVinculo(vinculo) {
+            document.getElementById("nomeCliente").innerHTML = vinculo.caso.cliente.nome
+            document.getElementById("nomeCaso").innerHTML = vinculo.caso.especificacao
+            document.getElementById("detalhamento").innerHTML = vinculo.caso.detalhamento
         }
 
-        async function aceitarOrcamento() {
-            await fetch(`http://localhost:8080/orcamento/aceitarOrcamento/${idVinculo}`, {
+        function aceitarVinculo() {
+            fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/aceitar/${idVinculo}`, {
                 method: "PATCH",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            window.location = "chat"
         }
 
-        async function rejeitarOrcamento() {
-            await fetch(`http://localhost:8080/orcamento/rejeitarOrcamento/${idVinculo}`, {
+        function rejeitarVinculo() {
+            fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/rejeitar/${idVinculo}`, {
                 method: "PATCH",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            window.location = "chat"
         }
 
-        window.onload = function () {
-            alterarNavbar()
-            renderOrcamento()
-        }
+
+    console.log(idVinculo)
+
+    alterarNavbar()
+    renderVinculo()
+        
     </script>
 </body>
 

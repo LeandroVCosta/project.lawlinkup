@@ -146,7 +146,7 @@
     });
 
     async function getAdvogado(idAdvogado) {
-        const retorno = await fetch(`http://localhost:8080/usuario/advogado/buscarPorId/${idAdvogado}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/buscarPorId/${idAdvogado}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -205,7 +205,7 @@
     }
 
     async function atualizarPerfil(novoPerfil) {
-        const retorno = await fetch(`http://localhost:8080/usuario/advogado/editar/${sessionStorage.getItem("userId")}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/editar/${sessionStorage.getItem("userId")}`, {
             method: "PATCH",
             body: JSON.stringify(novoPerfil),
             headers: {

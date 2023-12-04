@@ -97,7 +97,7 @@
     const idVinculo = urlParams.get('vinculo');
 
     async function gerarOrcamento() {
-        const retorno = await fetch(`http://localhost:8080/orcamento`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/orcamento`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

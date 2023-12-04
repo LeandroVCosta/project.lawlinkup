@@ -327,7 +327,7 @@ window.addEventListener("load", getUserTypes);
 
 async function getUserTypes() {
     return
-    let values = await fetch(`http://localhost:8080/tipoUsuario`, {
+    let values = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/tipoUsuario`, {
         method: "GET",
         headers: {
             "Content-type": "application/json; charset=UTF-8"
@@ -344,7 +344,7 @@ async function getUserTypes() {
 
 async function cadastrarUsuario(usuario) {
     console.log(usuario)
-    await fetch(`http://localhost:8080/usuario`, {
+    await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario`, {
         method: "POST",
         body: JSON.stringify(usuario),
         headers: {
@@ -390,7 +390,7 @@ async function uploadImage() {
     formData.append('stringByte', file);
 
     try {
-      const response = await fetch('http://localhost:8080/usuario/subirimagem', {
+      const response = await fetch('https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/subirimagem', {
         method: 'POST',
         body: formData
       });

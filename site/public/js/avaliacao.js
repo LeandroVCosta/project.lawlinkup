@@ -9,7 +9,7 @@ async function criarAvaliacao() {
     let evaluation = {
         avaliacao: 3
     }
-    await fetch(`http://localhost:8080/vinculo/atualizar/${id}`, {
+    await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/atualizar/${id}`, {
         method: "PATCH",
         body: JSON.stringify(evaluation),
         headers: {

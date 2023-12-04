@@ -92,7 +92,7 @@
 
         async function renderCaso() {
             const idUsuario = sessionStorage.getItem("userId");
-            const retorno = await fetch(`http://localhost:8080/caso/listarCasosInativos/${idUsuario}`, {
+            const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/caso/listarCasosInativos/${idUsuario}`, {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
@@ -141,7 +141,7 @@
 
         async function enviarCaso(idCaso) {
             const idUsuario = sessionStorage.getItem("userId");
-            const retorno = await fetch(`http://localhost:8080/vinculo`, {
+            const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

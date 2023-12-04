@@ -96,7 +96,7 @@ var dadosRequisicao = null
   }
 
   async function renderAdvogado() {
-    const retorno = await fetch(`http://localhost:8080/usuario/advogado`, {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -148,7 +148,7 @@ var dadosRequisicao = null
   }
 
  async function getAdvogadoByEspecializacao(){
-    const retorno = await fetch(`http://localhost:8080/usuario/advogado/filtrarespecializacao`, {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/filtrarespecializacao`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8"

@@ -152,7 +152,7 @@
     })
 
     async function loadAdvogado() {
-        const retorno = await fetch(`http://localhost:8080/vinculo/${idVinculo}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/${idVinculo}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -171,7 +171,7 @@
     }
 
     async function finalizarVinculo() {
-        const retorno = await fetch(`http://localhost:8080/vinculo/finalizar/${idVinculo}`, {
+        const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/vinculo/finalizar/${idVinculo}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
