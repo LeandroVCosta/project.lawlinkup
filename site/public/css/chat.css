@@ -18,6 +18,8 @@ body {
 }
 
 .div_contatos {
+    display: flex;
+    flex-direction: column;
     width: 25%;
     background-color: #FFFFFF;
 }
@@ -255,4 +257,25 @@ body {
     top: 0;
     left: 0;
     display: none;
+}
+
+.chats {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    scrollbar-width: auto;
+    scrollbar-color: #999999 #fff;
+}
+
+.chats::-webkit-scrollbar {
+    width: 16px;
+}
+
+.chats::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+.chats::-webkit-scrollbar-thumb {
+    background-color: #999999;
+    border-radius: 10px;
+    border: 3px solid #fff;
 }

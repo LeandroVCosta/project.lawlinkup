@@ -78,9 +78,9 @@
                     <div class="info-col">
                         <div class="info-row">
                             <div class="div_descricoes">
-                                <h2 class="texto" id="nome_adv">José da Silva Romeiro</h2>
-                                <h4 class="descricao" id="especializacao">Especialização</h4>
-                                <p id="cidade" class="estado">São Paulo, SP</p>
+                                <h2 class="texto" id="nome_adv"></h2>
+                                <h4 class="descricao" id="especializacao"></h4>
+                                <p id="cidade" class="estado"></p>
                             </div>
                             <button class="btn-lg btn-editar" onclick="aparecerModal()">Editar
                                 Perfil</button>
@@ -173,6 +173,16 @@
         document.getElementById("aboutInput").value = advogado.sobre
     }
 
+    function loadAdvogadoAtualizar(advogado) {
+        document.getElementById("nome_adv").innerHTML = advogado.nome
+        document.getElementById("especializacao").innerHTML = advogado.especializacao
+        document.getElementById("descricao").innerHTML = advogado.sobre
+
+        document.getElementById("nameInput").value = advogado.nome
+        document.getElementById("specializationInput").value = advogado.especializacao
+        document.getElementById("aboutInput").value = advogado.sobre
+    }
+
     async function clickAtualizarPerfil() {
         pilhaAdvogados.push({
             nome: document.getElementById("nome_adv").innerHTML,
@@ -215,7 +225,7 @@
 
         const dadosRequisicao = await retorno.json()
 
-        loadAdvogado(dadosRequisicao)
+        loadAdvogadoAtualizar(dadosRequisicao)
 
         sessionStorage.setItem("userName", dadosRequisicao.nome)
     }

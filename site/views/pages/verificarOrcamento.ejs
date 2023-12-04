@@ -110,8 +110,8 @@
         }
 
         function loadOrcamento(orcamento) {
-            document.getElementById("valorOrcamento").innerHTML = orcamento.valorOrcamento
-            document.getElementById("prazoFinal").innerHTML = orcamento.prazoFinal
+            document.getElementById("valorOrcamento").innerHTML = `R$ ${orcamento.valorOrcamento.toFixed(2)}`
+            document.getElementById("prazoFinal").innerHTML = new Date(orcamento.prazoFinal).toLocaleDateString('pt-BR')
         }
 
         async function aceitarOrcamento() {

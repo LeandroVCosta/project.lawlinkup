@@ -250,3 +250,18 @@
 .div_cardbotao {
     max-width: 70%;
 }
+
+.div_foto2{
+    width: 200px;
+    height: 200px;
+    margin-top: 56px;
+    margin-right: 56px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    border: var(--primary) solid 2px;
+    min-width: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
