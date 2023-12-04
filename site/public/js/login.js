@@ -32,14 +32,42 @@ async function LogarUsuario(usuario) {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
-            .then((response) => response.json())
-            .then((json) => {
-                sessionStorage.setItem("userType", json.tipoUsuario.nome.toLowerCase())
-                sessionStorage.setItem("userName", json.nome)
-                sessionStorage.setItem("userId", json.idUsuario)
-                userType = json.tipoUsuario.nome.toLowerCase()
+        .then((response) => {
+            if (response.status === 403) {
+                throw new Error("Email/Senha inválidos!");
+            }
+            return response.json();
         })
-    window.location.href = userType == "cliente" ? "marketplace" : "profile"
+        .then((json) => {
+            if (json.senha == usuario.senha && json.email == usuario.email){
+                valid = true;
+            }
+            sessionStorage.setItem("userType", json.tipoUsuario.nome.toLowerCase());
+            sessionStorage.setItem("userName", json.nome);
+            sessionStorage.setItem("userId", json.idUsuario);
+            userType = json.tipoUsuario.nome.toLowerCase();
+        })
+        .catch((error) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Email/Senha estão errados!',
+                showCloseButton: true
+    
+            })
+        });
+        if (valid){
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Realizado',
+                text: 'Redirecionando para a tela inicial!',
+                showCloseButton: true
+    
+            })
+            setTimeout(function () {
+                window.location.href = userType == "cliente" ? "marketplace" : "profile";
+            },2000)
+        }
 }
 
 prevBtn.addEventListener("click", function(event){
