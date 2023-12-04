@@ -54,8 +54,8 @@
         <div class="div_chat">
             <div class="div_contatos">
                 <div class="div_perfil">
-                    <div id="foto_usuario" class="div_foto">
-                        <img src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
+                    <div class="div_foto">
+                        <img id = "foto_usuario" src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
                     </div>
                     <div class="div_info">
                         <div id="nome_usuario" class="div_nome">Carlos Augusto</div>
@@ -129,16 +129,7 @@
         }
     })
 
-    function renderMyMessage(mensagem) {
-        $('.mensagens').append(`<div class="div_mensagem2">${mensagem}</div>`)
-    }
-
-    function renderMessage(mensagem) {
-        $('.mensagens').append(`<div class="div_mensagem1">${mensagem}</div>`)
-    }
-
-    $('#btn_enviar').click(async function (event) {
-        event.preventDefault();
+ async function sendMessage(){
         var mensagem = $('input[id=message]').val();
 
         if (mensagem.length) {
@@ -163,8 +154,29 @@
         }
         document.getElementById("message").value = ""
         document.getElementById("box_mensagens").scrollTop = document.getElementById("box_mensagens").scrollHeight
+    }
+
+    function renderMyMessage(mensagem) {
+        $('.mensagens').append(`<div class="div_mensagem2">${mensagem}</div>`)
+    }
+
+    function renderMessage(mensagem) {
+        $('.mensagens').append(`<div class="div_mensagem1">${mensagem}</div>`)
+    }
+
+    $('#btn_enviar').click(async function (event) {
+        event.preventDefault();
+        sendMessage()
     });
 
+    $('#message').keydown(async function (event) {
+        if (event.key == "Enter") {
+            sendMessage();
+        } else {
+            // Se não for a tecla "Enter", o comportamento padrão deve ser permitido
+            return true;
+        }
+    });
 
 
     window.onload = function () {
@@ -374,6 +386,7 @@
     function loadUsuario(usuario) {
         document.getElementById("foto_usuario").src = usuario.fotoUrl
         document.getElementById("nome_usuario").innerHTML = usuario.nome
+        document.getElementById("info_usuario").innerHTML = usuario.especializacao
     }
 
 
