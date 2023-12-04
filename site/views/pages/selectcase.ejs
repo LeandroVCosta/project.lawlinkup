@@ -13,6 +13,7 @@
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/75218518b3.js" crossorigin="anonymous"></script>
     <script src="js/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -151,9 +152,20 @@
                     casoId: idCaso
                 })
             })
-            if (retorno.ok) {
-                window.location = "chat"
+            Swal.fire({
+                icon: 'success',
+                title: 'Caso Enviado!',
+                text: 'Em breve o advogado vai entrar em contato com você!',
+                showCloseButton: true
+    
+            })
+
+            setTimeout(function () {
+                if (retorno.ok) {
+                window.location.reload()
             }
+            },2000)
+
         }
 
     </script>

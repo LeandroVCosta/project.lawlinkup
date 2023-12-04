@@ -7,7 +7,7 @@
 
 .side-bar-items{
 
-  background-color: var(--blue-900);
+  background-color: #335577;
   width: 15%;
   height: 100%;
 
@@ -21,16 +21,18 @@
 }
 
 .side-btn{
+  
   align-self: center;
   width: 80%;
-  border: gray solid 8px;
-  background-color: gray;
-  color: white;
+  border: white solid 8px;
+  background-color: white;
+  color: black;
   border-radius: 10px;
 }
 
 .side-title{
   margin-top: 10%;
+  color: white;
 }
 
 .buscar{

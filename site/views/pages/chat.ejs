@@ -58,8 +58,8 @@
                         <img id = "foto_usuario" src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
                     </div>
                     <div class="div_info">
-                        <div id="nome_usuario" class="div_nome">Carlos Augusto</div>
-                        <div id="info_usuario" class="div_caso">Minhas informações</div>
+                        <div id="nome_usuario" class="div_nome"></div>
+                        <div id="info_usuario" class="div_caso"></div>
                     </div>
                 </div>
 
@@ -157,11 +157,11 @@
     }
 
     function renderMyMessage(mensagem) {
-        $('.mensagens').append(`<div class="div_mensagem2">${mensagem}</div>`)
+        $('.mensagens').append(`<div class="div_mensagem2"><p>${mensagem}</p></div>`)
     }
 
     function renderMessage(mensagem) {
-        $('.mensagens').append(`<div class="div_mensagem1">${mensagem}</div>`)
+        $('.mensagens').append(`<div class="div_mensagem1"><p>${mensagem}</p></div>`)
     }
 
     $('#btn_enviar').click(async function (event) {
@@ -200,7 +200,8 @@
                     user: vinculo.advogado.nome,
                     chatUserId: vinculo.advogado.idUsuario,
                     caso: vinculo.caso.servico,
-                    socket: vinculo.advogado.socketId
+                    socket: vinculo.advogado.socketId,
+                    fotoUrl: vinculo.advogado.fotoUrl ?  vinculo.advogado.fotoUrl : "img/foto_perfil_default.png"
                 })
             })
         } else {
@@ -211,7 +212,8 @@
                     user: vinculo.caso.cliente.nome,
                     chatUserId: vinculo.caso.cliente.idUsuario,
                     caso: vinculo.caso.servico,
-                    socket: vinculo.caso.cliente.socketId
+                    socket: vinculo.caso.cliente.socketId,
+                    fotoUrl: "img/foto_perfil_default.png"
                 })
             })
         }
@@ -224,11 +226,13 @@
     function renderChat(chat, index) {
         console.log(JSON.stringify(chat))
         const chat2 = JSON.stringify(chat)
+
+
         $('.chats').append(`
             <div onclick='trocarChat(${chat2}, ${chat.idVinculo})' class="div_conversas${index % 2 == 1 ? "2" : ""}">
                 <div id='chat_num_${chat.idVinculo}' class='chat_num'></div>
                 <div class="div_foto">
-                    <img src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
+                    <img src="${chat.fotoUrl}" class="foto_perfil_img" alt="">
                 </div>
                 <div class="div_info">
                     <div class="div_nome">${chat.user}</div>
@@ -250,7 +254,7 @@
         document.getElementById("remetente").innerHTML = `
             <div class="div_perfil_chat">
                 <div class="div_foto_chat">
-                    <img src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
+                    <img src="${chat.fotoUrl}" class="foto_perfil_img" alt="">
                 </div>
                 <div class="div_info_chat">
                     <div class="div_nome">${chat.user}</div>
@@ -387,7 +391,7 @@
     }
 
     function loadUsuario(usuario) {
-        document.getElementById("foto_usuario").src = usuario.fotoUrl
+        document.getElementById("foto_usuario").src = usuario.fotoUrl ? usuario.fotoUrl : "img/foto_perfil_default.png"
         document.getElementById("nome_usuario").innerHTML = usuario.nome
         document.getElementById("info_usuario").innerHTML = usuario.especializacao
     }
