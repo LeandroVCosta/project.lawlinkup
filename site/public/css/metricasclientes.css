@@ -10,11 +10,11 @@ body {
     padding-top: 24px;
     height: 100%;
     width: 85%;
-    float: right;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-inline: auto;
 }
 
 .menu_lateral {

@@ -19,7 +19,7 @@
 
 <body>
     <header id="header-site">
-        <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary" style="width: 85%; float: right;">
+        <nav class="navbar navbar-expand-md navbar-dark navbar-color-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="home">
                     <img src="img/Logo-SemFundo.svg" width="120" height="100" class="d-inline-block align-center"
@@ -35,7 +35,7 @@
                             <a class="nav-link" aria-current="page" href="contact">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="marketplace">Buscar Advogado</a>
+                            <a class="nav-link" href="profile">Ver Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="chat">Chat</a>
@@ -43,12 +43,10 @@
                         <li class="nav-item">
                             <a class="nav-link" id="userName" onclick="deslogar()">Logoff</a>
                         </li>
-
                     </ul>
                 </div>
             </div>
         </nav>
-
     </header>
 
     <div id="conteudo">
@@ -86,19 +84,6 @@
 
     </div>
 
-    <div class="menu_lateral">
-        <ul class="ul">
-            <li><b>Métricas:</b></li>
-            <li><a href="link"><img id="img_barra_lateral" src="img/NotePencil.png" alt="">Mensais</a></li>
-            <ul id="espaco_barra_lateral"></ul>
-            <li><a href="link"><img id="img_barra_lateral" src="img/User.png" alt="">Perfil</a></li>
-            <li><a href="link"><img id="img_barra_lateral" src="img/notificacao.png" alt="">Notificações</a></li>
-            <li><a href="link"><img id="img_barra_lateral" src="img/Gear.png" alt="">Configurações</a></li>
-            <li><a href="link"><img id="img_barra_lateral" src="img/Question.png" alt="">FAQ</a></li>
-            <li><a href="/"><img id="img_barra_lateral" src="img/exit.png" alt="">Sair</a></li>
-        </ul>
-    </div>
-
 </body>
 
 </html>
@@ -106,10 +91,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    window.onload = function () {
-        document.getElementById("userName").innerHTML = sessionStorage.getItem("userName");
-    }
 
+    alterarNavbar()
 
     var id = sessionStorage.getItem("userId");
     var apiUrl = 'https://project-lawlinkup-5yraro2lta-uc.a.run.app';

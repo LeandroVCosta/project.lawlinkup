@@ -10,11 +10,10 @@ body {
     padding-top: 0px;
     height: 120%;
     width: 85%;
-    float: right;
     text-align: center;
     display: flex;
     flex-direction: column;
-
+    margin-inline: auto;
 }
 
 #espaco_chart1 {

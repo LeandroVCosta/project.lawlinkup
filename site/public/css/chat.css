@@ -61,6 +61,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
 }
 
 .div_conversas2 {
@@ -70,12 +71,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
 }
 
 .div_info {
     display: flex;
     flex-direction: column;
     width: calc(100% - 60px);
+    z-index: 1;
 }
 
 .div_foto {
@@ -89,6 +92,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 }
 
 .div_nome {
@@ -241,4 +245,14 @@ body {
     display: inline;
     margin: 0 auto;
     height: 100%;
+}
+
+.chat_num {
+    background-color: #c6a979;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
 }

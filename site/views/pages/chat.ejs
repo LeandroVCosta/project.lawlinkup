@@ -213,7 +213,8 @@
         console.log(JSON.stringify(chat))
         const chat2 = JSON.stringify(chat)
         $('.chats').append(`
-            <div onclick='trocarChat(${chat2})' class="div_conversas${index % 2 == 1 ? "2" : ""}">
+            <div onclick='trocarChat(${chat2}, ${chat.idVinculo})' class="div_conversas${index % 2 == 1 ? "2" : ""}">
+                <div id='chat_num_${chat.idVinculo}' class='chat_num'></div>
                 <div class="div_foto">
                     <img src="img/foto_perfil_default.png" class="foto_perfil_img" alt="">
                 </div>
@@ -225,10 +226,12 @@
         `)
     }
 
-    async function trocarChat(chat) {
+    async function trocarChat(chat, idVinculo) {
         $('.mensagens').empty()
         chatAtual = chat
         console.log(chat)
+        document.querySelectorAll(".chat_num").forEach(element => element.style.display = "none")
+        document.getElementById(`chat_num_${idVinculo}`).style.display = "block"
 
         document.getElementById("input_enviar").style.display = "flex"
 
