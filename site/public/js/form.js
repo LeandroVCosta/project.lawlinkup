@@ -319,6 +319,7 @@ submitBtn.addEventListener("click", async function (event) {
         usuario.dataNascimento = document.getElementById("nascimentoInput").value
         usuario.estadoCivil = document.getElementById("estadoCivilInput").value
         usuario.sexo = document.getElementById("generoInput").value
+        usuario.fotoUrl = await uploadImage()
     }
     cadastrarUsuario(usuario)
 });
