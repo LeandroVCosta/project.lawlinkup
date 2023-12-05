@@ -127,8 +127,8 @@ var dadosRequisicao = null
                 </ul>
               </div>
               <div class="btn-perfil">
-                <button onclick="verPerfil(${advogado.usuario.idUsuario})" type="button" class="btn btn-primary btn-right">Perfil</button>
-                <button onclick="enviarCaso(${advogado.usuario.idUsuario})" type="button" class="btn btn-primary btn-right">Contatar</button>
+                <a><button onclick="verPerfil(${advogado.usuario.idUsuario})" type="button" class="btn btn-primary btn-right">Perfil</button></a>
+                <a><button onclick="enviarCaso(${advogado.usuario.idUsuario})" type="button" class="btn btn-primary btn-right">Contatar</button></a>
               </div>
             </div>
             </div>`)
@@ -149,7 +149,7 @@ var dadosRequisicao = null
 
   async function addVisita(idAdvogado) {
     const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/adicionarVisita/1`, {
-      method: "GET",
+      method: "PATCH",
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
