@@ -127,11 +127,34 @@ var dadosRequisicao = null
                 </ul>
               </div>
               <div class="btn-perfil">
-                <a href="viewprofile?advogado=${advogado.usuario.idUsuario}"><button type="button" class="btn btn-primary btn-right">Perfil</button></a>
-                <a href="${sessionStorage.getItem("userId") ? `selectcase?advogado=${advogado.usuario.idUsuario}` : "login"}"><button type="button" class="btn btn-primary btn-right">Contatar</button></a>
+                <button onclick="verPerfil(${advogado.usuario.idUsuario})" type="button" class="btn btn-primary btn-right">Perfil</button>
+                <button onclick="enviarCaso(${advogado.usuario.idUsuario})" type="button" class="btn btn-primary btn-right">Contatar</button>
               </div>
             </div>
             </div>`)
+  }
+
+  async function verPerfil(idAdvogado) {
+    await addVisita(idAdvogado)
+    window.location = `viewprofile?advogado=${idAdvogado}`  
+  }
+
+  async function enviarCaso(idAdvogado) {
+    if (sessionStorage.getItem("userId")) {
+      await addVisita(idAdvogado)
+      window.location = `selectcase?advogado=${idAdvogado}`
+    }
+    window.location = "login"
+  }
+
+  async function addVisita(idAdvogado) {
+    const retorno = await fetch(`https://project-lawlinkup-5yraro2lta-uc.a.run.app/usuario/advogado/adicionarVisita/1`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    console.log(retorno.ok)
   }
 
   function loadAvaliacao(avaliacao) {
