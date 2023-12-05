@@ -132,6 +132,7 @@ body {
 }
 
 .div_mensagem1 {
+    word-wrap: break-word;
     max-width: 40%;
     min-height: 80px;
     background-color: #FFFFFF;
@@ -145,6 +146,7 @@ body {
 }
 
 .div_mensagem2 {
+    word-wrap: break-word;
     max-width: 40%;
     min-height: 80px;
     background-color: #FFFFFF;
